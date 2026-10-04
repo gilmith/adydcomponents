@@ -1,0 +1,63 @@
+<div class="adyd-carousel">
+  <div
+    #viewport
+    class="adyd-carousel__viewport"
+    [style.--adyd-carousel-item-width.px]="itemWidth()"
+  >
+    <div
+      #track
+      class="adyd-carousel__track"
+      [style.transform]="'translate3d(' + -offset() + 'px, 0, 0)'"
+    >
+      @for (card of cardData(); track card.url) {
+        <div class="adyd-carousel__item">
+          <button
+            type="button"
+            class="adyd-carousel__trigger"
+            (click)="open(card)"
+            [attr.aria-label]="'Ver ' + card.title"
+          >
+            <adyd-card class="d-block w-100" [imageUrl]="card.url" [title]="card.title" />
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (showControls()) {
+    <button
+      class="adyd-carousel__control adyd-carousel__control--prev"
+      type="button"
+      (click)="prev()"
+      aria-label="Anterior"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+
+    <button
+      class="adyd-carousel__control adyd-carousel__control--next"
+      type="button"
+      (click)="next()"
+      aria-label="Siguiente"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  }
+</div>
+
+<dialog #dialog class="adyd-carousel__lightbox" (click)="onBackdropClick($event)">
+  <div class="adyd-carousel__lightbox-panel">
+    <button
+      type="button"
+      class="adyd-carousel__lightbox-close"
+      (click)="close()"
+      aria-label="Cerrar"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    @if (selected(); as card) {
+      <adyd-card class="d-block w-100" [imageUrl]="card.url" [title]="card.title" />
+    }
+  </div>
+</dialog>

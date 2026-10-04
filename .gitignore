@@ -1,0 +1,12 @@
+# Notas de estudio privadas — no subir
+resumen-carousel.md
+session-ses_*.md
+
+# IDEs y editores (la raíz del repo, el de components/ ya lo cubre)
+/.idea/
+.vscode/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
