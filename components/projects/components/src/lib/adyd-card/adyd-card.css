@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: var(--adyd-card-max-width, 320px);
+}
+
+.card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
