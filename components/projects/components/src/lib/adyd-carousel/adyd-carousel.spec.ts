@@ -4,8 +4,10 @@ import { CardItem } from '../model/card-item';
 
 const makeCards = (count: number): CardItem[] =>
   Array.from({ length: count }, (_, i) => ({
+    id: i + 1,
     title: `Card ${i}`,
     url: `https://picsum.photos/600/337?random=${i}`,
+    description: `Descripción ${i}`,
   }));
 
 /**
@@ -239,7 +241,9 @@ describe('AdydCarousel', () => {
     const closeButton = () =>
       fixture.nativeElement.querySelector('.adyd-carousel__lightbox-close') as HTMLButtonElement;
     const panelCard = () =>
-      fixture.nativeElement.querySelector('.adyd-carousel__lightbox-panel adyd-card');
+      (fixture.nativeElement as HTMLElement).querySelector(
+        '.adyd-carousel__lightbox-panel adyd-card',
+      ) as HTMLElement;
 
     it('stays closed until a card is clicked', async () => {
       await create(14);
@@ -313,6 +317,42 @@ describe('AdydCarousel', () => {
       await create(14);
       expect(trigger(0).getAttribute('aria-label')).toBe('Ver Card 0');
       expect(trigger(1).getAttribute('aria-label')).toBe('Ver Card 1');
+    });
+
+    it('emits the full card when its Seleccionar button is clicked', async () => {
+      await create(14);
+      const events: CardItem[] = [];
+      fixture.componentInstance.cardSelected.subscribe((c) => events.push(c));
+
+      trigger(2).click();
+      fixture.detectChanges();
+
+      const panelButton = panelCard()!.querySelector<HTMLButtonElement>('button')!;
+      expect(panelButton).toBeTruthy();
+      expect(panelButton.textContent?.trim()).toBe('Seleccionar');
+      panelButton.click();
+      fixture.detectChanges();
+
+      expect(events).toHaveLength(1);
+      expect(events[0].id).toBe(3);
+      expect(events[0].title).toBe('Card 2');
+    });
+
+    it('closes the lightbox after Seleccionar is clicked', async () => {
+      await create(14);
+      trigger(0).click();
+      fixture.detectChanges();
+      expect(dialog().open).toBe(true);
+
+      panelCard()!.querySelector<HTMLButtonElement>('button')!.click();
+      fixture.detectChanges();
+
+      expect(dialog().open).toBe(false);
+    });
+
+    it('does not render the action button in the carousel strip', async () => {
+      await create(14);
+      expect(trigger(0).querySelector('button')).toBeNull();
     });
   });
 });

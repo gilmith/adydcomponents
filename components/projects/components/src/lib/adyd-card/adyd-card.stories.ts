@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { AdydCard } from './adyd-card';
+import { action } from 'storybook/actions';
 
 const meta: Meta<AdydCard> = {
   title: 'Moléculas/AdydCard',
@@ -21,5 +22,8 @@ export const BasicAdydCard: Story = {
     imageUrl:
       'http://localhost:8888/buckets/campaigns/141-1413474_dungeons-dragons-advanced-dungeons-and-dragons-logo.png',
     title: 'Poster de prueba',
+    description: 'descripcion de lo que sea',
+    id: 1,
+    action: action('click'),
   },
 };

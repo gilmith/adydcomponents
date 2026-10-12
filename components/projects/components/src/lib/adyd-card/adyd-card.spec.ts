@@ -14,6 +14,9 @@ describe('AdydCard', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('imageUrl', 'https://picsum.photos/600/337');
     fixture.componentRef.setInput('title', 'Dragonlance');
+    fixture.componentRef.setInput('description', 'Una descripción');
+    fixture.componentRef.setInput('id', 1);
+    fixture.componentRef.setInput('action', () => undefined);
     await fixture.whenStable();
   });
 

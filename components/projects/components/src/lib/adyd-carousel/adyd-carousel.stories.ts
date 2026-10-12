@@ -13,8 +13,10 @@ type Story = StoryObj<AdydCarousel>;
 
 const makeCards = (count: number): CardItem[] =>
   Array.from({ length: count }, (_, i) => ({
+    id: i + 1,
     title: `Card ${i + 1}`,
     url: `https://picsum.photos/600/337?random=${i + 1}`,
+    description: `Descripción de la card ${i + 1}`,
   }));
 
 export const Default: Story = {

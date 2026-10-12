@@ -9,7 +9,7 @@
       class="adyd-carousel__track"
       [style.transform]="'translate3d(' + -offset() + 'px, 0, 0)'"
     >
-      @for (card of cardData(); track card.url) {
+      @for (card of cardData(); track card.id) {
         <div class="adyd-carousel__item">
           <button
             type="button"
@@ -17,7 +17,15 @@
             (click)="open(card)"
             [attr.aria-label]="'Ver ' + card.title"
           >
-            <adyd-card class="d-block w-100" [imageUrl]="card.url" [title]="card.title" />
+            <adyd-card
+              class="d-block w-100"
+              [id]="card.id"
+              [imageUrl]="card.url"
+              [title]="card.title"
+              [description]="card.description"
+              [action]="handleSelect"
+              [showAction]="false"
+            />
           </button>
         </div>
       }
@@ -57,7 +65,14 @@
     </button>
 
     @if (selected(); as card) {
-      <adyd-card class="d-block w-100" [imageUrl]="card.url" [title]="card.title" />
+      <adyd-card
+        class="d-block w-100"
+        [id]="card.id"
+        [imageUrl]="card.url"
+        [title]="card.title"
+        [description]="card.description"
+        [action]="handleSelect"
+      />
     }
   </div>
 </dialog>

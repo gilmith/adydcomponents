@@ -6,6 +6,7 @@ import {
   ElementRef,
   inject,
   input,
+  output,
   signal,
   viewChild,
 } from '@angular/core';
@@ -22,6 +23,9 @@ export class AdydCarousel {
   readonly cardData = input.required<CardItem[]>();
   readonly itemWidth = input(220);
   readonly controlsThreshold = input(10);
+
+  /** Reemite el botón "Seleccionar" de cada card con el item completo. */
+  readonly cardSelected = output<CardItem>();
 
   private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');
   private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');
@@ -67,6 +71,19 @@ export class AdydCarousel {
   protected next(): void {
     this.goTo(this.index() + 1);
   }
+
+  /**
+   * AdydCard solo devuelve el id, así que aquí se recupera el item completo para
+   * que el output siga siendo CardItem y no un número suelto.
+   * Es una propiedad flecha a propósito: conserva el `this` al pasarla como input.
+   */
+  protected readonly handleSelect = (id: number): void => {
+    const card = this.cardData().find((c) => c.id === id);
+    if (!card) return;
+
+    this.cardSelected.emit(card);
+    if (this.dialog().nativeElement.open) this.close();
+  };
 
   protected open(card: CardItem): void {
     this.selected.set(card);

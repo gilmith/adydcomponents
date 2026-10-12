@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   imports: [],
@@ -7,8 +7,14 @@ import {Component, input} from '@angular/core';
   templateUrl: './adyd-card.html',
 })
 export class AdydCard {
-
   imageUrl = input.required<string>();
   title = input.required<string>();
+  description = input.required<string>();
+  id = input.required<number>();
+  action = input.required<(id: number) => void>();
+  showAction = input(true);
 
+  protected onSelect() {
+    this.action()(this.id());
+  }
 }
