@@ -1,10 +1,14 @@
 import { Component, input } from '@angular/core';
+import {AdminDirective} from "../directives/admin-directive";
 
 @Component({
-  imports: [],
+    imports: [
+        AdminDirective
+    ],
   selector: 'adyd-card',
   styleUrl: './adyd-card.css',
   templateUrl: './adyd-card.html',
+    standalone: true,
 })
 export class AdydCard {
   imageUrl = input.required<string>();
