@@ -1,0 +1,36 @@
+name: Publish Library
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@your-org'
+
+      - name: Install dependencies
+        working-directory: ./components
+        run: npm ci
+
+      - name: Build library
+        working-directory: ./components
+        run: npm run build
+
+      - name: Publish to GitHub npm
+        working-directory: ./components
+        run: |
+          cd dist/components
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

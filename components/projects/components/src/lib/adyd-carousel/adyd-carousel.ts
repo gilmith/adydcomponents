@@ -15,7 +15,7 @@ import { AdydCard } from '../adyd-card/adyd-card';
 
 @Component({
   imports: [AdydCard],
-  selector: 'lib-adyd-carousel',
+  selector: 'adyd-carousel',
   styleUrl: './adyd-carousel.css',
   templateUrl: './adyd-carousel.html',
 })

@@ -1,0 +1,19 @@
+<label class="form-label">
+    {{ props.label }}
+</label>
+
+<select
+        class="form-control"
+        [formControl]="formControl"
+        [formlyAttributes]="field"
+        >
+
+    <option>{{this.props.placeholder}}</option>
+
+    @for (item of this.props['options']; track item.value) {
+        <option [value]="item.value">
+            {{ item.label }}
+        </option>
+    }
+
+</select>

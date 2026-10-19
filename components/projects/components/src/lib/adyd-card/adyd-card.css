@@ -1,7 +1,8 @@
 :host {
   display: block;
   width: 100%;
-  max-width: var(--adyd-card-max-width, 320px);
+  max-width: var(--adyd-card-max-width, 800px);
+  max-height: var(--adyd-card-max-height, 600px);
 }
 
 .card-img-top {
