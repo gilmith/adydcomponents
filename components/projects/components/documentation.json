@@ -2,6 +2,61 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "AuthService",
+            "id": "interface-AuthService-404c9f065e7b638e2f739e46fa4b7807e847ccde10897ff1117384da35f06535bacc5cf1e82c3b4ea0451aebceb37f27b0b3bde84696aade387b2ea4a29475ac",
+            "file": "projects/components/src/lib/services/auth-service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { InjectionToken} from \"@angular/core\";\n\nexport interface AuthService {\n\n    hasPermission(permission: string[]): boolean;\n}\n\nexport const AUTH_SERVICE = new InjectionToken<AuthService>('AUTH_SERVICE');\n",
+            "displayName": "AuthService",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 174,
+            "methods": [
+                {
+                    "name": "hasPermission",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "permission",
+                            "type": "string[]",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 5,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "permission",
+                            "type": "string[]",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "CardItem",
             "id": "interface-CardItem-e58ed2e8083f2628aee75ba713cf549ad4079b6589120ed5c29dc532c8773288e0e764f195b42b6da53e1df88af60d70c0b0607e24aef47db9a07008c1910fc8",
             "file": "projects/components/src/lib/model/card-item.ts",
@@ -150,11 +205,151 @@
     "guards": [],
     "interceptors": [],
     "classes": [],
-    "directives": [],
+    "directives": [
+        {
+            "name": "AdminDirective",
+            "id": "directive-AdminDirective-17fa2a18e041068212fd688399fd31815ae1eb3c399fafd13303b1c9800f338f47723afffbb0fc7b276cc53c46c143ff5bd0983cfbb2284f98f0ab5b6292c718",
+            "file": "projects/components/src/lib/directives/admin-directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {Directive, Inject, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';\nimport {AUTH_SERVICE, AuthService} from \"../services/auth-service\";\n\n@Directive({\n  selector: '[AdminDirective]',\n  standalone: true\n})\nexport class AdminDirective implements OnInit {\n\n  constructor(\n      private template: TemplateRef<any>,\n      private viewContainerRef: ViewContainerRef,\n      @Inject(AUTH_SERVICE) private authService: AuthService) {}\n\n\n    ngOnInit(): void {\n      console.log('ejecutando la autorizacion');\n      this.updateView();\n    }\n\n    private updateView() {\n        this.viewContainerRef.clear();\n\n        // Llamamos a tu servicio de la SPA de forma segura\n        if (this.authService.hasPermission(['admin'])) {\n            this.viewContainerRef.createEmbeddedView(this.template);\n        }\n    }\n}\n",
+            "selector": "[AdminDirective]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "updateView",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "template",
+                        "type": "TemplateRef<any>",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "template",
+                        "type": "TemplateRef<any>",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "AdydCard",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "OnInit",
+                        "type": "interface"
+                    }
+                ]
+            }
+        }
+    ],
     "components": [
         {
             "name": "AdydCard",
-            "id": "component-AdydCard-fb7a0457d43995180462855755486374b401f2a8cdd87ec1baaaaac5fb8ee5c4426cabe4b20d0974d7c17a657bfd1f0976f073b59beb878a5225c637594fbfbe",
+            "id": "component-AdydCard-5c55c8102fb23731b1675cfd50f1ccc50c1f70a7e79592f7fac6c91c3e73af7e3160ff76527bc7b0e372c09fc2cd3c4f0637d77f96175348d1a9faa7c2f50b33",
             "file": "projects/components/src/lib/adyd-card/adyd-card.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -183,7 +378,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14,
+                    "line": 18,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -196,7 +391,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 16,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -209,7 +404,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13,
+                    "line": 17,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -222,7 +417,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 14,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -236,7 +431,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 19,
                     "rawdescription": "\n",
                     "required": false
                 },
@@ -249,7 +444,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 15,
                     "rawdescription": "\n",
                     "required": true
                 }
@@ -264,7 +459,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -280,16 +475,21 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "AdminDirective",
+                    "type": "directive"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input } from '@angular/core';\n\n@Component({\n  imports: [],\n  selector: 'adyd-card',\n  styleUrl: './adyd-card.css',\n  templateUrl: './adyd-card.html',\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showAction = input(true);\n\n  protected onSelect() {\n    this.action()(this.id());\n  }\n}\n",
+            "sourceCode": "import { Component, input } from '@angular/core';\nimport {AdminDirective} from \"../directives/admin-directive\";\n\n@Component({\n    imports: [\n        AdminDirective\n    ],\n  selector: 'adyd-card',\n  styleUrl: './adyd-card.css',\n  templateUrl: './adyd-card.html',\n    standalone: true,\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showAction = input(true);\n\n  protected onSelect() {\n    this.action()(this.id());\n  }\n}\n",
             "styleUrl": "./adyd-card.css",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 320px);\n}\n\n.card-img-top {\n  aspect-ratio: 16 / 9;\n  object-fit: cover;\n  width: 100%;\n  display: block;\n}\n",
+                    "data": ":host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.card-img-top {\n  aspect-ratio: 16 / 9;\n  object-fit: cover;\n  width: 100%;\n  display: block;\n}\n",
                     "styleUrl": "./adyd-card.css"
                 }
             ],
@@ -302,13 +502,18 @@
                         "type": "component"
                     }
                 ],
-                "outgoing": []
+                "outgoing": [
+                    {
+                        "name": "AdminDirective",
+                        "type": "directive"
+                    }
+                ]
             },
-            "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <img class=\"card-img-top\" [src]=\"imageUrl()\" [alt]=\"title()\" />\n    <p class=\"card-text\" [textContent]=\"description()\"></p>\n    @if (showAction()) {\n      <div class=\"d-grid gap-2 col-6 mx-auto\">\n        <button type=\"button\" class=\"theme-primary btn-solid\" (click)=\"onSelect()\">\n          Seleccionar\n        </button>\n      </div>\n    }\n  </div>\n</div>\n"
+            "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <img class=\"card-img-top\" [src]=\"imageUrl()\" [alt]=\"title()\" />\n    <p class=\"card-text\" [textContent]=\"description()\"></p>\n    @if (showAction()) {\n      <div class=\"d-grid gap-2 col-6 mx-auto\">\n        <button type=\"button\" class=\"theme-primary btn-solid\" (click)=\"onSelect()\">\n          Seleccionar\n        </button>\n          <button type=\"button\" (click)=\"onSelect()\" *AdminDirective>\n              Editar\n          </button>\n      </div>\n\n    }\n  </div>\n</div>\n"
         },
         {
             "name": "AdydCarousel",
-            "id": "component-AdydCarousel-dc23c783ecae9b1227c9b93d4dcd55fe345cfa4590141eec0cd321ff57dcdba0af00258755ec0d22e51700e419b7cf28eeb50e7e10c708d0bff6399f38e75826",
+            "id": "component-AdydCarousel-cc5c66e126665563663290692156d52b4af32d24c0ec811f251be67e17dfa91071d81943ba11712b2cefeaed61bfc44c2015e828216d6104d5e4abef9bc9688b",
             "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -316,7 +521,7 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "lib-adyd-carousel",
+            "selector": "adyd-carousel",
             "styleUrls": [
                 "./adyd-carousel.css"
             ],
@@ -777,7 +982,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\nimport { CardItem } from '../model/card-item';\nimport { AdydCard } from '../adyd-card/adyd-card';\n\n@Component({\n  imports: [AdydCard],\n  selector: 'lib-adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n})\nexport class AdydCarousel {\n  readonly cardData = input.required<CardItem[]>();\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  /** Reemite el botón \"Seleccionar\" de cada card con el item completo. */\n  readonly cardSelected = output<CardItem>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n  private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  /**\n   * Only written on open, never on close. That keeps the card in the DOM while the\n   * closing animation plays, so it does not vanish before it can fade out.\n   */\n  protected readonly selected = signal<CardItem | null>(null);\n\n  protected readonly showControls = computed(\n    () => this.cardData().length > this.controlsThreshold(),\n  );\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => this.sync();\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  /**\n   * AdydCard solo devuelve el id, así que aquí se recupera el item completo para\n   * que el output siga siendo CardItem y no un número suelto.\n   * Es una propiedad flecha a propósito: conserva el `this` al pasarla como input.\n   */\n  protected readonly handleSelect = (id: number): void => {\n    const card = this.cardData().find((c) => c.id === id);\n    if (!card) return;\n\n    this.cardSelected.emit(card);\n    if (this.dialog().nativeElement.open) this.close();\n  };\n\n  protected open(card: CardItem): void {\n    this.selected.set(card);\n\n    const dialog = this.dialog().nativeElement;\n    if (!dialog.open) dialog.showModal();\n  }\n\n  protected close(): void {\n    this.dialog().nativeElement.close();\n  }\n\n  /** A click on the dialog element itself is a click on the backdrop. */\n  protected onBackdropClick(event: MouseEvent): void {\n    if (event.target === this.dialog().nativeElement) this.close();\n  }\n\n  /**\n   * Moving is driven by the slide index, so the buttons always land somewhere\n   * predictable. Advancing past the last reachable page wraps back to the first card,\n   * and going back from the first one jumps to the last page.\n   */\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    if (this.cardData().length < 2) return 0;\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    return Math.ceil(this.maxOffset() / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private maxOffset(): number {\n    const viewport = this.viewport().nativeElement;\n    return Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth);\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n  }\n}\n",
+            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\nimport { CardItem } from '../model/card-item';\nimport { AdydCard } from '../adyd-card/adyd-card';\n\n@Component({\n  imports: [AdydCard],\n  selector: 'adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n})\nexport class AdydCarousel {\n  readonly cardData = input.required<CardItem[]>();\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  /** Reemite el botón \"Seleccionar\" de cada card con el item completo. */\n  readonly cardSelected = output<CardItem>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n  private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  /**\n   * Only written on open, never on close. That keeps the card in the DOM while the\n   * closing animation plays, so it does not vanish before it can fade out.\n   */\n  protected readonly selected = signal<CardItem | null>(null);\n\n  protected readonly showControls = computed(\n    () => this.cardData().length > this.controlsThreshold(),\n  );\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => this.sync();\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  /**\n   * AdydCard solo devuelve el id, así que aquí se recupera el item completo para\n   * que el output siga siendo CardItem y no un número suelto.\n   * Es una propiedad flecha a propósito: conserva el `this` al pasarla como input.\n   */\n  protected readonly handleSelect = (id: number): void => {\n    const card = this.cardData().find((c) => c.id === id);\n    if (!card) return;\n\n    this.cardSelected.emit(card);\n    if (this.dialog().nativeElement.open) this.close();\n  };\n\n  protected open(card: CardItem): void {\n    this.selected.set(card);\n\n    const dialog = this.dialog().nativeElement;\n    if (!dialog.open) dialog.showModal();\n  }\n\n  protected close(): void {\n    this.dialog().nativeElement.close();\n  }\n\n  /** A click on the dialog element itself is a click on the backdrop. */\n  protected onBackdropClick(event: MouseEvent): void {\n    if (event.target === this.dialog().nativeElement) this.close();\n  }\n\n  /**\n   * Moving is driven by the slide index, so the buttons always land somewhere\n   * predictable. Advancing past the last reachable page wraps back to the first card,\n   * and going back from the first one jumps to the last page.\n   */\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    if (this.cardData().length < 2) return 0;\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    return Math.ceil(this.maxOffset() / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private maxOffset(): number {\n    const viewport = this.viewport().nativeElement;\n    return Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth);\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n  }\n}\n",
             "styleUrl": "./adyd-carousel.css",
             "assetsDirs": [],
             "styleUrlsData": [
@@ -1333,6 +1538,17 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AUTH_SERVICE",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/services/auth-service.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "new InjectionToken<AuthService>('AUTH_SERVICE')"
+            },
+            {
                 "name": "BasicAdydCard",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1446,28 +1662,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AdydCard>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    // Permite editar los inputs dinámicamente en el panel de Storybook\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AdydSelect>",
-                "defaultValue": "{\n  title: 'Moléculas/adyd-select',\n  component: AdydSelect,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n        FormlyModule.forRoot({\n          types: [\n            {\n              name: 'adyd-select',\n              component: AdydSelect,\n            },\n          ],\n        }),\n        FormlyBootstrapModule,\n      ],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/components/src/stories/button.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
@@ -1501,12 +1695,34 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydCard>",
+                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    // Permite editar los inputs dinámicamente en el panel de Storybook\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AdydCarousel>",
                 "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydSelect>",
+                "defaultValue": "{\n  title: 'Moléculas/adyd-select',\n  component: AdydSelect,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n        FormlyModule.forRoot({\n          types: [\n            {\n              name: 'adyd-select',\n              component: AdydSelect,\n            },\n          ],\n        }),\n        FormlyBootstrapModule,\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "preview",
@@ -1571,32 +1787,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydCard>",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydSelect>",
-                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "coverageIgnore": false,
                 "rawtype": "StoryObj<ButtonComponent>",
                 "file": "projects/components/src/stories/button.stories.ts",
                 "deprecated": false,
@@ -1636,8 +1826,34 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydCard>",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": "StoryObj<AdydCarousel>",
                 "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydSelect>",
+                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -1647,6 +1863,19 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/components/src/lib/services/auth-service.ts": [
+                {
+                    "name": "AUTH_SERVICE",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/services/auth-service.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new InjectionToken<AuthService>('AUTH_SERVICE')"
+                }
+            ],
             "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
                 {
                     "name": "BasicAdydCard",
@@ -1896,36 +2125,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydCard>",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydSelect>",
-                    "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/components/src/stories/button.stories.ts": [
                 {
                     "name": "Story",
@@ -1971,6 +2170,21 @@
                     "kind": 184
                 }
             ],
+            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydCard>",
+                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts": [
                 {
                     "name": "Story",
@@ -1979,6 +2193,21 @@
                     "coverageIgnore": false,
                     "rawtype": "StoryObj<AdydCarousel>",
                     "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydSelect>",
+                    "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -2164,6 +2393,15 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/components/src/lib/directives/admin-directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "AdminDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/components/src/lib/model/card-item.ts",
                 "type": "interface",
                 "linktype": "interface",
@@ -2179,6 +2417,25 @@
                 "name": "ItemSelect",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/services/auth-service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AuthService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/services/auth-service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AUTH_SERVICE",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
