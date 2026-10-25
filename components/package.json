@@ -1,6 +1,6 @@
 {
-  "name": "adyd-components",
-  "version": "0.0.3",
+  "name": "components",
+  "version": "0.0.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,11 @@
     "test": "ng test",
     "storybook": "ng run components:storybook",
     "build-storybook": "ng run components:build-storybook",
-    "yalc-publish": "yalc publish ${name}@${version}"
+    "yalc-publish": "yalc publish --private",
+    "release": "npm version patch -m \"chore: release %s\" && npm run build && npm run yalc-publish",
+    "release:patch": "npm version patch -m \"chore: release %s\" && npm run build && npm run yalc-publish",
+    "release:minor": "npm version minor -m \"chore: release %s\" && npm run build && npm run yalc-publish",
+    "release:major": "npm version major -m \"chore: release %s\" && npm run build && npm run yalc-publish"
   },
   "private": true,
   "packageManager": "npm@11.16.0",

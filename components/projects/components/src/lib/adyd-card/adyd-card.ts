@@ -1,8 +1,9 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, computed, inject, input, signal, Signal} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AdminDirective} from "../directives/admin-directive";
 import {PlayerDirective} from "../directives/player-directive";
 import {API_APPLICATIONS} from "../services/api-applications";
+import {ApiApplicationsEnum} from "../services/enum/enum-api-aplications";
 
 @Component({
     imports: [
@@ -25,6 +26,12 @@ export class AdydCard {
   id = input.required<number>();
   action = input.required<(id: number) => void>();
 
+  protected imageData = signal<string | null>(null);
+
+  protected previewUrl = computed(() => {
+    return this.imageData() ?? this.imageUrl();
+  });
+
   private apiApplications = inject(API_APPLICATIONS);
 
   adminForm: FormGroup;
@@ -35,7 +42,6 @@ export class AdydCard {
     });
   }
 
-  protected imageData: string | null = null;
 
 
 
@@ -52,13 +58,14 @@ export class AdydCard {
       description: value,
     };
 
-    if (this.imageData) {
-      record['image'] = this.imageData;
+    const image = this.imageData();
+    if (image) {
+      record['image'] = image;
     }
-
     console.log('Guardar:', record);
+    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, '')
     this.adminForm.reset();
-    this.imageData = null;
+    this.imageData.set(null);
   }
 
   protected onFileSelected(event: Event) {
@@ -72,10 +79,18 @@ export class AdydCard {
   protected uploadImage(file: File) {
     const reader = new FileReader();
     reader.onload = (e) => {
-      this.imageData = e.target?.result as string;
+      this.imageData.set(e.target?.result as string);
     };
     reader.readAsDataURL(file);
   }
 
 
+  protected onDelete(number: number) {
+    console.log('onDelete', number);
+    const record = {
+      "campaignId": number,
+    }
+    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, 'deleteCampaignId');
+    
+  }
 }

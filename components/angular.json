@@ -17,7 +17,6 @@
           "configurations": {
             "production": {
               "tsConfig": "projects/components/tsconfig.lib.prod.json"
-              "tsConfig": "projects/components/tsconfig.lib.prod.json"
             },
             "development": {
               "tsConfig": "projects/components/tsconfig.lib.json"
