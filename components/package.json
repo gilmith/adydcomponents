@@ -1,6 +1,6 @@
 {
-  "name": "components",
-  "version": "0.0.1",
+  "name": "adyd-components",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "ng run components:storybook",
-    "build-storybook": "ng run components:build-storybook"
+    "build-storybook": "ng run components:build-storybook",
+    "yalc-publish": "yalc publish ${name}@${version}"
   },
   "private": true,
   "packageManager": "npm@11.16.0",
@@ -41,6 +42,8 @@
     "jsdom": "^30.0.0",
     "ng-packagr": "^22.2.0",
     "prettier": "^3.8.1",
+    "sass": "^1.105.2",
+    "sass-loader": "^17.0.1",
     "storybook": "^10.6.1",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"

@@ -1,0 +1,45 @@
+/* Borderless forms - use alongside Bootstrap */
+.borderless-form {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.borderless-form .form-control,
+.borderless-form .form-text {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.borderless-form .form-control:focus,
+.borderless-form .form-text:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.borderless-form .mb-3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderless-form .btn {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
