@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "ApiApplications",
-            "id": "interface-ApiApplications-902500909a1ae1f4c489b9800055fb9b7ec27921df015a1c1925d4bd19a6e2b5563b828cb110246df51aa483d621c64dd5752e57c4e2119a24cd300ca98e422a",
+            "id": "interface-ApiApplications-0a1478760b5285f47756e8e79bfda1d15d4974e19ab7fa651d72f034aaaeb7d01586656a69d4db6dd57b56b0394c6e9a768013b26a65792b92eb521ea0cdbda6",
             "file": "projects/components/src/lib/services/api-applications.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {ApiApplicationsEnum} from \"./enum/enum-api-aplications\";\n\ninterface ApiApplications {\n\n    executeService(api: ApiApplicationsEnum, data: Record<string, unknown>) : any\n}\n\nexport default ApiApplications\n\n",
+            "sourceCode": "import {InjectionToken} from '@angular/core';\nimport {ApiApplicationsEnum} from \"./enum/enum-api-aplications\";\nimport {Observable} from \"rxjs\";\n\ninterface ApiApplications {\n\n    executeService(api: ApiApplicationsEnum, data: Record<string, string|number|File>, operationId: string) : Observable<any>\n}\n\nexport const API_APPLICATIONS: InjectionToken<ApiApplications> = new InjectionToken('API_APPLICATIONS');\n\n",
             "displayName": "ApiApplications",
             "properties": [],
             "indexSignatures": [],
@@ -28,7 +28,15 @@
                         },
                         {
                             "name": "data",
-                            "type": "Record<string, unknown>",
+                            "type": "Record<string, any>",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "operationId",
+                            "type": "string",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
@@ -36,9 +44,9 @@
                         }
                     ],
                     "optional": false,
-                    "returnType": "any",
+                    "returnType": "Observable<any>",
                     "typeParameters": [],
-                    "line": 5,
+                    "line": 7,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -57,7 +65,18 @@
                         },
                         {
                             "name": "data",
-                            "type": "Record<string, unknown>",
+                            "type": "Record<string, any>",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "operationId",
+                            "type": "string",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
@@ -562,7 +581,7 @@
     "components": [
         {
             "name": "AdydCard",
-            "id": "component-AdydCard-4008a65968c92d439cd74017e1d6dc7fe686847560e904861c0eaca5689e1543cd1eaa8dfa0101c0a5a490732810d0e7609cf8f05602e8800bf847fb5b759233",
+            "id": "component-AdydCard-5ba586c6c206feacd684228f18300d94414a55ba8ed2d8b429ff731d54aeac31e65a907280fea31e5a67006cf32b71d2429c2f5426dda0c6b820a6e81f93c989",
             "file": "projects/components/src/lib/adyd-card/adyd-card.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -592,7 +611,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 27,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -605,7 +624,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 25,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -618,7 +637,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 26,
                     "rawdescription": "\n",
                     "required": true
                 },
@@ -631,26 +650,12 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 23,
                     "rawdescription": "\n",
                     "required": true
                 },
                 {
-                    "name": "isAdmin",
-                    "coverageIgnore": false,
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 34,
-                    "rawdescription": "\n",
-                    "required": false
-                },
-                {
-                    "name": "showAction",
+                    "name": "showButtons",
                     "coverageIgnore": false,
                     "defaultValue": "true",
                     "deprecated": false,
@@ -659,7 +664,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 28,
                     "rawdescription": "\n",
                     "required": false
                 },
@@ -672,7 +677,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 24,
                     "rawdescription": "\n",
                     "required": true
                 }
@@ -680,54 +685,105 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "AdminDirective",
+                    "name": "adminForm",
                     "coverageIgnore": false,
-                    "defaultValue": "AdminDirective",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "apiApplications",
+                    "coverageIgnore": false,
+                    "defaultValue": "inject(API_APPLICATIONS)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 36,
                     "rawdescription": "\n",
                     "modifierKind": [
-                        124,
-                        148
+                        123
                     ]
                 },
                 {
-                    "name": "adminForm",
+                    "name": "imageData",
                     "coverageIgnore": false,
-                    "defaultValue": "{\n    value: new FormControl('', [Validators.required])\n  }",
+                    "defaultValue": "signal<string | null>(null)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 30,
-                    "rawdescription": "\n"
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
                 },
                 {
-                    "name": "PlayerDirective",
+                    "name": "previewUrl",
                     "coverageIgnore": false,
-                    "defaultValue": "PlayerDirective",
+                    "defaultValue": "computed(() => {\n    return this.imageData() ?? this.imageUrl();\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 32,
                     "rawdescription": "\n",
                     "modifierKind": [
-                        124,
-                        148
+                        124
                     ]
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "onDelete",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 94,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "onFileSelected",
                     "coverageIgnore": false,
@@ -744,7 +800,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -782,7 +838,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -808,7 +864,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -830,7 +886,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -876,19 +932,50 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, input, ViewEncapsulation} from '@angular/core';\nimport {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showAction = input(true);\n  protected readonly AdminDirective = AdminDirective;\n  protected readonly PlayerDirective = PlayerDirective;\n\n  adminForm = {\n    value: new FormControl('', [Validators.required])\n  };\n\n  isAdmin = input<boolean>(false);\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const value = this.adminForm.value.value;\n    console.log('Guardar:', value);\n    this.adminForm.value.reset();\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    const reader = new FileReader();\n    reader.onload = (e) => {\n      const result = e.target?.result as string;\n      console.log('Imagen subida:', result);\n    };\n    reader.readAsDataURL(file);\n  }\n\n\n}\n",
+            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input<boolean>(true);\n\n  protected imageData = signal<string | null>(null);\n\n  protected previewUrl = computed(() => {\n    return this.imageData() ?? this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl(); // trigger on imageUrl change\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n\n\n\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const value = this.adminForm.value.descriptionInput;\n    console.log('onSave', value);\n    const record: Record<string, string|number|File> = {\n      id: number,\n      description: value,\n    };\n\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    console.log('Guardar:', record);\n    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, '')\n    this.adminForm.reset();\n    this.imageData.set(null);\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    const reader = new FileReader();\n    reader.onload = (e) => {\n      this.imageData.set(e.target?.result as string);\n    };\n    reader.readAsDataURL(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, 'deleteCampaignId')\n        .subscribe(next => {\n          console.log(next);\n        },\n            (error) => {\n          console.log(error);\n            })\n    \n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.image-wrapper {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n}\n\n.card-img-top {\n  aspect-ratio: 16 / 9;\n  object-fit: cover;\n  width: 100%;\n  display: block;\n}\n\n.edit-overlay-btn {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: none;\n  align-items: center;\n  gap: 8px;\n  padding: 12px 24px;\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background 0.2s;\n}\n\n.image-wrapper:hover .edit-overlay-btn {\n  display: flex;\n}\n\n.edit-overlay-btn:hover {\n  background: rgba(0, 0, 0, 0.9);\n}\n\n.edit-overlay-btn .icon {\n  font-size: 18px;\n}\n\n.content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  border: none;\n}\n\n.player-content {\n  /* player-specific overrides */\n}\n\n.admin-content {\n  border: none;\n}\n",
+                    "data": ":host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.image-wrapper {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n}\n\n.card-img-top {\n  object-fit: contain;\n  width: 100%;\n  display: block;\n  height: auto;\n}\n\n.edit-overlay-btn {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: none;\n  align-items: center;\n  gap: 8px;\n  padding: 12px 24px;\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background 0.2s;\n}\n\n.image-wrapper:hover .edit-overlay-btn {\n  display: flex;\n}\n\n.edit-overlay-btn:hover {\n  background: rgba(0, 0, 0, 0.9);\n}\n\n.edit-overlay-btn .icon {\n  font-size: 18px;\n}\n\n.content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  border: none;\n}\n",
                     "styleUrl": "./adyd-card.css"
                 },
                 {
-                    "data": "/* Borderless forms - use alongside Bootstrap */\n.borderless-form {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  margin: 0;\n  background: transparent;\n}\n\n.borderless-form .form-control,\n.borderless-form .form-text {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  background: transparent;\n}\n\n.borderless-form .form-control:focus,\n.borderless-form .form-text:focus {\n  border: none !important;\n  box-shadow: none !important;\n}\n",
+                    "data": "/* Borderless forms - use alongside Bootstrap */\n.borderless-form {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  margin: 0;\n  background: transparent;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  width: 100%;\n}\n\n.borderless-form .form-control,\n.borderless-form .form-text {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  background: transparent;\n  width: 100%;\n  max-width: 200px;\n  text-align: center;\n}\n\n.borderless-form .form-control:focus,\n.borderless-form .form-text:focus {\n  border: none !important;\n  box-shadow: none !important;\n}\n\n.borderless-form .mb-3 {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.borderless-form .btn {\n  margin-top: 8px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n",
                     "styleUrl": "../adyd-forms.css"
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 38,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
             "relationships": {
                 "incoming": [
@@ -912,7 +999,7 @@
                     }
                 ]
             },
-            "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <div class=\"image-wrapper\">\n      <img class=\"card-img-top\" [src]=\"imageUrl()\" [alt]=\"title()\" />\n      @if (isAdmin()) {\n        <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n          <span class=\"icon\">📷</span> Editar Imagen\n        </button>\n        <input\n          #fileInput\n          type=\"file\"\n          accept=\"image/*\"\n          style=\"display: none\"\n          (change)=\"onFileSelected($event)\"\n        />\n      }\n    </div>\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <div class=\"d-grid gap-2 col-6 mx-auto\">\n      <div *AdminDirective class=\"content admin-content\">\n        <form [formGroup]=\"adminForm\" class=\"form-control borderless-form\">\n          <div class=\"mb-3\">\n            <input\n              type=\"text\"\n              class=\"form-text\"\n              formControlName=\"value\"\n              [placeholder]=\"description()\"\n            />\n          </div>\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n            Guardar\n          </button>\n        </form>\n      </div>\n      <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <div class=\"image-wrapper\">\n      <img class=\"card-img-top\" [src]=\"previewUrl()\" [alt]=\"title()\" />\n      <div *AdminDirective>\n        @if(showButtons()) {\n            <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n            <span class=\"icon\">📷</span> Editar Imagen\n            </button>\n        }\n        <input\n          #fileInput\n          type=\"file\"\n          accept=\"image/*\"\n          style=\"display: none\"\n          (change)=\"onFileSelected($event)\"\n        />\n      </div>\n    </div>\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <div class=\"d-grid gap-2 col-6 mx-auto\">\n      <div *AdminDirective class=\"content\">\n        <form [formGroup]=\"adminForm\" class=\"borderless-form\">\n          <div class=\"mb-3\">\n            <input\n              type=\"text\"\n              class=\"form-text\"\n              formControlName=\"descriptionInput\"\n              [placeholder]=\"description()\"\n            />\n          </div>\n            @if (showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n                Guardar\n            </button>\n            <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                Borrar\n            </button>\n            }\n        </form>\n      </div>\n      <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "AdydCarousel",
@@ -1414,7 +1501,7 @@
                     }
                 ]
             },
-            "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      @for (card of cardData(); track card.id) {\n        <div class=\"adyd-carousel__item\">\n          <button\n            type=\"button\"\n            class=\"adyd-carousel__trigger\"\n            (click)=\"open(card)\"\n            [attr.aria-label]=\"'Ver ' + card.title\"\n          >\n            <adyd-card\n              class=\"d-block w-100\"\n              [id]=\"card.id\"\n              [imageUrl]=\"card.url\"\n              [title]=\"card.title\"\n              [description]=\"card.description\"\n              [action]=\"handleSelect\"\n              [showAction]=\"false\"\n            />\n          </button>\n        </div>\n      }\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n\n<dialog #dialog class=\"adyd-carousel__lightbox\" (click)=\"onBackdropClick($event)\">\n  <div class=\"adyd-carousel__lightbox-panel\">\n    <button\n      type=\"button\"\n      class=\"adyd-carousel__lightbox-close\"\n      (click)=\"close()\"\n      aria-label=\"Cerrar\"\n    >\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n\n    @if (selected(); as card) {\n      <adyd-card\n        class=\"d-block w-100\"\n        [id]=\"card.id\"\n        [imageUrl]=\"card.url\"\n        [title]=\"card.title\"\n        [description]=\"card.description\"\n        [action]=\"handleSelect\"\n      />\n    }\n  </div>\n</dialog>\n"
+            "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      @for (card of cardData(); track card.id) {\n        <div class=\"adyd-carousel__item\">\n          <button\n            type=\"button\"\n            class=\"adyd-carousel__trigger\"\n            (click)=\"open(card)\"\n            [attr.aria-label]=\"'Ver ' + card.title\"\n          >\n            <adyd-card\n              class=\"d-block w-100\"\n              [id]=\"card.id\"\n              [imageUrl]=\"card.url\"\n              [title]=\"card.title\"\n              [description]=\"card.description\"\n              [action]=\"handleSelect\"\n            />\n          </button>\n        </div>\n      }\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n\n<dialog #dialog class=\"adyd-carousel__lightbox\" (click)=\"onBackdropClick($event)\">\n  <div class=\"adyd-carousel__lightbox-panel\">\n    <button\n      type=\"button\"\n      class=\"adyd-carousel__lightbox-close\"\n      (click)=\"close()\"\n      aria-label=\"Cerrar\"\n    >\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n\n    @if (selected(); as card) {\n      <adyd-card\n        class=\"d-block w-100\"\n        [id]=\"card.id\"\n        [imageUrl]=\"card.url\"\n        [title]=\"card.title\"\n        [description]=\"card.description\"\n        [action]=\"handleSelect\"\n      />\n    }\n  </div>\n</dialog>\n"
         },
         {
             "name": "AdydSelect",
@@ -1941,6 +2028,17 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "API_APPLICATIONS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/services/api-applications.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "InjectionToken<ApiApplications>",
+                "defaultValue": "new InjectionToken('API_APPLICATIONS')"
+            },
+            {
                 "name": "AUTH_SERVICE",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1960,7 +2058,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "BasicAdydCardAdmin",
@@ -1971,7 +2069,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    isAdmin: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "BasicAdydCardPlayer",
@@ -1982,7 +2080,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "BasicSelect",
@@ -2136,7 +2234,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AdydCard>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    isAdmin: { control: 'boolean', description: 'Mostrar controles de edición' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {control: 'boolean', description: 'mostrar o no los botones segun este o no maximada la card' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2318,6 +2416,19 @@
             }
         ],
         "groupedVariables": {
+            "projects/components/src/lib/services/api-applications.ts": [
+                {
+                    "name": "API_APPLICATIONS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/services/api-applications.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "InjectionToken<ApiApplications>",
+                    "defaultValue": "new InjectionToken('API_APPLICATIONS')"
+                }
+            ],
             "projects/components/src/lib/services/auth-service.ts": [
                 {
                     "name": "AUTH_SERVICE",
@@ -2341,7 +2452,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "BasicAdydCardAdmin",
@@ -2352,7 +2463,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    isAdmin: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "BasicAdydCardPlayer",
@@ -2363,7 +2474,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "createMockAuth",
@@ -2385,7 +2496,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AdydCard>",
-                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    isAdmin: { control: 'boolean', description: 'Mostrar controles de edición' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {control: 'boolean', description: 'mostrar o no los botones segun este o no maximada la card' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 }
             ],
             "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
@@ -2811,7 +2922,7 @@
                 "linktype": "component",
                 "name": "AdydCard",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -2974,6 +3085,16 @@
                 "name": "ApiApplications",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/services/api-applications.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "API_APPLICATIONS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

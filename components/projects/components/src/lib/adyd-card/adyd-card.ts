@@ -1,5 +1,5 @@
-import {Component, computed, inject, input, signal, Signal} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, computed, effect, inject, input, signal} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AdminDirective} from "../directives/admin-directive";
 import {PlayerDirective} from "../directives/player-directive";
 import {API_APPLICATIONS} from "../services/api-applications";
@@ -25,11 +25,16 @@ export class AdydCard {
   description = input.required<string>();
   id = input.required<number>();
   action = input.required<(id: number) => void>();
+  showButtons = input<boolean>(true);
 
-  protected imageData = signal<string | null>(null);
+  protected imageData = signal<File | null>(null);
 
   protected previewUrl = computed(() => {
-    return this.imageData() ?? this.imageUrl();
+    const file = this.imageData();
+    if (file instanceof File) {
+      return URL.createObjectURL(file);
+    }
+    return this.imageUrl();
   });
 
   private apiApplications = inject(API_APPLICATIONS);
@@ -40,32 +45,36 @@ export class AdydCard {
     this.adminForm = this.fb.group({
       descriptionInput: ['', [Validators.required]]
     });
+    effect(() => {
+      this.imageUrl(); // trigger on imageUrl change
+      this.imageData.set(null);
+      this.adminForm.reset();
+    });
   }
-
-
-
-
 
   onSelect() {
     this.action()(this.id());
   }
 
   onSave(number: number) {
-    const value = this.adminForm.value.descriptionInput;
-    console.log('onSave', value);
-    const record: Record<string, unknown> = {
-      id: number,
-      description: value,
+    const descriptionInput = this.adminForm.value.descriptionInput;
+    const record: Record<string, string|number|File> = {
+      campaignId: number,
+      description: descriptionInput,
     };
-
     const image = this.imageData();
     if (image) {
       record['image'] = image;
     }
-    console.log('Guardar:', record);
-    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, '')
-    this.adminForm.reset();
-    this.imageData.set(null);
+    this.apiApplications
+        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'updateCampaign')
+        .subscribe({
+          next: (response) => {
+            this.adminForm.reset();
+            this.imageData.set(null);
+          },
+          error: error => {}
+        });
   }
 
   protected onFileSelected(event: Event) {
@@ -77,11 +86,7 @@ export class AdydCard {
   }
 
   protected uploadImage(file: File) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      this.imageData.set(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
+    this.imageData.set(file);
   }
 
 
@@ -90,7 +95,12 @@ export class AdydCard {
     const record = {
       "campaignId": number,
     }
-    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, 'deleteCampaignId');
+    this.apiApplications
+        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')
+        .subscribe({next: (response) => {},
+                    error: error => {
+                      console.log(error);
+                    }});
     
   }
 }

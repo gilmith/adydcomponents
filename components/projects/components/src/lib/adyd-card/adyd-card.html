@@ -3,9 +3,11 @@
     <div class="image-wrapper">
       <img class="card-img-top" [src]="previewUrl()" [alt]="title()" />
       <div *AdminDirective>
-        <button type="button" class="edit-overlay-btn" (click)="fileInput.click()">
-          <span class="icon">📷</span> Editar Imagen
-        </button>
+        @if(showButtons()) {
+            <button type="button" class="edit-overlay-btn" (click)="fileInput.click()">
+            <span class="icon">📷</span> Editar Imagen
+            </button>
+        }
         <input
           #fileInput
           type="file"
@@ -27,12 +29,14 @@
               [placeholder]="description()"
             />
           </div>
-          <button type="button" class="btn btn-primary" (click)="onSave(id())">
-            Guardar
-          </button>
+            @if (showButtons()){
+            <button type="button" class="btn btn-primary" (click)="onSave(id())">
+                Guardar
+            </button>
             <button type="button" class="btn btn-danger" (click)="onDelete(id())">
                 Borrar
             </button>
+            }
         </form>
       </div>
       <div *PlayerDirective class="content player-content">

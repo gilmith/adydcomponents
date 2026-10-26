@@ -18,6 +18,7 @@ const meta: Meta<AdydCard> = {
     title: { control: 'text', description: 'Título / texto alternativo' },
     description: { control: 'text', description: 'Descripción de la tarjeta' },
     id: { control: 'number', description: 'ID del card' },
+    showButtons: {control: 'boolean', description: 'mostrar o no los botones segun este o no maximada la card' },
   },
   decorators: [
     moduleMetadata({
@@ -46,6 +47,7 @@ export const BasicAdydCard: Story = {
     title: 'Poster de prueba',
     description: 'descripcion de lo que sea',
     id: 1,
+    showButtons: true
   },
   decorators: [
     moduleMetadata({
@@ -71,6 +73,7 @@ export const BasicAdydCardAdmin: Story = {
     title: 'Poster de prueba Admin',
     description: 'descripcion de lo que sea',
     id: 2,
+    showButtons: true
   },
   decorators: [
     moduleMetadata({
@@ -96,6 +99,7 @@ export const BasicAdydCardPlayer: Story = {
     title: 'Poster de prueba Player',
     description: 'descripcion de lo que sea',
     id: 3,
+    showButtons: true
   },
   decorators: [
     moduleMetadata({
