@@ -1,18 +1,50 @@
 <div class="card" [id]="id()">
   <div class="card-body">
+    <div class="image-wrapper">
+      <img class="card-img-top" [src]="previewUrl()" [alt]="title()" />
+      <div *AdminDirective>
+        @if(showButtons()) {
+            <button type="button" class="edit-overlay-btn" (click)="fileInput.click()">
+            <span class="icon">📷</span> Editar Imagen
+            </button>
+        }
+        <input
+          #fileInput
+          type="file"
+          accept="image/*"
+          style="display: none"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
     <h4 class="card-title text-center" [textContent]="title()"></h4>
-    <img class="card-img-top" [src]="imageUrl()" [alt]="title()" />
-    <p class="card-text" [textContent]="description()"></p>
-    @if (showAction()) {
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="theme-primary btn-solid" (click)="onSelect()">
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <div *AdminDirective class="content">
+        <form [formGroup]="adminForm" class="borderless-form">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-text"
+              formControlName="descriptionInput"
+              [placeholder]="description()"
+            />
+          </div>
+            @if (showButtons()){
+            <button type="button" class="btn btn-primary" (click)="onSave(id())">
+                Guardar
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onDelete(id())">
+                Borrar
+            </button>
+            }
+        </form>
+      </div>
+      <div *PlayerDirective class="content player-content">
+        <p class="card-text">{{ description() }}</p>
+        <button type="button" class="btn btn-primary" (click)="onSave(id())">
           Seleccionar
         </button>
-          <button type="button" (click)="onSelect()" *AdminDirective>
-              Editar
-          </button>
       </div>
-
-    }
+    </div>
   </div>
 </div>
