@@ -1,3 +1,3 @@
 export enum ApiApplicationsEnum {
-    CAMPAING = 'CAMPAING'
+    CAMPAIGN = 'CAMPAIGN'
 }
