@@ -428,6 +428,10 @@
                     {
                         "name": "AdydCard",
                         "type": "component"
+                    },
+                    {
+                        "name": "AdydCardContentCampaign",
+                        "type": "component"
                     }
                 ],
                 "outgoing": [
@@ -567,6 +571,10 @@
                     {
                         "name": "AdydCard",
                         "type": "component"
+                    },
+                    {
+                        "name": "AdydCardContentCampaign",
+                        "type": "component"
                     }
                 ],
                 "outgoing": [
@@ -581,7 +589,7 @@
     "components": [
         {
             "name": "AdydCard",
-            "id": "component-AdydCard-5ba586c6c206feacd684228f18300d94414a55ba8ed2d8b429ff731d54aeac31e65a907280fea31e5a67006cf32b71d2429c2f5426dda0c6b820a6e81f93c989",
+            "id": "component-AdydCard-76518ee55e42c9100f588c188ae0cefd62830d3deec8f643126d3eb79f2b571ab03315fb1b26ee348e6f7031f2ef4dca242d18ab7f1d45c00d20fd0dd0ee44a3",
             "file": "projects/components/src/lib/adyd-card/adyd-card.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -693,7 +701,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38,
+                    "line": 42,
                     "rawdescription": "\n"
                 },
                 {
@@ -706,7 +714,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 40,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123
@@ -715,7 +723,7 @@
                 {
                     "name": "imageData",
                     "coverageIgnore": false,
-                    "defaultValue": "signal<string | null>(null)",
+                    "defaultValue": "signal<File | null>(null)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -731,7 +739,7 @@
                 {
                     "name": "previewUrl",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(() => {\n    return this.imageData() ?? this.imageUrl();\n  })",
+                    "defaultValue": "computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -762,7 +770,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -800,7 +808,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 80,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -886,7 +894,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 85,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -932,7 +940,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input<boolean>(true);\n\n  protected imageData = signal<string | null>(null);\n\n  protected previewUrl = computed(() => {\n    return this.imageData() ?? this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl(); // trigger on imageUrl change\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n\n\n\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const value = this.adminForm.value.descriptionInput;\n    console.log('onSave', value);\n    const record: Record<string, string|number|File> = {\n      id: number,\n      description: value,\n    };\n\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    console.log('Guardar:', record);\n    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, '')\n    this.adminForm.reset();\n    this.imageData.set(null);\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    const reader = new FileReader();\n    reader.onload = (e) => {\n      this.imageData.set(e.target?.result as string);\n    };\n    reader.readAsDataURL(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications.executeService(ApiApplicationsEnum.CAMPAING, record, 'deleteCampaignId')\n        .subscribe(next => {\n          console.log(next);\n        },\n            (error) => {\n          console.log(error);\n            })\n    \n  }\n}\n",
+            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input<boolean>(true);\n\n  protected imageData = signal<File | null>(null);\n\n  protected previewUrl = computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl(); // trigger on imageUrl change\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const descriptionInput = this.adminForm.value.descriptionInput;\n    const record: Record<string, string|number|File> = {\n      campaignId: number,\n      description: descriptionInput,\n    };\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'updateCampaign')\n        .subscribe({\n          next: (response) => {\n            this.adminForm.reset();\n            this.imageData.set(null);\n          },\n          error: error => {}\n        });\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    this.imageData.set(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')\n        .subscribe({next: (response) => {},\n                    error: error => {\n                      console.log(error);\n                    }});\n    \n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -960,7 +968,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 38,
+                "line": 42,
                 "rawdescription": "\n",
                 "jsdoctags": [
                     {
@@ -978,12 +986,7 @@
             },
             "extends": [],
             "relationships": {
-                "incoming": [
-                    {
-                        "name": "AdydCarousel",
-                        "type": "component"
-                    }
-                ],
+                "incoming": [],
                 "outgoing": [
                     {
                         "name": "ReactiveFormsModule",
@@ -1002,8 +1005,420 @@
             "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <div class=\"image-wrapper\">\n      <img class=\"card-img-top\" [src]=\"previewUrl()\" [alt]=\"title()\" />\n      <div *AdminDirective>\n        @if(showButtons()) {\n            <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n            <span class=\"icon\">📷</span> Editar Imagen\n            </button>\n        }\n        <input\n          #fileInput\n          type=\"file\"\n          accept=\"image/*\"\n          style=\"display: none\"\n          (change)=\"onFileSelected($event)\"\n        />\n      </div>\n    </div>\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <div class=\"d-grid gap-2 col-6 mx-auto\">\n      <div *AdminDirective class=\"content\">\n        <form [formGroup]=\"adminForm\" class=\"borderless-form\">\n          <div class=\"mb-3\">\n            <input\n              type=\"text\"\n              class=\"form-text\"\n              formControlName=\"descriptionInput\"\n              [placeholder]=\"description()\"\n            />\n          </div>\n            @if (showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n                Guardar\n            </button>\n            <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                Borrar\n            </button>\n            }\n        </form>\n      </div>\n      <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         },
         {
+            "name": "AdydCardContentCampaign",
+            "id": "component-AdydCardContentCampaign-f87e4051609361699a4946838d5f2eca42de2658c93bcc257d07ec838a6728f8f7a5baf0bd78b6a0a659d644c98f71cc95ee79c322a610d45f563bfc69be0333",
+            "file": "projects/components/src/lib/adyd-card-content-campaign/adyd-card-content-campaign.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "adyd-card-content-campaign",
+            "styleUrls": [
+                "./adyd-card-content-campaign.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./adyd-card-content-campaign.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "action",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "(id: number) => void",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "rawdescription": "\n",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "rawdescription": "\n",
+                    "required": true
+                },
+                {
+                    "name": "id",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "rawdescription": "\n",
+                    "required": true
+                },
+                {
+                    "name": "imageUrl",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "rawdescription": "\n",
+                    "required": true
+                },
+                {
+                    "name": "showButtons",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "rawdescription": "\n",
+                    "required": true
+                },
+                {
+                    "name": "title",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "rawdescription": "\n",
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "adminForm",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "apiApplications",
+                    "coverageIgnore": false,
+                    "defaultValue": "inject(API_APPLICATIONS)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "imageData",
+                    "coverageIgnore": false,
+                    "defaultValue": "signal<File | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "previewUrl",
+                    "coverageIgnore": false,
+                    "defaultValue": "computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onDelete",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 89,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onFileSelected",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onSave",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "number",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onSelect",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "uploadImage",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "file",
+                            "type": "File",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "file",
+                            "type": "File",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "AdminDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "PlayerDirective",
+                    "type": "directive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card-content-campaign',\n  templateUrl: './adyd-card-content-campaign.html',\n  styleUrl: './adyd-card-content-campaign.css',\n  standalone: true\n})\nexport class AdydCardContentCampaign {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input.required<boolean>();\n\n  protected imageData = signal<File | null>(null);\n\n  protected previewUrl = computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl();\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const descriptionInput = this.adminForm.value.descriptionInput;\n    const record: Record<string, string|number|File> = {\n      campaignId: number,\n      description: descriptionInput,\n    };\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'updateCampaign')\n        .subscribe({\n          next: (response) => {\n            this.adminForm.reset();\n          },\n          error: error => {}\n        });\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    this.imageData.set(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')\n        .subscribe({next: (response) => {},\n                    error: error => {\n                      console.log(error);\n                    }});\n  }\n}\n",
+            "styleUrl": "./adyd-card-content-campaign.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n\n:host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.image-wrapper {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n}\n\n.card-img-top {\n  object-fit: contain;\n  width: 100%;\n  display: block;\n  height: auto;\n}\n\n.edit-overlay-btn {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: none;\n  align-items: center;\n  gap: 8px;\n  padding: 12px 24px;\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background 0.2s;\n}\n\n.image-wrapper:hover .edit-overlay-btn {\n  display: flex;\n}\n\n.edit-overlay-btn:hover {\n  background: rgba(0, 0, 0, 0.9);\n}\n\n.edit-overlay-btn .icon {\n  font-size: 18px;\n}\n\n.content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  border: none;\n}\n",
+                    "styleUrl": "./adyd-card-content-campaign.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 39,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "ReactiveFormsModule",
+                        "type": "module"
+                    },
+                    {
+                        "name": "AdminDirective",
+                        "type": "directive"
+                    },
+                    {
+                        "name": "PlayerDirective",
+                        "type": "directive"
+                    }
+                ]
+            },
+            "templateData": "<div class=\"image-wrapper\">\n    <img class=\"card-img-top\" [src]=\"previewUrl()\" [alt]=\"title()\" />\n    <div *AdminDirective>\n        @if(showButtons()) {\n            <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n                <span class=\"icon\">📷</span> Editar Imagen\n            </button>\n        }\n        <input\n            #fileInput\n            type=\"file\"\n            accept=\"image/*\"\n            style=\"display: none\"\n            (change)=\"onFileSelected($event)\"\n        />\n    </div>\n</div>\n<h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n<div class=\"d-grid gap-2 col-6 mx-auto\">\n    <div *AdminDirective class=\"content\">\n        @if(showButtons()){\n            <form [formGroup]=\"adminForm\" class=\"borderless-form\">\n                <div class=\"mb-3\">\n                    <input\n                            type=\"text\"\n                            class=\"form-text\"\n                            formControlName=\"descriptionInput\"\n                            [placeholder]=\"description()\"\n                    />\n                </div>\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n                    Guardar\n                </button>\n                <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                    Borrar\n                </button>\n            </form>\n        }\n    </div>\n    <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        @if(showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSelect()\">\n                Seleccionar\n            </button>\n        }\n    </div>\n</div>\n"
+        },
+        {
             "name": "AdydCarousel",
-            "id": "component-AdydCarousel-cc5c66e126665563663290692156d52b4af32d24c0ec811f251be67e17dfa91071d81943ba11712b2cefeaed61bfc44c2015e828216d6104d5e4abef9bc9688b",
+            "id": "component-AdydCarousel-57ecdf9af7efb5ee8066445fb1bc037a19b555c8a11b0ec20de64f64cb87f1d3c8ae00569c08b30ce3e650fb38eb8a4b62760743c5aaf5468ec34a820334b8cf",
             "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1024,22 +1439,6 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "cardData",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "CardItem[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": true
-                },
-                {
                     "name": "controlsThreshold",
                     "coverageIgnore": false,
                     "defaultValue": "10",
@@ -1049,7 +1448,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 22,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1066,7 +1465,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 21,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1076,16 +1475,16 @@
             ],
             "outputsClass": [
                 {
-                    "name": "cardSelected",
+                    "name": "itemSelected",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "CardItem",
+                    "type": "any",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>Reemite el botón &quot;Seleccionar&quot; de cada card con el item completo.</p>\n",
-                    "line": 28,
-                    "rawdescription": "\nReemite el botón \"Seleccionar\" de cada card con el item completo.",
+                    "description": "<p>Output que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado.</p>\n",
+                    "line": 25,
+                    "rawdescription": "\nOutput que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado.",
                     "modifierKind": [
                         148
                     ],
@@ -1093,40 +1492,6 @@
                 }
             ],
             "propertiesClass": [
-                {
-                    "name": "dialog",
-                    "coverageIgnore": false,
-                    "defaultValue": "viewChild.required<ElementRef<HTMLDialogElement>>('dialog')",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 32,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "handleSelect",
-                    "coverageIgnore": false,
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>AdydCard solo devuelve el id, así que aquí se recupera el item completo para\nque el output siga siendo CardItem y no un número suelto.\nEs una propiedad flecha a propósito: conserva el <code>this</code> al pasarla como input.</p>\n",
-                    "line": 80,
-                    "rawdescription": "\n\nAdydCard solo devuelve el id, así que aquí se recupera el item completo para\nque el output siga siendo CardItem y no un número suelto.\nEs una propiedad flecha a propósito: conserva el `this` al pasarla como input.\n",
-                    "modifierKind": [
-                        124,
-                        148
-                    ]
-                },
                 {
                     "name": "index",
                     "coverageIgnore": false,
@@ -1137,7 +1502,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 30,
                     "rawdescription": "\n",
                     "modifierKind": [
                         124,
@@ -1154,25 +1519,8 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35,
+                    "line": 31,
                     "rawdescription": "\n",
-                    "modifierKind": [
-                        124,
-                        148
-                    ]
-                },
-                {
-                    "name": "selected",
-                    "coverageIgnore": false,
-                    "defaultValue": "signal<CardItem | null>(null)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Only written on open, never on close. That keeps the card in the DOM while the\nclosing animation plays, so it does not vanish before it can fade out.</p>\n",
-                    "line": 41,
-                    "rawdescription": "\n\nOnly written on open, never on close. That keeps the card in the DOM while the\nclosing animation plays, so it does not vanish before it can fade out.\n",
                     "modifierKind": [
                         124,
                         148
@@ -1181,14 +1529,14 @@
                 {
                     "name": "showControls",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(\n    () => this.cardData().length > this.controlsThreshold(),\n  )",
+                    "defaultValue": "computed(\n    () => this.track().nativeElement.children.length > this.controlsThreshold(),\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 33,
                     "rawdescription": "\n",
                     "modifierKind": [
                         124,
@@ -1205,7 +1553,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 28,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123,
@@ -1222,7 +1570,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 27,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123,
@@ -1231,22 +1579,6 @@
                 }
             ],
             "methodsClass": [
-                {
-                    "name": "close",
-                    "coverageIgnore": false,
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 95,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ]
-                },
                 {
                     "name": "goTo",
                     "coverageIgnore": false,
@@ -1263,11 +1595,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nMoving is driven by the slide index, so the buttons always land somewhere\npredictable. Advancing past the last reachable page wraps back to the first card,\nand going back from the first one jumps to the last page.\n",
-                    "description": "<p>Moving is driven by the slide index, so the buttons always land somewhere\npredictable. Advancing past the last reachable page wraps back to the first card,\nand going back from the first one jumps to the last page.</p>\n",
+                    "rawdescription": "\n",
+                    "description": "",
                     "modifierKind": [
                         123
                     ],
@@ -1292,23 +1624,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 119,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "maxOffset",
-                    "coverageIgnore": false,
-                    "args": [],
-                    "optional": false,
-                    "returnType": "number",
-                    "typeParameters": [],
-                    "line": 132,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1324,89 +1640,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": "",
                     "modifierKind": [
                         124
-                    ]
-                },
-                {
-                    "name": "onBackdropClick",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 100,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nA click on the dialog element itself is a click on the backdrop.",
-                    "description": "<p>A click on the dialog element itself is a click on the backdrop.</p>\n",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "open",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "card",
-                            "type": "CardItem",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 88,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "card",
-                            "type": "CardItem",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
                     ]
                 },
                 {
@@ -1416,7 +1656,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1432,7 +1672,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 126,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1448,7 +1688,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 137,
+                    "line": 91,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1464,15 +1704,11 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [
-                {
-                    "name": "AdydCard"
-                }
-            ],
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\nimport { CardItem } from '../model/card-item';\nimport { AdydCard } from '../adyd-card/adyd-card';\n\n@Component({\n  imports: [AdydCard],\n  selector: 'adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n})\nexport class AdydCarousel {\n  readonly cardData = input.required<CardItem[]>();\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  /** Reemite el botón \"Seleccionar\" de cada card con el item completo. */\n  readonly cardSelected = output<CardItem>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n  private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  /**\n   * Only written on open, never on close. That keeps the card in the DOM while the\n   * closing animation plays, so it does not vanish before it can fade out.\n   */\n  protected readonly selected = signal<CardItem | null>(null);\n\n  protected readonly showControls = computed(\n    () => this.cardData().length > this.controlsThreshold(),\n  );\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => this.sync();\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  /**\n   * AdydCard solo devuelve el id, así que aquí se recupera el item completo para\n   * que el output siga siendo CardItem y no un número suelto.\n   * Es una propiedad flecha a propósito: conserva el `this` al pasarla como input.\n   */\n  protected readonly handleSelect = (id: number): void => {\n    const card = this.cardData().find((c) => c.id === id);\n    if (!card) return;\n\n    this.cardSelected.emit(card);\n    if (this.dialog().nativeElement.open) this.close();\n  };\n\n  protected open(card: CardItem): void {\n    this.selected.set(card);\n\n    const dialog = this.dialog().nativeElement;\n    if (!dialog.open) dialog.showModal();\n  }\n\n  protected close(): void {\n    this.dialog().nativeElement.close();\n  }\n\n  /** A click on the dialog element itself is a click on the backdrop. */\n  protected onBackdropClick(event: MouseEvent): void {\n    if (event.target === this.dialog().nativeElement) this.close();\n  }\n\n  /**\n   * Moving is driven by the slide index, so the buttons always land somewhere\n   * predictable. Advancing past the last reachable page wraps back to the first card,\n   * and going back from the first one jumps to the last page.\n   */\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    if (this.cardData().length < 2) return 0;\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    return Math.ceil(this.maxOffset() / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private maxOffset(): number {\n    const viewport = this.viewport().nativeElement;\n    return Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth);\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n  }\n}\n",
+            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  selector: 'adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n  standalone: true,\n})\nexport class AdydCarousel {\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  /** Output que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado. */\n  readonly itemSelected = output<any>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  protected readonly showControls = computed(\n    () => this.track().nativeElement.children.length > this.controlsThreshold(),\n  );\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => this.sync();\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    const viewport = this.viewport().nativeElement;\n    return Math.ceil(Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth) / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n  }\n}\n",
             "styleUrl": "./adyd-carousel.css",
             "assetsDirs": [],
             "styleUrlsData": [
@@ -1488,20 +1724,15 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 45,
+                "line": 35,
                 "rawdescription": "\n"
             },
             "extends": [],
             "relationships": {
                 "incoming": [],
-                "outgoing": [
-                    {
-                        "name": "AdydCard",
-                        "type": "component"
-                    }
-                ]
+                "outgoing": []
             },
-            "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      @for (card of cardData(); track card.id) {\n        <div class=\"adyd-carousel__item\">\n          <button\n            type=\"button\"\n            class=\"adyd-carousel__trigger\"\n            (click)=\"open(card)\"\n            [attr.aria-label]=\"'Ver ' + card.title\"\n          >\n            <adyd-card\n              class=\"d-block w-100\"\n              [id]=\"card.id\"\n              [imageUrl]=\"card.url\"\n              [title]=\"card.title\"\n              [description]=\"card.description\"\n              [action]=\"handleSelect\"\n            />\n          </button>\n        </div>\n      }\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n\n<dialog #dialog class=\"adyd-carousel__lightbox\" (click)=\"onBackdropClick($event)\">\n  <div class=\"adyd-carousel__lightbox-panel\">\n    <button\n      type=\"button\"\n      class=\"adyd-carousel__lightbox-close\"\n      (click)=\"close()\"\n      aria-label=\"Cerrar\"\n    >\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n\n    @if (selected(); as card) {\n      <adyd-card\n        class=\"d-block w-100\"\n        [id]=\"card.id\"\n        [imageUrl]=\"card.url\"\n        [title]=\"card.title\"\n        [description]=\"card.description\"\n        [action]=\"handleSelect\"\n      />\n    }\n  </div>\n</dialog>\n"
+            "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      <ng-content/>\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n"
         },
         {
             "name": "AdydSelect",
@@ -2400,10 +2631,10 @@
                 "name": "ApiApplicationsEnum",
                 "childs": [
                     {
-                        "name": "CAMPAING",
+                        "name": "CAMPAIGN",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "value": "CAMPAING"
+                        "value": "CAMPAIGN"
                     }
                 ],
                 "ctype": "miscellaneous",
@@ -2728,10 +2959,10 @@
                     "name": "ApiApplicationsEnum",
                     "childs": [
                         {
-                            "name": "CAMPAING",
+                            "name": "CAMPAIGN",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "value": "CAMPAING"
+                            "value": "CAMPAIGN"
                         }
                     ],
                     "ctype": "miscellaneous",
@@ -2843,7 +3074,7 @@
         "children": []
     },
     "coverage": {
-        "count": 2,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -2854,6 +3085,15 @@
                 "name": "preview",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-card-content-campaign/adyd-card-content-campaign.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdydCardContentCampaign",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -2990,8 +3230,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AdydCarousel",
-                "coveragePercent": 20,
-                "coverageCount": "5/24",
+                "coveragePercent": 6,
+                "coverageCount": "1/16",
                 "status": "low"
             },
             {

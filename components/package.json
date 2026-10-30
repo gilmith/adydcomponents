@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "0.0.21",
+  "version": "0.0.36",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
