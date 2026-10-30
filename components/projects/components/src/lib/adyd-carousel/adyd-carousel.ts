@@ -9,40 +9,30 @@ import {
   output,
   signal,
   viewChild,
+  effect,
 } from '@angular/core';
-import { CardItem } from '../model/card-item';
-import { AdydCard } from '../adyd-card/adyd-card';
+import { AdydCard } from "../adyd-card/adyd-card";
 
 @Component({
-  imports: [AdydCard],
   selector: 'adyd-carousel',
   styleUrl: './adyd-carousel.css',
   templateUrl: './adyd-carousel.html',
+  standalone: true,
 })
 export class AdydCarousel {
-  readonly cardData = input.required<CardItem[]>();
   readonly itemWidth = input(220);
   readonly controlsThreshold = input(10);
 
-  /** Reemite el botón "Seleccionar" de cada card con el item completo. */
-  readonly cardSelected = output<CardItem>();
+  readonly itemSelected = output<any>();
 
   private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');
   private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');
-  private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');
 
   protected readonly index = signal(0);
   protected readonly offset = signal(0);
 
-  /**
-   * Only written on open, never on close. That keeps the card in the DOM while the
-   * closing animation plays, so it does not vanish before it can fade out.
-   */
-  protected readonly selected = signal<CardItem | null>(null);
-
-  protected readonly showControls = computed(
-    () => this.cardData().length > this.controlsThreshold(),
-  );
+  // Señal para los controles
+  protected readonly showControls = signal<boolean>(false);
 
   constructor() {
     const destroyRef = inject(DestroyRef);
@@ -50,7 +40,10 @@ export class AdydCarousel {
     afterNextRender(() => {
       const viewport = this.viewport().nativeElement;
       const track = this.track().nativeElement;
-      const sync = () => this.sync();
+      const sync = () => {
+        this.sync();
+        this.updateControls();
+      };
 
       let observer: ResizeObserver | undefined;
       if (typeof ResizeObserver !== 'undefined') {
@@ -64,6 +57,15 @@ export class AdydCarousel {
     });
   }
 
+  private updateControls(): void {
+    const trackEl = this.track()?.nativeElement;
+    if (!trackEl) return;
+
+    // Contamos los hijos reales que se han proyectado en el DOM
+    const totalChildren = trackEl.children.length;
+    this.showControls.set(totalChildren > this.controlsThreshold());
+  }
+
   protected prev(): void {
     this.goTo(this.index() - 1);
   }
@@ -72,40 +74,6 @@ export class AdydCarousel {
     this.goTo(this.index() + 1);
   }
 
-  /**
-   * AdydCard solo devuelve el id, así que aquí se recupera el item completo para
-   * que el output siga siendo CardItem y no un número suelto.
-   * Es una propiedad flecha a propósito: conserva el `this` al pasarla como input.
-   */
-  protected readonly handleSelect = (id: number): void => {
-    const card = this.cardData().find((c) => c.id === id);
-    if (!card) return;
-
-    this.cardSelected.emit(card);
-    if (this.dialog().nativeElement.open) this.close();
-  };
-
-  protected open(card: CardItem): void {
-    this.selected.set(card);
-
-    const dialog = this.dialog().nativeElement;
-    if (!dialog.open) dialog.showModal();
-  }
-
-  protected close(): void {
-    this.dialog().nativeElement.close();
-  }
-
-  /** A click on the dialog element itself is a click on the backdrop. */
-  protected onBackdropClick(event: MouseEvent): void {
-    if (event.target === this.dialog().nativeElement) this.close();
-  }
-
-  /**
-   * Moving is driven by the slide index, so the buttons always land somewhere
-   * predictable. Advancing past the last reachable page wraps back to the first card,
-   * and going back from the first one jumps to the last page.
-   */
   private goTo(target: number): void {
     const last = this.lastIndex();
     const pages = last + 1;
@@ -117,10 +85,13 @@ export class AdydCarousel {
   }
 
   private lastIndex(): number {
-    if (this.cardData().length < 2) return 0;
+    const kids = this.track().nativeElement.children;
+    if (kids.length < 2) return 0;
+
     const stride = this.stride();
     if (stride <= 0) return 0;
-    return Math.ceil(this.maxOffset() / stride);
+    const viewport = this.viewport().nativeElement;
+    return Math.ceil(Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth) / stride);
   }
 
   private stride(): number {
@@ -129,14 +100,10 @@ export class AdydCarousel {
     return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;
   }
 
-  private maxOffset(): number {
-    const viewport = this.viewport().nativeElement;
-    return Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth);
-  }
-
   private sync(): void {
     const next = Math.min(this.index(), this.lastIndex());
     this.index.set(next);
     this.offset.set(next * this.stride());
+    this.updateControls(); // Aseguramos que se actualice aquí también
   }
 }

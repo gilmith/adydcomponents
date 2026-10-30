@@ -9,25 +9,7 @@
       class="adyd-carousel__track"
       [style.transform]="'translate3d(' + -offset() + 'px, 0, 0)'"
     >
-      @for (card of cardData(); track card.id) {
-        <div class="adyd-carousel__item">
-          <button
-            type="button"
-            class="adyd-carousel__trigger"
-            (click)="open(card)"
-            [attr.aria-label]="'Ver ' + card.title"
-          >
-            <adyd-card
-              class="d-block w-100"
-              [id]="card.id"
-              [imageUrl]="card.url"
-              [title]="card.title"
-              [description]="card.description"
-              [action]="handleSelect"
-            />
-          </button>
-        </div>
-      }
+      <ng-content/>
     </div>
   </div>
 
@@ -51,27 +33,3 @@
     </button>
   }
 </div>
-
-<dialog #dialog class="adyd-carousel__lightbox" (click)="onBackdropClick($event)">
-  <div class="adyd-carousel__lightbox-panel">
-    <button
-      type="button"
-      class="adyd-carousel__lightbox-close"
-      (click)="close()"
-      aria-label="Cerrar"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-
-    @if (selected(); as card) {
-      <adyd-card
-        class="d-block w-100"
-        [id]="card.id"
-        [imageUrl]="card.url"
-        [title]="card.title"
-        [description]="card.description"
-        [action]="handleSelect"
-      />
-    }
-  </div>
-</dialog>
