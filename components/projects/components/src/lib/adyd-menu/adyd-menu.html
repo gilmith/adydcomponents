@@ -1,0 +1,19 @@
+<div class="position-relative d-inline-block">
+    <!-- Botón que alterna la señal local isOpen -->
+    <button class="btn-solid theme-primary" type="button" (click)="toggleMenu()">
+        <i class="bi bi-person-fill">Menu</i>
+    </button>
+
+    <!-- Menú flotante condicionado por la señal de Angular -->
+    @if (isOpen()) {
+        <div class="menu show position-absolute end-0 mt-2 bg-white shadow p-2 rounded">
+            @for (item of menuElements(); track $index) {
+                <a class="menu-item d-block py-1" [routerLink]="item.link" (click)="close()">{{ item.text }}</a>
+            }
+            @if (logout()) {
+                <hr class="menu-divider my-1">
+                <a class="menu-item d-block py-1 text-danger" role="button" (click)="handleLogout()">Logout</a>
+            }
+        </div>
+    }
+</div>
