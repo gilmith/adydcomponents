@@ -14,13 +14,11 @@ export class AdminDirective implements OnInit {
 
 
     ngOnInit(): void {
-      console.log('ejecutando la autorizacion');
       this.updateView();
     }
 
     private updateView() {
         this.viewContainerRef.clear();
-
         // Llamamos a tu servicio de la SPA de forma segura
         if (this.authService.hasPermission(['admin'])) {
             this.viewContainerRef.createEmbeddedView(this.template);
