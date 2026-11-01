@@ -12,15 +12,28 @@ import {AUTH_SERVICE, AuthService} from "../services/auth-service";
   templateUrl: './adyd-menu.html',
 })
 export class AdydMenu {
-    constructor(private router: Router,
-                @Inject(AUTH_SERVICE) private authService: AuthService) {}
+    public menuName = input.required<string>();
+    public menuElements = input.required<MenuItem[]>();
+    public logout = input.required<boolean>();
 
-    protected menuName = input.required<string>()
-    protected menuElements = input.required<MenuItem[]>()
-    protected readonly logout = signal<boolean>(false);
+    // Control local del estado abierto/cerrado con Signals
+    protected isOpen = signal<boolean>(false);
 
+    constructor(
+        private router: Router,
+        @Inject(AUTH_SERVICE) private authService: AuthService
+    ) {}
+
+    protected toggleMenu() {
+        this.isOpen.update(value => !value);
+    }
+
+    protected close() {
+        this.isOpen.set(false);
+    }
 
     protected handleLogout() {
-        this.authService.logout()
+        this.close();
+        this.authService.logout();
     }
 }
