@@ -9,4 +9,12 @@ session-ses_*.md
 
 # Sistema
 .DS_Store
-Thumbs.db
+Thumbs.d
+
+#
+.infigraph
+./opencode.json
+.claude
+
+package-lock.json
+./package-lock.json

@@ -1,10 +1,12 @@
 import {Component, input} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdydTooltipDirective} from "../directives/adyd-tooltip-directive";
 
 @Component({
-  imports: [
-    ReactiveFormsModule
-  ],
+    imports: [
+        ReactiveFormsModule,
+        AdydTooltipDirective
+    ],
   selector: 'adyd-card',
   templateUrl: './adyd-card.html',
   styleUrls: [
@@ -15,6 +17,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class AdydCard {
 
-  public id = input.required<number>()
+  public id = input.required<number>();
+  public tooltipText = input<string>('');
+
 
 }
