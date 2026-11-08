@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "0.0.68",
+  "version": "0.0.73",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -43,6 +43,7 @@
     "@storybook/addon-a11y": "^10.6.1",
     "@storybook/addon-docs": "^10.6.1",
     "@storybook/angular": "^10.6.1",
+    "@types/bootstrap": "^5.2.11",
     "@types/node": "^20",
     "jsdom": "^30.0.0",
     "ng-packagr": "^22.2.0",

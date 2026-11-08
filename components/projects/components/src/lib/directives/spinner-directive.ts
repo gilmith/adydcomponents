@@ -10,7 +10,6 @@ export class SpinnerDirective {
   show = input<boolean>(true, { alias: 'spinner' });
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private elementRef: ElementRef
   ) {
     effect(() => {
       if (this.show()) {
