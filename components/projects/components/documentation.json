@@ -2,6 +2,61 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "AdydLink",
+            "id": "interface-AdydLink-299520324085e4ecaf3a9f1e8695832ad6307eb337abb1facd89b0ee24e18005126f87d15f037c2cdb97ef41123e430259bc351d26b7ec501c76913a112fb3e3",
+            "file": "projects/components/src/lib/services/adyd-link.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {InjectionToken} from \"@angular/core\";\n\nexport interface AdydLink {\n\n    routeLinkService(path: string) : void\n}\n\nexport const API_ROUTER: InjectionToken<AdydLink> = new InjectionToken('API_ROUTER');\n",
+            "displayName": "AdydLink",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 174,
+            "methods": [
+                {
+                    "name": "routeLinkService",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 5,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "ApiApplications",
             "id": "interface-ApiApplications-0a1478760b5285f47756e8e79bfda1d15d4974e19ab7fa651d72f034aaaeb7d01586656a69d4db6dd57b56b0394c6e9a768013b26a65792b92eb521ea0cdbda6",
             "file": "projects/components/src/lib/services/api-applications.ts",
@@ -96,17 +151,30 @@
         },
         {
             "name": "AuthService",
-            "id": "interface-AuthService-404c9f065e7b638e2f739e46fa4b7807e847ccde10897ff1117384da35f06535bacc5cf1e82c3b4ea0451aebceb37f27b0b3bde84696aade387b2ea4a29475ac",
+            "id": "interface-AuthService-accdfb5326ab9f15e43152d5cd7b84fadc6fab200b072bb88f8f48ed5d55a60512593d7c1e6a54887a92d06acd997970430690cb174aa2770a62f17b790145a3",
             "file": "projects/components/src/lib/services/auth-service.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { InjectionToken} from \"@angular/core\";\n\nexport interface AuthService {\n\n    hasPermission(permission: string[]): boolean;\n}\n\nexport const AUTH_SERVICE = new InjectionToken<AuthService>('AUTH_SERVICE');\n",
+            "sourceCode": "import {InjectionToken} from \"@angular/core\";\n\nexport interface AuthService {\n\n    hasPermission(permission: string[]): boolean;\n    logout(): void;\n    getUser(): string;\n}\n\nexport const AUTH_SERVICE = new InjectionToken<AuthService>('AUTH_SERVICE');\n",
             "displayName": "AuthService",
             "properties": [],
             "indexSignatures": [],
             "kind": 174,
             "methods": [
+                {
+                    "name": "getUser",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 7,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
                 {
                     "name": "hasPermission",
                     "coverageIgnore": false,
@@ -141,6 +209,19 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "logout",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 6,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 }
             ],
             "extends": [],
@@ -262,6 +343,50 @@
             }
         },
         {
+            "name": "MenuItem",
+            "id": "interface-MenuItem-838bd068638ce4299a7734493a438202282ca3f98969e5723cea3f1e7077af8883d6d72a9bc0e4e8e8b8f1223c6a6f033e8bae946df2ec55938ff1422b952307",
+            "file": "projects/components/src/lib/model/menu-item.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface MenuItem {\n    link: string\n    text: string\n}\n",
+            "displayName": "MenuItem",
+            "properties": [
+                {
+                    "name": "link",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "text",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "User",
             "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
             "file": "projects/components/src/stories/user.ts",
@@ -301,12 +426,12 @@
     "directives": [
         {
             "name": "AdminDirective",
-            "id": "directive-AdminDirective-17fa2a18e041068212fd688399fd31815ae1eb3c399fafd13303b1c9800f338f47723afffbb0fc7b276cc53c46c143ff5bd0983cfbb2284f98f0ab5b6292c718",
+            "id": "directive-AdminDirective-36f28acc1378c67f2c6eeed2d6e0787837c5f8c0d44a8f58e710dc005d3c394230410e92ac829bd7d9a0440472c5100ad6377e0f56070c7b855ca22e4272bb52",
             "file": "projects/components/src/lib/directives/admin-directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {Directive, Inject, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';\nimport {AUTH_SERVICE, AuthService} from \"../services/auth-service\";\n\n@Directive({\n  selector: '[AdminDirective]',\n  standalone: true\n})\nexport class AdminDirective implements OnInit {\n\n  constructor(\n      private template: TemplateRef<any>,\n      private viewContainerRef: ViewContainerRef,\n      @Inject(AUTH_SERVICE) private authService: AuthService) {}\n\n\n    ngOnInit(): void {\n      console.log('ejecutando la autorizacion');\n      this.updateView();\n    }\n\n    private updateView() {\n        this.viewContainerRef.clear();\n\n        // Llamamos a tu servicio de la SPA de forma segura\n        if (this.authService.hasPermission(['admin'])) {\n            this.viewContainerRef.createEmbeddedView(this.template);\n        }\n    }\n}\n",
+            "sourceCode": "import {Directive, Inject, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';\nimport {AUTH_SERVICE, AuthService} from \"../services/auth-service\";\n\n@Directive({\n  selector: '[AdminDirective]',\n  standalone: true\n})\nexport class AdminDirective implements OnInit {\n\n  constructor(\n      private template: TemplateRef<any>,\n      private viewContainerRef: ViewContainerRef,\n      @Inject(AUTH_SERVICE) private authService: AuthService) {}\n\n\n    ngOnInit(): void {\n      this.updateView();\n    }\n\n    private updateView() {\n        this.viewContainerRef.clear();\n        // Llamamos a tu servicio de la SPA de forma segura\n        if (this.authService.hasPermission(['admin'])) {\n            this.viewContainerRef.createEmbeddedView(this.template);\n        }\n    }\n}\n",
             "selector": "[AdminDirective]",
             "providers": [],
             "hostDirectives": [],
@@ -339,7 +464,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -426,10 +551,6 @@
             "relationships": {
                 "incoming": [
                     {
-                        "name": "AdydCard",
-                        "type": "component"
-                    },
-                    {
                         "name": "AdydCardContentCampaign",
                         "type": "component"
                     }
@@ -437,6 +558,153 @@
                 "outgoing": [
                     {
                         "name": "OnInit",
+                        "type": "interface"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "AdydTooltipDirective",
+            "id": "directive-AdydTooltipDirective-a0d047bb4ddf6d1176de5c12adebbf8496108421d69c15fc538add2900ccfe27438846ff18bd1850708309b0d40ec2b3c3f914bd346762a9cc9b9bb1b0891315",
+            "file": "projects/components/src/lib/directives/adyd-tooltip-directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {Directive, ElementRef, effect, input, OnDestroy, OnInit} from '@angular/core';\nimport * as bootstrap from 'bootstrap';\n\n@Directive({\n  selector: '[tooltipText]',\n  standalone: true\n})\nexport class AdydTooltipDirective implements OnInit, OnDestroy {\n\n  tooltipText = input.required<string>();\n  tooltipPlacement = input<string>('top');\n  private tooltipInstance?: bootstrap.Tooltip;\n\n  constructor(private elementRef: ElementRef) {}\n\n  ngOnInit() {\n    if (this.tooltipText()) {\n      this.elementRef.nativeElement.setAttribute('data-bs-toggle', 'tooltip');\n      this.elementRef.nativeElement.setAttribute('data-bs-placement', this.tooltipPlacement());\n      this.elementRef.nativeElement.setAttribute('data-bs-title', this.tooltipText());\n      try {\n        this.tooltipInstance = new bootstrap.Tooltip(this.elementRef.nativeElement);\n      } catch (e) {\n        console.error('No se pudo inicializar el tooltip de Bootstrap', e);\n      }\n    }\n  }\n\n  ngOnDestroy() {\n    if (this.tooltipInstance) {\n      this.tooltipInstance.dispose();\n    }\n  }\n\n}\n",
+            "selector": "[tooltipText]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "tooltipPlacement",
+                    "coverageIgnore": false,
+                    "defaultValue": "'top'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "rawdescription": "\n",
+                    "required": false
+                },
+                {
+                    "name": "tooltipText",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "rawdescription": "\n",
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "tooltipInstance",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "bootstrap.Tooltip",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "AdydCard",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "OnInit",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "OnDestroy",
                         "type": "interface"
                     }
                 ]
@@ -569,10 +837,6 @@
             "relationships": {
                 "incoming": [
                     {
-                        "name": "AdydCard",
-                        "type": "component"
-                    },
-                    {
                         "name": "AdydCardContentCampaign",
                         "type": "component"
                     }
@@ -584,12 +848,85 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "SpinnerDirective",
+            "id": "directive-SpinnerDirective-9ba81f1d5808d7b8ccd2cdf03e770dc1d78ace74b9706c1f4f808698450b5490d07f106ad7a5de662aaea5a16654f95aa5a6e7707d888874b01da90ea4b8b50a",
+            "file": "projects/components/src/lib/directives/spinner-directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {Directive, effect, ElementRef, input, ViewContainerRef} from '@angular/core';\nimport {AdydSpinner} from \"../adyd-spinner/adyd-spinner\";\n\n@Directive({\n  selector: '[spinner]',\n  standalone: true,\n})\nexport class SpinnerDirective {\n\n  show = input<boolean>(true, { alias: 'spinner' });\n  constructor(\n    private viewContainerRef: ViewContainerRef,\n  ) {\n    effect(() => {\n      if (this.show()) {\n        this.viewContainerRef.clear();\n        this.viewContainerRef.createComponent(AdydSpinner);\n      } else {\n        this.viewContainerRef.clear();\n      }\n    });\n  }\n\n}\n",
+            "selector": "[spinner]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "spinner",
+                    "coverageIgnore": false,
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "rawdescription": "\n",
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "extends": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 10,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "components": [
         {
             "name": "AdydCard",
-            "id": "component-AdydCard-76518ee55e42c9100f588c188ae0cefd62830d3deec8f643126d3eb79f2b571ab03315fb1b26ee348e6f7031f2ef4dca242d18ab7f1d45c00d20fd0dd0ee44a3",
+            "id": "component-AdydCard-2588fd9b9a78921670d2114a0c74bb3e7dafd705458e66894e675dc7cfcdf5d2fb9db0a08284c1f70b8ca8cb9c893f183e498510288a71472296f1af45c5eb43",
             "file": "projects/components/src/lib/adyd-card/adyd-card.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -611,32 +948,6 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "action",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "(id: number) => void",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 27,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "description",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
                     "name": "id",
                     "coverageIgnore": false,
                     "deprecated": false,
@@ -645,278 +956,34 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 20,
                     "rawdescription": "\n",
+                    "modifierKind": [
+                        125
+                    ],
                     "required": true
                 },
                 {
-                    "name": "imageUrl",
+                    "name": "tooltipText",
                     "coverageIgnore": false,
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 21,
                     "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "showButtons",
-                    "coverageIgnore": false,
-                    "defaultValue": "true",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 28,
-                    "rawdescription": "\n",
+                    "modifierKind": [
+                        125
+                    ],
                     "required": false
-                },
-                {
-                    "name": "title",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 24,
-                    "rawdescription": "\n",
-                    "required": true
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "adminForm",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FormGroup",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 42,
-                    "rawdescription": "\n"
-                },
-                {
-                    "name": "apiApplications",
-                    "coverageIgnore": false,
-                    "defaultValue": "inject(API_APPLICATIONS)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 40,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "imageData",
-                    "coverageIgnore": false,
-                    "defaultValue": "signal<File | null>(null)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 30,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        124
-                    ]
-                },
-                {
-                    "name": "previewUrl",
-                    "coverageIgnore": false,
-                    "defaultValue": "computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 32,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        124
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "onDelete",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 93,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onFileSelected",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 80,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onSave",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 59,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onSelect",
-                    "coverageIgnore": false,
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 55,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": ""
-                },
-                {
-                    "name": "uploadImage",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "file",
-                            "type": "File",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 88,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "file",
-                            "type": "File",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
+            "propertiesClass": [],
+            "methodsClass": [],
             "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
@@ -929,18 +996,14 @@
                     "type": "module"
                 },
                 {
-                    "name": "AdminDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "PlayerDirective",
+                    "name": "AdydTooltipDirective",
                     "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input<boolean>(true);\n\n  protected imageData = signal<File | null>(null);\n\n  protected previewUrl = computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl(); // trigger on imageUrl change\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const descriptionInput = this.adminForm.value.descriptionInput;\n    const record: Record<string, string|number|File> = {\n      campaignId: number,\n      description: descriptionInput,\n    };\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'updateCampaign')\n        .subscribe({\n          next: (response) => {\n            this.adminForm.reset();\n            this.imageData.set(null);\n          },\n          error: error => {}\n        });\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    this.imageData.set(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')\n        .subscribe({next: (response) => {},\n                    error: error => {\n                      console.log(error);\n                    }});\n    \n  }\n}\n",
+            "sourceCode": "import {Component, input} from '@angular/core';\nimport {ReactiveFormsModule} from '@angular/forms';\nimport {AdydTooltipDirective} from \"../directives/adyd-tooltip-directive\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdydTooltipDirective\n    ],\n  selector: 'adyd-card',\n  templateUrl: './adyd-card.html',\n  styleUrls: [\n    './adyd-card.css',\n    '../adyd-forms.css'\n  ],\n  standalone: true\n})\nexport class AdydCard {\n\n  public id = input.required<number>();\n  public tooltipText = input<string>('');\n\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -948,42 +1011,11 @@
                     "styleUrl": "./adyd-card.css"
                 },
                 {
-                    "data": "/* Borderless forms - use alongside Bootstrap */\n.borderless-form {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  margin: 0;\n  background: transparent;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  width: 100%;\n}\n\n.borderless-form .form-control,\n.borderless-form .form-text {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  background: transparent;\n  width: 100%;\n  max-width: 200px;\n  text-align: center;\n}\n\n.borderless-form .form-control:focus,\n.borderless-form .form-text:focus {\n  border: none !important;\n  box-shadow: none !important;\n}\n\n.borderless-form .mb-3 {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.borderless-form .btn {\n  margin-top: 8px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n",
+                    "data": "/* Borderless forms - use alongside Bootstrap */\n.borderless-form {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  margin: 0;\n  background: transparent;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  width: 100%;\n}\n\n.borderless-form .form-control,\n.borderless-form .form-text {\n  border: none !important;\n  box-shadow: none !important;\n  padding: 0;\n  background: transparent;\n  width: 100%;\n  max-width: 200px;\n  text-align: center;\n}\n\n.borderless-form .form-control:focus,\n.borderless-form .form-text:focus {\n  border: none !important;\n  box-shadow: none !important;\n}\n\n.borderless-form .mb-3 {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.borderless-form .btn {\n  margin-top: 8px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n/* Carousel --------------------------------------------------------------- */\n\n.adyd-carousel {\n  position: relative;\n  padding: 0.75rem 1rem;\n}\n\n.adyd-carousel__viewport {\n  overflow: hidden;\n}\n\n.adyd-carousel__track {\n  display: flex;\n  gap: 1rem;\n  width: max-content;\n  will-change: transform;\n  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.adyd-carousel__item {\n  position: relative;\n  flex-grow: 0;\n  flex-shrink: 0;\n  flex-basis: var(--adyd-carousel-item-width, 220px);\n  border-radius: 0.5rem;\n  transform: scale(1);\n  transform-origin: center;\n  transition:\n    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),\n    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.adyd-carousel__item:hover,\n.adyd-carousel__item:focus-within {\n  z-index: 2;\n  transform: scale(1.07);\n  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.4);\n}\n\n.adyd-carousel__item :is(.card, .card-img-top) {\n  border-radius: 0.5rem;\n}\n\n.adyd-carousel__trigger {\n  display: block;\n  width: 100%;\n  padding: 0;\n  background: none;\n  border: 0;\n  border-radius: inherit;\n  cursor: pointer;\n}\n\n.adyd-carousel__trigger:focus-visible {\n  outline: 2px solid #0d6efd;\n  outline-offset: 3px;\n}\n\n.adyd-carousel__control {\n  position: absolute;\n  top: 50%;\n  z-index: 3;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 2.5rem;\n  height: 2.5rem;\n  padding: 0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.55);\n  border: 0;\n  border-radius: 50%;\n  opacity: 0.85;\n  transform: translateY(-50%);\n  transition:\n    opacity 0.2s ease,\n    background-color 0.2s ease;\n}\n\n.adyd-carousel__control:hover {\n  opacity: 1;\n  background: rgba(0, 0, 0, 0.75);\n}\n\n.adyd-carousel__control--prev {\n  left: 1rem;\n}\n\n.adyd-carousel__control--next {\n  right: 1rem;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .adyd-carousel__track,\n  .adyd-carousel__item {\n    transition: none;\n  }\n}\n\n/* Lightbox --------------------------------------------------------------- */\n\n.adyd-carousel__lightbox {\n  width: min(92vw, 32rem);\n  max-width: min(92vw, 32rem);\n  padding: 0;\n  overflow: visible;\n  background: transparent;\n  border: 0;\n  opacity: 0;\n  scale: 0.94;\n  transition:\n    opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1),\n    scale 0.28s cubic-bezier(0.4, 0, 0.2, 1),\n    overlay 0.28s cubic-bezier(0.4, 0, 0.2, 1) allow-discrete,\n    display 0.28s cubic-bezier(0.4, 0, 0.2, 1) allow-discrete;\n}\n\n.adyd-carousel__lightbox[open] {\n  opacity: 1;\n  scale: 1;\n}\n\n@starting-style {\n  .adyd-carousel__lightbox[open] {\n    opacity: 0;\n    scale: 0.94;\n  }\n}\n\n.adyd-carousel__lightbox::backdrop {\n  background: rgba(0, 0, 0, 0.72);\n  opacity: 0;\n  transition:\n    opacity 0.28s ease,\n    overlay 0.28s ease allow-discrete,\n    display 0.28s ease allow-discrete;\n}\n\n.adyd-carousel__lightbox[open]::backdrop {\n  opacity: 1;\n}\n\n@starting-style {\n  .adyd-carousel__lightbox[open]::backdrop {\n    opacity: 0;\n  }\n}\n\n.adyd-carousel__lightbox-panel {\n  position: relative;\n  width: 100%;\n  max-height: 90vh;\n  overflow: auto;\n  border-radius: 0.75rem;\n  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.55);\n}\n\n.adyd-carousel__lightbox-close {\n  position: absolute;\n  top: 0.5rem;\n  right: 0.5rem;\n  z-index: 2;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 2.25rem;\n  height: 2.25rem;\n  padding: 0;\n  font-size: 1.5rem;\n  line-height: 1;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  border: 0;\n  border-radius: 50%;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n\n.adyd-carousel__lightbox-close:hover {\n  background: rgba(0, 0, 0, 0.85);\n}\n\n.adyd-carousel__lightbox-close:focus-visible {\n  outline: 2px solid #fff;\n  outline-offset: 2px;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .adyd-carousel__lightbox,\n  .adyd-carousel__lightbox::backdrop {\n    transition: none;\n  }\n}\n",
                     "styleUrl": "../adyd-forms.css"
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 42,
-                "rawdescription": "\n",
-                "jsdoctags": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
             "relationships": {
                 "incoming": [],
@@ -993,16 +1025,12 @@
                         "type": "module"
                     },
                     {
-                        "name": "AdminDirective",
-                        "type": "directive"
-                    },
-                    {
-                        "name": "PlayerDirective",
+                        "name": "AdydTooltipDirective",
                         "type": "directive"
                     }
                 ]
             },
-            "templateData": "<div class=\"card\" [id]=\"id()\">\n  <div class=\"card-body\">\n    <div class=\"image-wrapper\">\n      <img class=\"card-img-top\" [src]=\"previewUrl()\" [alt]=\"title()\" />\n      <div *AdminDirective>\n        @if(showButtons()) {\n            <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n            <span class=\"icon\">📷</span> Editar Imagen\n            </button>\n        }\n        <input\n          #fileInput\n          type=\"file\"\n          accept=\"image/*\"\n          style=\"display: none\"\n          (change)=\"onFileSelected($event)\"\n        />\n      </div>\n    </div>\n    <h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n    <div class=\"d-grid gap-2 col-6 mx-auto\">\n      <div *AdminDirective class=\"content\">\n        <form [formGroup]=\"adminForm\" class=\"borderless-form\">\n          <div class=\"mb-3\">\n            <input\n              type=\"text\"\n              class=\"form-text\"\n              formControlName=\"descriptionInput\"\n              [placeholder]=\"description()\"\n            />\n          </div>\n            @if (showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n                Guardar\n            </button>\n            <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                Borrar\n            </button>\n            }\n        </form>\n      </div>\n      <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"card\" [id]=\"id()\">\n    <div class=\"card-body\" [tooltipText] = \"tooltipText()\">\n    <div class=\"image-wrapper\">\n      <ng-content></ng-content>\n  </div>\n</div>\n"
         },
         {
             "name": "AdydCardContentCampaign",
@@ -1418,7 +1446,7 @@
         },
         {
             "name": "AdydCarousel",
-            "id": "component-AdydCarousel-57ecdf9af7efb5ee8066445fb1bc037a19b555c8a11b0ec20de64f64cb87f1d3c8ae00569c08b30ce3e650fb38eb8a4b62760743c5aaf5468ec34a820334b8cf",
+            "id": "component-AdydCarousel-12b39c91cfa31f72f674aa8b01829d6eab053b20361ebd8bb7d756e7c05c3128d72d4c4182f676e670a1d0cff6f9bca7bf4ff31c17ff4d3509d7b5c361ae9dfd",
             "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1448,7 +1476,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 24,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1465,7 +1493,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 23,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1482,9 +1510,9 @@
                     "type": "any",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>Output que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado.</p>\n",
-                    "line": 25,
-                    "rawdescription": "\nOutput que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado.",
+                    "description": "",
+                    "line": 26,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1502,7 +1530,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "rawdescription": "\n",
                     "modifierKind": [
                         124,
@@ -1519,7 +1547,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "rawdescription": "\n",
                     "modifierKind": [
                         124,
@@ -1529,14 +1557,14 @@
                 {
                     "name": "showControls",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(\n    () => this.track().nativeElement.children.length > this.controlsThreshold(),\n  )",
+                    "defaultValue": "signal<boolean>(false)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33,
+                    "line": 35,
                     "rawdescription": "\n",
                     "modifierKind": [
                         124,
@@ -1553,7 +1581,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123,
@@ -1570,7 +1598,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "rawdescription": "\n",
                     "modifierKind": [
                         123,
@@ -1595,7 +1623,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1624,7 +1652,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1640,7 +1668,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1656,7 +1684,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1672,7 +1700,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 85,
+                    "line": 97,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1688,7 +1716,23 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 103,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "updateControls",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1708,7 +1752,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  selector: 'adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n  standalone: true,\n})\nexport class AdydCarousel {\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  /** Output que emite cuando se selecciona un item. El SPA pasa un callback que recibe el item seleccionado. */\n  readonly itemSelected = output<any>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  protected readonly showControls = computed(\n    () => this.track().nativeElement.children.length > this.controlsThreshold(),\n  );\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => this.sync();\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    const viewport = this.viewport().nativeElement;\n    return Math.ceil(Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth) / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n  }\n}\n",
+            "sourceCode": "import {\n  afterNextRender,\n  Component,\n  computed,\n  DestroyRef,\n  ElementRef,\n  inject,\n  input,\n  output,\n  signal,\n  viewChild,\n  effect,\n} from '@angular/core';\nimport { AdydCard } from \"../adyd-card/adyd-card\";\n\n@Component({\n  selector: 'adyd-carousel',\n  styleUrl: './adyd-carousel.css',\n  templateUrl: './adyd-carousel.html',\n  standalone: true,\n})\nexport class AdydCarousel {\n  readonly itemWidth = input(220);\n  readonly controlsThreshold = input(10);\n\n  readonly itemSelected = output<any>();\n\n  private readonly viewport = viewChild.required<ElementRef<HTMLElement>>('viewport');\n  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');\n\n  protected readonly index = signal(0);\n  protected readonly offset = signal(0);\n\n  // Señal para los controles\n  protected readonly showControls = signal<boolean>(false);\n\n  constructor() {\n    const destroyRef = inject(DestroyRef);\n\n    afterNextRender(() => {\n      const viewport = this.viewport().nativeElement;\n      const track = this.track().nativeElement;\n      const sync = () => {\n        this.sync();\n        this.updateControls();\n      };\n\n      let observer: ResizeObserver | undefined;\n      if (typeof ResizeObserver !== 'undefined') {\n        observer = new ResizeObserver(sync);\n        observer.observe(viewport);\n        observer.observe(track);\n      }\n\n      sync();\n      destroyRef.onDestroy(() => observer?.disconnect());\n    });\n  }\n\n  private updateControls(): void {\n    const trackEl = this.track()?.nativeElement;\n    if (!trackEl) return;\n\n    // Contamos los hijos reales que se han proyectado en el DOM\n    const totalChildren = trackEl.children.length;\n    this.showControls.set(totalChildren > this.controlsThreshold());\n  }\n\n  protected prev(): void {\n    this.goTo(this.index() - 1);\n  }\n\n  protected next(): void {\n    this.goTo(this.index() + 1);\n  }\n\n  private goTo(target: number): void {\n    const last = this.lastIndex();\n    const pages = last + 1;\n    if (pages < 2) return;\n\n    const wrapped = ((target % pages) + pages) % pages;\n    this.index.set(wrapped);\n    this.offset.set(wrapped * this.stride());\n  }\n\n  private lastIndex(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n\n    const stride = this.stride();\n    if (stride <= 0) return 0;\n    const viewport = this.viewport().nativeElement;\n    return Math.ceil(Math.max(0, this.track().nativeElement.scrollWidth - viewport.clientWidth) / stride);\n  }\n\n  private stride(): number {\n    const kids = this.track().nativeElement.children;\n    if (kids.length < 2) return 0;\n    return (kids[1] as HTMLElement).offsetLeft - (kids[0] as HTMLElement).offsetLeft;\n  }\n\n  private sync(): void {\n    const next = Math.min(this.index(), this.lastIndex());\n    this.index.set(next);\n    this.offset.set(next * this.stride());\n    this.updateControls(); // Aseguramos que se actualice aquí también\n  }\n}",
             "styleUrl": "./adyd-carousel.css",
             "assetsDirs": [],
             "styleUrlsData": [
@@ -1733,6 +1777,362 @@
                 "outgoing": []
             },
             "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      <ng-content/>\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n"
+        },
+        {
+            "name": "AdydMenu",
+            "id": "component-AdydMenu-4e725e520ae79c2ecf463165b0c6c6bfacfc45d815b68bdcfbcc6837c2853b8ec7a0fc42429209b4d63dd0a67dc9778ddf93dfecfe36ccb998e0102c0ceb0584",
+            "file": "projects/components/src/lib/adyd-menu/adyd-menu.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "adyd-menu",
+            "styleUrls": [
+                "./adyd-menu.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./adyd-menu.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "logout",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "menuElements",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "menuName",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isOpen",
+                    "coverageIgnore": false,
+                    "defaultValue": "signal<boolean>(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "close",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "handleLogout",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "toggleMenu",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, Inject, input, signal} from '@angular/core';\nimport {MenuItem} from \"../model/menu-item\";\nimport {Router, RouterLink} from \"@angular/router\";\nimport {AUTH_SERVICE, AuthService} from \"../services/auth-service\";\n\n@Component({\n    imports: [\n        RouterLink\n    ],\n  selector: 'adyd-menu',\n  styleUrl: './adyd-menu.css',\n  templateUrl: './adyd-menu.html',\n})\nexport class AdydMenu {\n    public menuName = input.required<string>();\n    public menuElements = input.required<MenuItem[]>();\n    public logout = input.required<boolean>();\n\n    // Control local del estado abierto/cerrado con Signals\n    protected isOpen = signal<boolean>(false);\n\n    constructor(\n        private router: Router,\n        @Inject(AUTH_SERVICE) private authService: AuthService\n    ) {}\n\n    protected toggleMenu() {\n        this.isOpen.update(value => !value);\n    }\n\n    protected close() {\n        this.isOpen.set(false);\n    }\n\n    protected handleLogout() {\n        this.close();\n        this.authService.logout();\n    }\n}\n",
+            "styleUrl": "./adyd-menu.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./adyd-menu.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 20,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "AdydNavbar",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "RouterLink",
+                        "type": "module"
+                    }
+                ]
+            },
+            "templateData": "<div class=\"position-relative d-inline-block\">\n    <!-- Botón que alterna la señal local isOpen -->\n    <button class=\"btn-solid theme-primary\" type=\"button\" (click)=\"toggleMenu()\">\n        <i class=\"bi bi-person-fill\">Menu</i>\n    </button>\n\n    <!-- Menú flotante condicionado por la señal de Angular -->\n    @if (isOpen()) {\n        <div class=\"menu show position-absolute end-0 mt-2 bg-white shadow p-2 rounded\">\n            @for (item of menuElements(); track $index) {\n                <a class=\"menu-item d-block py-1\" [routerLink]=\"item.link\" (click)=\"close()\">{{ item.text }}</a>\n            }\n            @if (logout()) {\n                <hr class=\"menu-divider my-1\">\n                <a class=\"menu-item d-block py-1 text-danger\" role=\"button\" (click)=\"handleLogout()\">Logout</a>\n            }\n        </div>\n    }\n</div>"
+        },
+        {
+            "name": "AdydNavbar",
+            "id": "component-AdydNavbar-e08494e808ad06116a382351d54786f8c6a6d52bffc7f00fd075679f17c3b91b589daedf14bff3849ffe546f0c0dfcaf10d5c0156c569e1467d2f5f2ba7cbad2",
+            "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "adyd-navbar",
+            "styleUrls": [
+                "./adyd-navbar.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./adyd-navbar.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "menuElements",
+                    "coverageIgnore": false,
+                    "defaultValue": "signal<MenuItem[]>([])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "menuName",
+                    "coverageIgnore": false,
+                    "defaultValue": "signal<string>(\"User\")",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "AdydMenu"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, Inject, signal} from '@angular/core';\nimport {AdydMenu} from \"../adyd-menu/adyd-menu\";\nimport {MenuItem} from \"../model/menu-item\";\nimport {AUTH_SERVICE, AuthService} from \"../services/auth-service\";\n\n@Component({\n    imports: [\n        AdydMenu\n    ],\n  selector: 'adyd-navbar',\n  styleUrl: './adyd-navbar.css',\n  templateUrl: './adyd-navbar.html',\n})\nexport class AdydNavbar {\n    protected  menuElements = signal<MenuItem[]>([]);\n    protected  menuName = signal<string>(\"User\");\n\n\n    constructor(\n        @Inject(AUTH_SERVICE) private authService: AuthService\n    ) {\n       this.menuName.set(this.authService.getUser())\n    }\n\n\n}\n",
+            "styleUrl": "./adyd-navbar.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./adyd-navbar.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 16,
+                "rawdescription": "\n",
+                "jsdoctags": [
+                    {
+                        "name": "authService",
+                        "type": "AuthService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "AdydMenu",
+                        "type": "component"
+                    }
+                ]
+            },
+            "templateData": "<nav class=\"navbar\">\n    <div class=\"container-fluid\">\n        <button type=\"button\" class=\"btn-solid theme-primary\" commandfor=\"invokerDrawer\" command=\"show-modal\">\n            <i class=\"bi bi-list\"></i>\n        </button>\n        <a class=\"navbar-brand\" href=\"#\">Advanced Dungeons and Dragons</a>\n        <ul class=\"navbar-nav\">\n            <li class=\"nav-item\">\n                <adyd-menu\n                        [menuElements]=\"menuElements()\"\n                        [menuName]=\"menuName()\"\n                        [logout]=\"true\"/>\n            </li>\n        </ul>\n    </div>\n</nav>\n\n\n<dialog class=\"drawer drawer-start\" tabindex=\"-1\" id=\"invokerDrawer\" aria-labelledby=\"invokerDrawerLabel\">\n    <div class=\"drawer-header\">\n        <h5 class=\"drawer-title\" id=\"invokerDrawerLabel\">Invoker Commands</h5>\n        <button type=\"button\" class=\"btn-close\" commandfor=\"invokerDrawer\" command=\"close\" aria-label=\"Close\"></button>\n    </div>\n    <div class=\"drawer-body\">\n        <p>This drawer opens with <code>command=\"show-modal\"</code> and closes with <code>command=\"close\"</code>. No Bootstrap JavaScript is involved.</p>\n    </div>\n</dialog>"
         },
         {
             "name": "AdydSelect",
@@ -1817,6 +2217,58 @@
                 ]
             },
             "templateData": "<label class=\"form-label\">\n    {{ props.label }}\n</label>\n\n<select\n        class=\"form-control\"\n        [formControl]=\"formControl\"\n        [formlyAttributes]=\"field\"\n        >\n\n    <option>{{this.props.placeholder}}</option>\n\n    @for (item of this.props['options']; track item.value) {\n        <option [value]=\"item.value\">\n            {{ item.label }}\n        </option>\n    }\n\n</select>"
+        },
+        {
+            "name": "AdydSpinner",
+            "id": "component-AdydSpinner-23478f4b6204cb294dd731055ab104594752e37c3a9d0a4740e85577bfb3ce5b6b1bd32e273844fc0cc6f9516f7477c1817a0973efa846adfac2311b00d53171",
+            "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "adyd-spinner",
+            "styleUrls": [
+                "./adyd-spinner.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./adyd-spinner.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, TemplateRef, ViewContainerRef} from '@angular/core';\n\n@Component({\n  imports: [],\n  selector: 'adyd-spinner',\n  styleUrl: './adyd-spinner.css',\n  templateUrl: './adyd-spinner.html',\n})\nexport class AdydSpinner {\n\n\n}\n",
+            "styleUrl": "./adyd-spinner.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./adyd-spinner.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            },
+            "templateData": "<div class=\"spinner-border\" role=\"status\">\n    <span class=\"visually-hidden\">Loading…</span>\n</div>"
         },
         {
             "name": "ButtonComponent",
@@ -2259,6 +2711,28 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AdminUser",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "AdminVisible",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *AdminDirective>Este contenido es visible solo para admin</p>\n        <h3>Panel de Administración</h3>\n        <ul>\n          <li *AdminDirective>Gestión de usuarios</li>\n          <li *AdminDirective>Configuración del sistema</li>\n          <li *AdminDirective>Logs y auditorías</li>\n        </ul>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
                 "name": "API_APPLICATIONS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2268,6 +2742,17 @@
                 "deprecationMessage": "",
                 "type": "InjectionToken<ApiApplications>",
                 "defaultValue": "new InjectionToken('API_APPLICATIONS')"
+            },
+            {
+                "name": "API_ROUTER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/services/adyd-link.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "InjectionToken<AdydLink>",
+                "defaultValue": "new InjectionToken('API_ROUTER')"
             },
             {
                 "name": "AUTH_SERVICE",
@@ -2289,7 +2774,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: false,\n  },\n}"
             },
             {
                 "name": "BasicAdydCardAdmin",
@@ -2300,7 +2785,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "BasicAdydCardPlayer",
@@ -2311,7 +2796,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "BasicSelect",
@@ -2325,6 +2810,28 @@
                 "defaultValue": "{\n  render: () => {\n    const form = new FormGroup({});\n    const model: Record<string, unknown> = {};\n\n    const fields: FormlyFieldConfig[] = [\n      {\n        key: 'campaña',\n        type: 'adyd-select',\n        props: {\n          label: 'Escenario de campaña',\n          placeholder: 'Selecciona escenario',\n          required: true,\n          options: [\n            { label: 'Dragonlance', value: 1 },\n            { label: 'Dark Sun', value: 2 },\n          ],\n        },\n      },\n    ];\n\n    return {\n      props: {\n        form,\n        model,\n        fields,\n      },\n      template: `\n        <form [formGroup]=\"form\">\n          <formly-form\n            [form]=\"form\"\n            [model]=\"model\"\n            [fields]=\"fields\">\n          </formly-form>\n\n          <pre class=\"mt-3\">{{ model | json }}</pre>\n        </form>\n      `,\n    };\n  },\n}"
             },
             {
+                "name": "ConBoton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <button\n          tooltipText=\"Click para guardar\"\n          tooltipPlacement=\"top\"\n          class=\"btn btn-primary\">\n          Guardar\n        </button>\n        <button\n          tooltipText=\"Click para cancelar\"\n          tooltipPlacement=\"bottom\"\n          class=\"btn btn-secondary\">\n          Cancelar\n        </button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "ConLogout",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    menuName: 'User',\n    menuElements: menuItems,\n    logout: true,\n  },\n}"
+            },
+            {
                 "name": "createMockAuth",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2333,7 +2840,51 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n})"
+                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+            },
+            {
+                "name": "createMockAuth",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+            },
+            {
+                "name": "createMockAuth",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+            },
+            {
+                "name": "createMockAuth",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+            },
+            {
+                "name": "createMockAuth",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
             },
             {
                 "name": "Default",
@@ -2344,7 +2895,40 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    cardData: makeCards(14),\n  },\n}"
+                "defaultValue": "{\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "DefaultTop",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <span tooltipText=\"Este es un tooltip con placement por defecto (top)\">\n          Pasa el mouse por aquí\n        </span>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "ItemAncho",
@@ -2355,7 +2939,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  name: 'Items mas anchos',\n  args: {\n    cardData: makeCards(20),\n    itemWidth: 320,\n  },\n}"
+                "defaultValue": "{\n  name: 'Items mas anchos',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 320,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
             },
             {
                 "name": "Large",
@@ -2413,15 +2997,15 @@
                 "defaultValue": "{}"
             },
             {
-                "name": "makeCards",
+                "name": "menuItems",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "(count: number): CardItem[] =>\n  Array.from({ length: count }, (_, i) => ({\n    id: i + 1,\n    title: `Card ${i + 1}`,\n    url: `https://picsum.photos/600/337?random=${i + 1}`,\n    description: `Descripción de la card ${i + 1}`,\n  }))"
+                "type": "MenuItem[]",
+                "defaultValue": "[\n  { link: '/dashboard', text: 'Dashboard' },\n  { link: '/profile', text: 'Profile' },\n  { link: '/settings', text: 'Settings' },\n]"
             },
             {
                 "name": "meta",
@@ -2464,8 +3048,8 @@
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AdydCard>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {control: 'boolean', description: 'mostrar o no los botones segun este o no maximada la card' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                "type": "Meta<AdydCardContentCampaign>",
+                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCardContentCampaign,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar o no los botones segun este o no maximada la card',\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard, AdydCardContentCampaign],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2476,7 +3060,29 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AdydCarousel>",
-                "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n  argTypes: {\n    itemWidth: { control: 'number', description: 'Ancho de cada item' },\n    controlsThreshold: { control: 'number', description: 'Umbral para mostrar controles' },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydMenu>",
+                "defaultValue": "{\n  title: 'Moléculas/AdydMenu',\n  component: AdydMenu,\n  tags: ['autodocs'],\n  argTypes: {\n    menuName: { control: 'text', description: 'Nombre del menú' },\n    menuElements: { control: 'object', description: 'Lista de elementos del menú' },\n    logout: { control: 'boolean', description: 'Mostrar opción de logout' },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydNavbar>",
+                "defaultValue": "{\n  title: 'Organismos/AdydNavbar',\n  component: AdydNavbar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2488,6 +3094,105 @@
                 "deprecationMessage": "",
                 "type": "Meta<AdydSelect>",
                 "defaultValue": "{\n  title: 'Moléculas/adyd-select',\n  component: AdydSelect,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n        FormlyModule.forRoot({\n          types: [\n            {\n              name: 'adyd-select',\n              component: AdydSelect,\n            },\n          ],\n        }),\n        FormlyBootstrapModule,\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydSpinner>",
+                "defaultValue": "{\n  title: 'Moléculas/AdydSpinner',\n  component: AdydSpinner,\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Directivas/AdminDirective',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Directivas/AdydTooltipDirective',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Directivas/PlayerDirective',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Directivas/SpinnerDirective',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "Mostrar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <div spinner>\n          <p>Contenido con spinner visible</p>\n        </div>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Ocultar",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <div [spinner]=\"false\">\n          <p>Contenido sin spinner</p>\n        </div>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "PlayerUser",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "PlayerVisible",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *PlayerDirective>Zona visible para jugadores</p>\n        <h3>Panel de Jugador</h3>\n        <ul>\n          <li *PlayerDirective>Mis campañas</li>\n          <li *PlayerDirective>Historial de partidas</li>\n          <li *PlayerDirective>Perfil de personaje</li>\n        </ul>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "preview",
@@ -2531,7 +3236,40 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  args: {\n    cardData: makeCards(8),\n  },\n}"
+                "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n      controlsThreshold: 15,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "SinLogout",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    menuName: 'Guest',\n    menuElements: menuItems,\n    logout: false,\n  },\n}"
+            },
+            {
+                "name": "SinPermiso",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *AdminDirective>Este contenido es visible solo para admin</p>\n        <h3>Panel de Administración</h3>\n      </div>\n    `,\n    props: {},\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "SinPermiso",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *PlayerDirective>Zona visible para jugadores</p>\n        <h3>Panel de Jugador</h3>\n      </div>\n    `,\n    props: {},\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "Small",
@@ -2543,9 +3281,74 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    size: 'small',\n    label: 'Button',\n  },\n}"
+            },
+            {
+                "name": "Top",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"d-flex gap-3 p-4\">\n        <button tooltipText=\"Tooltip en la parte superior\" tooltipPlacement=\"top\">\n          Hover aquí (top)\n        </button>\n        <button tooltipText=\"Tooltip a la derecha\" tooltipPlacement=\"right\">\n          Hover aquí (right)\n        </button>\n        <button tooltipText=\"Tooltip a la izquierda\" tooltipPlacement=\"left\">\n          Hover aquí (left)\n        </button>\n        <button tooltipText=\"Tooltip abajo\" tooltipPlacement=\"bottom\">\n          Hover aquí (bottom)\n        </button>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "UnItem",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    menuName: 'Nav',\n    menuElements: [{ link: '/', text: 'Home' }],\n    logout: false,\n  },\n}"
+            },
+            {
+                "name": "VariosItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    menuName: 'Admin',\n    menuElements: [\n      { link: '/users', text: 'Users' },\n      { link: '/roles', text: 'Roles' },\n      { link: '/permissions', text: 'Permissions' },\n      { link: '/reports', text: 'Reports' },\n      { link: '/analytics', text: 'Analytics' },\n    ],\n    logout: true,\n  },\n}"
             }
         ],
-        "functions": [],
+        "functions": [
+            {
+                "name": "renderStory",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "displayName": "renderStory",
+                "args": [
+                    {
+                        "name": "args",
+                        "type": "Record",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "args",
+                        "type": "Record",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
         "typealiases": [
             {
                 "name": "Story",
@@ -2591,7 +3394,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydCard>",
+                "rawtype": "StoryObj<AdydCardContentCampaign>",
                 "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2617,8 +3420,99 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydMenu>",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydNavbar>",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": "StoryObj<AdydSelect>",
                 "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydSpinner>",
+                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj",
+                "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj",
+                "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj",
+                "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj",
+                "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -2647,6 +3541,109 @@
             }
         ],
         "groupedVariables": {
+            "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts": [
+                {
+                    "name": "AdminUser",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "createMockAuth",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AdydNavbar>",
+                    "defaultValue": "{\n  title: 'Organismos/AdydNavbar',\n  component: AdydNavbar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "PlayerUser",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                }
+            ],
+            "projects/components/src/lib/directives/admin-directive.stories.ts": [
+                {
+                    "name": "AdminVisible",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *AdminDirective>Este contenido es visible solo para admin</p>\n        <h3>Panel de Administración</h3>\n        <ul>\n          <li *AdminDirective>Gestión de usuarios</li>\n          <li *AdminDirective>Configuración del sistema</li>\n          <li *AdminDirective>Logs y auditorías</li>\n        </ul>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "createMockAuth",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Directivas/AdminDirective',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "SinPermiso",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *AdminDirective>Este contenido es visible solo para admin</p>\n        <h3>Panel de Administración</h3>\n      </div>\n    `,\n    props: {},\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                }
+            ],
             "projects/components/src/lib/services/api-applications.ts": [
                 {
                     "name": "API_APPLICATIONS",
@@ -2658,6 +3655,19 @@
                     "deprecationMessage": "",
                     "type": "InjectionToken<ApiApplications>",
                     "defaultValue": "new InjectionToken('API_APPLICATIONS')"
+                }
+            ],
+            "projects/components/src/lib/services/adyd-link.ts": [
+                {
+                    "name": "API_ROUTER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/services/adyd-link.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "InjectionToken<AdydLink>",
+                    "defaultValue": "new InjectionToken('API_ROUTER')"
                 }
             ],
             "projects/components/src/lib/services/auth-service.ts": [
@@ -2683,7 +3693,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: false,\n  },\n}"
                 },
                 {
                     "name": "BasicAdydCardAdmin",
@@ -2694,7 +3704,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "BasicAdydCardPlayer",
@@ -2705,7 +3715,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    imageUrl:\n      'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "createMockAuth",
@@ -2716,7 +3726,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n})"
+                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
                 },
                 {
                     "name": "meta",
@@ -2726,8 +3736,8 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<AdydCard>",
-                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCard,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {control: 'boolean', description: 'mostrar o no los botones segun este o no maximada la card' },\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
+                    "type": "Meta<AdydCardContentCampaign>",
+                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCardContentCampaign,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar o no los botones segun este o no maximada la card',\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard, AdydCardContentCampaign],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 }
             ],
             "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
@@ -2754,6 +3764,177 @@
                     "defaultValue": "{\n  title: 'Moléculas/adyd-select',\n  component: AdydSelect,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n        FormlyModule.forRoot({\n          types: [\n            {\n              name: 'adyd-select',\n              component: AdydSelect,\n            },\n          ],\n        }),\n        FormlyBootstrapModule,\n      ],\n    }),\n  ],\n}"
                 }
             ],
+            "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts": [
+                {
+                    "name": "ConBoton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <button\n          tooltipText=\"Click para guardar\"\n          tooltipPlacement=\"top\"\n          class=\"btn btn-primary\">\n          Guardar\n        </button>\n        <button\n          tooltipText=\"Click para cancelar\"\n          tooltipPlacement=\"bottom\"\n          class=\"btn btn-secondary\">\n          Cancelar\n        </button>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "DefaultTop",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <span tooltipText=\"Este es un tooltip con placement por defecto (top)\">\n          Pasa el mouse por aquí\n        </span>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Directivas/AdydTooltipDirective',\n  tags: ['autodocs'],\n}"
+                },
+                {
+                    "name": "Top",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"d-flex gap-3 p-4\">\n        <button tooltipText=\"Tooltip en la parte superior\" tooltipPlacement=\"top\">\n          Hover aquí (top)\n        </button>\n        <button tooltipText=\"Tooltip a la derecha\" tooltipPlacement=\"right\">\n          Hover aquí (right)\n        </button>\n        <button tooltipText=\"Tooltip a la izquierda\" tooltipPlacement=\"left\">\n          Hover aquí (left)\n        </button>\n        <button tooltipText=\"Tooltip abajo\" tooltipPlacement=\"bottom\">\n          Hover aquí (bottom)\n        </button>\n      </div>\n    `,\n  }),\n}"
+                }
+            ],
+            "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts": [
+                {
+                    "name": "ConLogout",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    menuName: 'User',\n    menuElements: menuItems,\n    logout: true,\n  },\n}"
+                },
+                {
+                    "name": "createMockAuth",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+                },
+                {
+                    "name": "menuItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "defaultValue": "[\n  { link: '/dashboard', text: 'Dashboard' },\n  { link: '/profile', text: 'Profile' },\n  { link: '/settings', text: 'Settings' },\n]"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AdydMenu>",
+                    "defaultValue": "{\n  title: 'Moléculas/AdydMenu',\n  component: AdydMenu,\n  tags: ['autodocs'],\n  argTypes: {\n    menuName: { control: 'text', description: 'Nombre del menú' },\n    menuElements: { control: 'object', description: 'Lista de elementos del menú' },\n    logout: { control: 'boolean', description: 'Mostrar opción de logout' },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "SinLogout",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    menuName: 'Guest',\n    menuElements: menuItems,\n    logout: false,\n  },\n}"
+                },
+                {
+                    "name": "UnItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    menuName: 'Nav',\n    menuElements: [{ link: '/', text: 'Home' }],\n    logout: false,\n  },\n}"
+                },
+                {
+                    "name": "VariosItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    menuName: 'Admin',\n    menuElements: [\n      { link: '/users', text: 'Users' },\n      { link: '/roles', text: 'Roles' },\n      { link: '/permissions', text: 'Permissions' },\n      { link: '/reports', text: 'Reports' },\n      { link: '/analytics', text: 'Analytics' },\n    ],\n    logout: true,\n  },\n}"
+                }
+            ],
+            "projects/components/src/lib/directives/player-directive.stories.ts": [
+                {
+                    "name": "createMockAuth",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Directivas/PlayerDirective',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "PlayerVisible",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *PlayerDirective>Zona visible para jugadores</p>\n        <h3>Panel de Jugador</h3>\n        <ul>\n          <li *PlayerDirective>Mis campañas</li>\n          <li *PlayerDirective>Historial de partidas</li>\n          <li *PlayerDirective>Perfil de personaje</li>\n        </ul>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "SinPermiso",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div>\n        <p *PlayerDirective>Zona visible para jugadores</p>\n        <h3>Panel de Jugador</h3>\n      </div>\n    `,\n    props: {},\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n      ],\n    }),\n  ],\n}"
+                }
+            ],
             "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts": [
                 {
                     "name": "Default",
@@ -2764,7 +3945,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    cardData: makeCards(14),\n  },\n}"
+                    "defaultValue": "{\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "ItemAncho",
@@ -2775,18 +3956,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  name: 'Items mas anchos',\n  args: {\n    cardData: makeCards(20),\n    itemWidth: 320,\n  },\n}"
-                },
-                {
-                    "name": "makeCards",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "(count: number): CardItem[] =>\n  Array.from({ length: count }, (_, i) => ({\n    id: i + 1,\n    title: `Card ${i + 1}`,\n    url: `https://picsum.photos/600/337?random=${i + 1}`,\n    description: `Descripción de la card ${i + 1}`,\n  }))"
+                    "defaultValue": "{\n  name: 'Items mas anchos',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 320,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -2797,7 +3967,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AdydCarousel>",
-                    "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n  argTypes: {\n    itemWidth: { control: 'number', description: 'Ancho de cada item' },\n    controlsThreshold: { control: 'number', description: 'Umbral para mostrar controles' },\n  },\n}"
                 },
                 {
                     "name": "SinControles",
@@ -2808,7 +3978,31 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  args: {\n    cardData: makeCards(8),\n  },\n}"
+                    "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n      controlsThreshold: 15,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n}"
+                }
+            ],
+            "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AdydSpinner>",
+                    "defaultValue": "{\n  title: 'Moléculas/AdydSpinner',\n  component: AdydSpinner,\n  tags: ['autodocs'],\n}"
                 }
             ],
             "projects/components/src/stories/button.stories.ts": [
@@ -2938,6 +4132,41 @@
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
+            "projects/components/src/lib/directives/spinner-directive.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Directivas/SpinnerDirective',\n  tags: ['autodocs'],\n}"
+                },
+                {
+                    "name": "Mostrar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <div spinner>\n          <p>Contenido con spinner visible</p>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "Ocultar",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <div [spinner]=\"false\">\n          <p>Contenido sin spinner</p>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                }
+            ],
             "projects/components/.storybook/preview.ts": [
                 {
                     "name": "preview",
@@ -2952,7 +4181,41 @@
                 }
             ]
         },
-        "groupedFunctions": {},
+        "groupedFunctions": {
+            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
+                {
+                    "name": "renderStory",
+                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "displayName": "renderStory",
+                    "args": [
+                        {
+                            "name": "args",
+                            "type": "Record",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "args",
+                            "type": "Record",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
         "groupedEnumerations": {
             "projects/components/src/lib/services/enum/enum-api-aplications.ts": [
                 {
@@ -3027,7 +4290,7 @@
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydCard>",
+                    "rawtype": "StoryObj<AdydCardContentCampaign>",
                     "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -3051,6 +4314,36 @@
                     "kind": 184
                 }
             ],
+            "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydMenu>",
+                    "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydNavbar>",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
                 {
                     "name": "Story",
@@ -3059,6 +4352,81 @@
                     "coverageIgnore": false,
                     "rawtype": "StoryObj<AdydSelect>",
                     "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydSpinner>",
+                    "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/directives/admin-directive.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj",
+                    "file": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj",
+                    "file": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/directives/player-directive.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj",
+                    "file": "projects/components/src/lib/directives/player-directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/directives/spinner-directive.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj",
+                    "file": "projects/components/src/lib/directives/spinner-directive.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -3074,7 +4442,7 @@
         "children": []
     },
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -3094,6 +4462,16 @@
                 "name": "AdydCardContentCampaign",
                 "coveragePercent": 0,
                 "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "renderStory",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3162,7 +4540,7 @@
                 "linktype": "component",
                 "name": "AdydCard",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -3181,16 +4559,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "ItemAncho",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "makeCards",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3230,8 +4598,166 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AdydCarousel",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ConLogout",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "createMockAuth",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "menuItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SinLogout",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "UnItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "VariosItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-menu/adyd-menu.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdydMenu",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AdminUser",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "createMockAuth",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PlayerUser",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-navbar/adyd-navbar.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdydNavbar",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -3274,10 +4800,99 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-spinner/adyd-spinner.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdydSpinner",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/components/src/lib/components.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "Components",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AdminVisible",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "createMockAuth",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SinPermiso",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/admin-directive.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3292,12 +4907,170 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ConBoton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DefaultTop",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Top",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/adyd-tooltip-directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "AdydTooltipDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "createMockAuth",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PlayerVisible",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SinPermiso",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/player-directive.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/components/src/lib/directives/player-directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "PlayerDirective",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Mostrar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Ocultar",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/spinner-directive.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/directives/spinner-directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "SpinnerDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -3316,6 +5089,34 @@
                 "name": "ItemSelect",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/model/menu-item.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "MenuItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/services/adyd-link.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AdydLink",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/services/adyd-link.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "API_ROUTER",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3343,7 +5144,7 @@
                 "linktype": "interface",
                 "name": "AuthService",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
