@@ -1,41 +1,73 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { AdydCarousel } from './adyd-carousel';
-import { CardItem } from '../model/card-item';
+import { AdydCard } from '../adyd-card/adyd-card';
 
 const meta: Meta<AdydCarousel> = {
   title: 'Organismos/AdydCarousel',
   component: AdydCarousel,
   tags: ['autodocs'],
+  argTypes: {
+    itemWidth: { control: 'number', description: 'Ancho de cada item' },
+    controlsThreshold: { control: 'number', description: 'Umbral para mostrar controles' },
+  },
 };
 
 export default meta;
 type Story = StoryObj<AdydCarousel>;
 
-const makeCards = (count: number): CardItem[] =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    title: `Card ${i + 1}`,
-    url: `https://picsum.photos/600/337?random=${i + 1}`,
-    description: `Descripción de la card ${i + 1}`,
-  }));
-
 export const Default: Story = {
-  args: {
-    cardData: makeCards(14),
-  },
+  render: () => ({
+    component: AdydCarousel,
+    componentProperties: {
+      itemWidth: 220,
+    },
+    template: `
+      <adyd-carousel>
+        @for (item of cards; track item.id) {
+          <adyd-card [id]="item.id" tooltipText="Card {{ item.id }}">
+            <img [attr.aria-label]="item.title" [alt]="item.title" style="width: 100%; height: 200px; background: #ccc;" />
+          </adyd-card>
+        }
+      </adyd-carousel>
+    `,
+  }),
 };
 
 export const SinControles: Story = {
   name: 'Sin controles (10 o menos)',
-  args: {
-    cardData: makeCards(8),
-  },
+  render: () => ({
+    component: AdydCarousel,
+    componentProperties: {
+      itemWidth: 220,
+      controlsThreshold: 15,
+    },
+    template: `
+      <adyd-carousel>
+        @for (item of cards; track item.id) {
+          <adyd-card [id]="item.id" tooltipText="Card {{ item.id }}">
+            <img [attr.aria-label]="item.title" [alt]="item.title" style="width: 100%; height: 200px; background: #ccc;" />
+          </adyd-card>
+        }
+      </adyd-carousel>
+    `,
+  }),
 };
 
 export const ItemAncho: Story = {
   name: 'Items mas anchos',
-  args: {
-    cardData: makeCards(20),
-    itemWidth: 320,
-  },
+  render: () => ({
+    component: AdydCarousel,
+    componentProperties: {
+      itemWidth: 320,
+    },
+    template: `
+      <adyd-carousel>
+        @for (item of cards; track item.id) {
+          <adyd-card [id]="item.id" tooltipText="Card {{ item.id }}">
+            <img [attr.aria-label]="item.title" [alt]="item.title" style="width: 100%; height: 200px; background: #ccc;" />
+          </adyd-card>
+        }
+      </adyd-carousel>
+    `,
+  }),
 };
