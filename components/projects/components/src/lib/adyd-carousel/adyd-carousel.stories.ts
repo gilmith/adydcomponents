@@ -1,6 +1,15 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { AdydCarousel } from './adyd-carousel';
 import { AdydCard } from '../adyd-card/adyd-card';
+import { AUTH_SERVICE, AuthService } from '../services/auth-service';
+
+function createMockAuth(role: 'admin' | 'player'): AuthService {
+  return {
+    hasPermission: () => true,
+    logout: () => console.log('logout'),
+    getUser: () => 'test-user',
+  };
+}
 
 const meta: Meta<AdydCarousel> = {
   title: 'Organismos/AdydCarousel',
@@ -31,6 +40,13 @@ export const Default: Story = {
       </adyd-carousel>
     `,
   }),
+  decorators: [
+    moduleMetadata({
+      providers: [
+        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },
+      ],
+    }),
+  ],
 };
 
 export const SinControles: Story = {
@@ -51,6 +67,13 @@ export const SinControles: Story = {
       </adyd-carousel>
     `,
   }),
+  decorators: [
+    moduleMetadata({
+      providers: [
+        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },
+      ],
+    }),
+  ],
 };
 
 export const ItemAncho: Story = {
@@ -70,4 +93,11 @@ export const ItemAncho: Story = {
       </adyd-carousel>
     `,
   }),
+  decorators: [
+    moduleMetadata({
+      providers: [
+        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },
+      ],
+    }),
+  ],
 };
