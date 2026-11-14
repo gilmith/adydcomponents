@@ -629,16 +629,7 @@
                 ]
             },
             "relationships": {
-                "incoming": [
-                    {
-                        "name": "AdydCardContentCampaign",
-                        "type": "component"
-                    },
-                    {
-                        "name": "AdydCardContentCampaign2",
-                        "type": "component"
-                    }
-                ],
+                "incoming": [],
                 "outgoing": [
                     {
                         "name": "OnInit",
@@ -919,16 +910,7 @@
                 ]
             },
             "relationships": {
-                "incoming": [
-                    {
-                        "name": "AdydCardContentCampaign",
-                        "type": "component"
-                    },
-                    {
-                        "name": "AdydCardContentCampaign2",
-                        "type": "component"
-                    }
-                ],
+                "incoming": [],
                 "outgoing": [
                     {
                         "name": "OnInit",
@@ -1119,691 +1101,6 @@
                 ]
             },
             "templateData": "<div class=\"card\" [id]=\"id()\">\n    <div class=\"card-body\" [tooltipText] = \"tooltipText()\">\n    <div class=\"image-wrapper\">\n      <ng-content></ng-content>\n  </div>\n</div>\n"
-        },
-        {
-            "name": "AdydCardContentCampaign",
-            "id": "component-AdydCardContentCampaign-f87e4051609361699a4946838d5f2eca42de2658c93bcc257d07ec838a6728f8f7a5baf0bd78b6a0a659d644c98f71cc95ee79c322a610d45f563bfc69be0333",
-            "file": "projects/components/src/lib/adyd-card-content-campaign/adyd-card-content-campaign.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "adyd-card-content-campaign",
-            "styleUrls": [
-                "./adyd-card-content-campaign.css"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./adyd-card-content-campaign.html"
-            ],
-            "templateVariables": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "action",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "(id: number) => void",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 24,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "description",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 22,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "id",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "imageUrl",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 20,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "showButtons",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "title",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 21,
-                    "rawdescription": "\n",
-                    "required": true
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "adminForm",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FormGroup",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 39,
-                    "rawdescription": "\n"
-                },
-                {
-                    "name": "apiApplications",
-                    "coverageIgnore": false,
-                    "defaultValue": "inject(API_APPLICATIONS)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 37,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "imageData",
-                    "coverageIgnore": false,
-                    "defaultValue": "signal<File | null>(null)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 27,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        124
-                    ]
-                },
-                {
-                    "name": "previewUrl",
-                    "coverageIgnore": false,
-                    "defaultValue": "computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 29,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        124
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "onDelete",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 89,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onFileSelected",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 76,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onSave",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 56,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onSelect",
-                    "coverageIgnore": false,
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 52,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": ""
-                },
-                {
-                    "name": "uploadImage",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "file",
-                            "type": "File",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 84,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "file",
-                            "type": "File",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "coverageIgnore": false,
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "ReactiveFormsModule",
-                    "type": "module"
-                },
-                {
-                    "name": "AdminDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "PlayerDirective",
-                    "type": "directive"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component, computed, effect, inject, input, signal} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        AdminDirective,\n        PlayerDirective\n    ],\n  selector: 'adyd-card-content-campaign',\n  templateUrl: './adyd-card-content-campaign.html',\n  styleUrl: './adyd-card-content-campaign.css',\n  standalone: true\n})\nexport class AdydCardContentCampaign {\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  action = input.required<(id: number) => void>();\n  showButtons = input.required<boolean>();\n\n  protected imageData = signal<File | null>(null);\n\n  protected previewUrl = computed(() => {\n    const file = this.imageData();\n    if (file instanceof File) {\n      return URL.createObjectURL(file);\n    }\n    return this.imageUrl();\n  });\n\n  private apiApplications = inject(API_APPLICATIONS);\n\n  adminForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.adminForm = this.fb.group({\n      descriptionInput: ['', [Validators.required]]\n    });\n    effect(() => {\n      this.imageUrl();\n      this.imageData.set(null);\n      this.adminForm.reset();\n    });\n  }\n\n  onSelect() {\n    this.action()(this.id());\n  }\n\n  onSave(number: number) {\n    const descriptionInput = this.adminForm.value.descriptionInput;\n    const record: Record<string, string|number|File> = {\n      campaignId: number,\n      description: descriptionInput,\n    };\n    const image = this.imageData();\n    if (image) {\n      record['image'] = image;\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'updateCampaign')\n        .subscribe({\n          next: (response) => {\n            this.adminForm.reset();\n          },\n          error: error => {}\n        });\n  }\n\n  protected onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    const file = input.files?.[0];\n    if (file) {\n      this.uploadImage(file);\n    }\n  }\n\n  protected uploadImage(file: File) {\n    this.imageData.set(file);\n  }\n\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')\n        .subscribe({next: (response) => {},\n                    error: error => {\n                      console.log(error);\n                    }});\n  }\n}\n",
-            "styleUrl": "./adyd-card-content-campaign.css",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "\n\n:host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.image-wrapper {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n}\n\n.card-img-top {\n  object-fit: contain;\n  width: 100%;\n  display: block;\n  height: auto;\n}\n\n.edit-overlay-btn {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: none;\n  align-items: center;\n  gap: 8px;\n  padding: 12px 24px;\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background 0.2s;\n}\n\n.image-wrapper:hover .edit-overlay-btn {\n  display: flex;\n}\n\n.edit-overlay-btn:hover {\n  background: rgba(0, 0, 0, 0.9);\n}\n\n.edit-overlay-btn .icon {\n  font-size: 18px;\n}\n\n.content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  border: none;\n}\n",
-                    "styleUrl": "./adyd-card-content-campaign.css"
-                }
-            ],
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 39,
-                "rawdescription": "\n",
-                "jsdoctags": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder",
-                        "optional": false,
-                        "dotDotDotToken": false,
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "extends": [],
-            "relationships": {
-                "incoming": [],
-                "outgoing": [
-                    {
-                        "name": "ReactiveFormsModule",
-                        "type": "module"
-                    },
-                    {
-                        "name": "AdminDirective",
-                        "type": "directive"
-                    },
-                    {
-                        "name": "PlayerDirective",
-                        "type": "directive"
-                    }
-                ]
-            },
-            "templateData": "<div class=\"image-wrapper\">\n    <img class=\"card-img-top\" [src]=\"previewUrl()\" [alt]=\"title()\" />\n    <div *AdminDirective>\n        @if(showButtons()) {\n            <button type=\"button\" class=\"edit-overlay-btn\" (click)=\"fileInput.click()\">\n                <span class=\"icon\">📷</span> Editar Imagen\n            </button>\n        }\n        <input\n            #fileInput\n            type=\"file\"\n            accept=\"image/*\"\n            style=\"display: none\"\n            (change)=\"onFileSelected($event)\"\n        />\n    </div>\n</div>\n<h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n<div class=\"d-grid gap-2 col-6 mx-auto\">\n    <div *AdminDirective class=\"content\">\n        @if(showButtons()){\n            <form [formGroup]=\"adminForm\" class=\"borderless-form\">\n                <div class=\"mb-3\">\n                    <input\n                            type=\"text\"\n                            class=\"form-text\"\n                            formControlName=\"descriptionInput\"\n                            [placeholder]=\"description()\"\n                    />\n                </div>\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSave(id())\">\n                    Guardar\n                </button>\n                <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                    Borrar\n                </button>\n            </form>\n        }\n    </div>\n    <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        @if(showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSelect()\">\n                Seleccionar\n            </button>\n        }\n    </div>\n</div>\n"
-        },
-        {
-            "name": "AdydCardContentCampaign2",
-            "id": "component-AdydCardContentCampaign2-d8ffa1465f85bbd4683dce8852e977b8a6330dd261288b92a153ecdaae4737b4bdda0c5d6e7599e45a5443c5c409326ebf4cc1a179ebfcb7b113bbab882cae34",
-            "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "adyd-card-content-campaign-2",
-            "styleUrls": [
-                "./adyd-card-content-campaign-2.css"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./adyd-card-content-campaign-2.html"
-            ],
-            "templateVariables": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "description",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 21,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "id",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 22,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "imageUrl",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 19,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "showButtons",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "rawdescription": "\n",
-                    "required": true
-                },
-                {
-                    "name": "title",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 20,
-                    "rawdescription": "\n",
-                    "required": true
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "adydLink",
-                    "coverageIgnore": false,
-                    "defaultValue": "inject(API_ROUTER)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 24,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "apiApplications",
-                    "coverageIgnore": false,
-                    "defaultValue": "inject(API_APPLICATIONS)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "edit",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "id",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 31,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "id",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onDelete",
-                    "coverageIgnore": false,
-                    "args": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "number",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "onSelect",
-                    "coverageIgnore": false,
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 48,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
-                    "modifierKind": [
-                        124
-                    ]
-                }
-            ],
-            "coverageIgnore": false,
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "AdminDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "PlayerDirective",
-                    "type": "directive"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component, inject, input} from '@angular/core';\nimport {AdminDirective} from \"../directives/admin-directive\";\nimport {PlayerDirective} from \"../directives/player-directive\";\nimport {API_ROUTER} from \"../services/adyd-link\";\nimport {ApiApplicationsEnum} from \"../services/enum/enum-api-aplications\";\nimport {API_APPLICATIONS} from \"../services/api-applications\";\n\n@Component({\n  imports: [\n    AdminDirective,\n    PlayerDirective\n  ],\n  selector: 'adyd-card-content-campaign-2',\n  styleUrl: './adyd-card-content-campaign-2.css',\n  templateUrl: './adyd-card-content-campaign-2.html',\n})\nexport class AdydCardContentCampaign2 {\n\n  imageUrl = input.required<string>();\n  title = input.required<string>();\n  description = input.required<string>();\n  id = input.required<number>();\n  showButtons = input.required<boolean>();\n  private readonly adydLink = inject(API_ROUTER);\n  private readonly apiApplications = inject(API_APPLICATIONS);\n\n\n  constructor() {\n  }\n\n  protected edit(id: number) {\n    this.adydLink.routeLinkService('/campaigns/', { type: 'campaign', id: id, data: {} });\n  }\n\n  protected onDelete(number: number) {\n    console.log('onDelete', number);\n    const record = {\n      \"campaignId\": number,\n    }\n    this.apiApplications\n        .executeService(ApiApplicationsEnum.CAMPAIGN, record, 'deleteCampaignId')\n        .subscribe({next: (response) => {},\n          error: error => {\n            console.log(error);\n          }});\n  }\n\n  protected onSelect() {\n    console.log('onSelect');\n  }\n}\n",
-            "styleUrl": "./adyd-card-content-campaign-2.css",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "\n\n:host {\n  display: block;\n  width: 100%;\n  max-width: var(--adyd-card-max-width, 800px);\n  max-height: var(--adyd-card-max-height, 600px);\n}\n\n.image-wrapper {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n}\n\n.card-img-top {\n  object-fit: contain;\n  width: 100%;\n  display: block;\n  height: auto;\n}\n\n.edit-overlay-btn {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: none;\n  align-items: center;\n  gap: 8px;\n  padding: 12px 24px;\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background 0.2s;\n}\n\n.image-wrapper:hover .edit-overlay-btn {\n  display: flex;\n}\n\n.edit-overlay-btn:hover {\n  background: rgba(0, 0, 0, 0.9);\n}\n\n.edit-overlay-btn .icon {\n  font-size: 18px;\n}\n\n.content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  border: none;\n}\n",
-                    "styleUrl": "./adyd-card-content-campaign-2.css"
-                }
-            ],
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 25,
-                "rawdescription": "\n"
-            },
-            "extends": [],
-            "relationships": {
-                "incoming": [],
-                "outgoing": [
-                    {
-                        "name": "AdminDirective",
-                        "type": "directive"
-                    },
-                    {
-                        "name": "PlayerDirective",
-                        "type": "directive"
-                    }
-                ]
-            },
-            "templateData": "<div class=\"image-wrapper\">\n    <img class=\"card-img-top\" [src]=\"imageUrl()\" [alt]=\"title()\" />\n</div>\n<h4 class=\"card-title text-center\" [textContent]=\"title()\"></h4>\n<div class=\"d-grid gap-2 col-6 mx-auto\">\n    <div *AdminDirective class=\"content\">\n        @if(showButtons()){\n                <div class=\"mb-3\">\n                    <p>{{description()}}</p>\n                    <button type=\"button\" class=\"btn btn-primary\" (click)=\"edit(id())\">\n                        edit\n                    </button>\n                    <button type=\"button\" class=\"btn btn-danger\" (click)=\"onDelete(id())\">\n                        Borrar\n                    </button>\n                </div>\n        }\n    </div>\n    <div *PlayerDirective class=\"content player-content\">\n        <p class=\"card-text\">{{ description() }}</p>\n        @if(showButtons()){\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onSelect()\">\n                Seleccionar\n            </button>\n        }\n    </div>\n</div>\n"
         },
         {
             "name": "AdydCarousel",
@@ -2138,6 +1435,77 @@
                 "outgoing": []
             },
             "templateData": "<div class=\"adyd-carousel\">\n  <div\n    #viewport\n    class=\"adyd-carousel__viewport\"\n    [style.--adyd-carousel-item-width.px]=\"itemWidth()\"\n  >\n    <div\n      #track\n      class=\"adyd-carousel__track\"\n      [style.transform]=\"'translate3d(' + -offset() + 'px, 0, 0)'\"\n    >\n      <ng-content/>\n    </div>\n  </div>\n\n  @if (showControls()) {\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--prev\"\n      type=\"button\"\n      (click)=\"prev()\"\n      aria-label=\"Anterior\"\n    >\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n    </button>\n\n    <button\n      class=\"adyd-carousel__control adyd-carousel__control--next\"\n      type=\"button\"\n      (click)=\"next()\"\n      aria-label=\"Siguiente\"\n    >\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n    </button>\n  }\n</div>\n"
+        },
+        {
+            "name": "AdydError404",
+            "id": "component-AdydError404-088f8485b5045a7dfe591db7e9b22803eb166f108bcf0fcd14397f03aa9f3e8e4f00dcbefdaf12e4c28f03d5ee6e1ce41a73ca612dec86c8a0c25b05fbd179e1",
+            "file": "projects/components/src/lib/adyd-error-404/adyd-error-404.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "adyd-error-404",
+            "styleUrls": [
+                "./adyd-error-404.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./adyd-error-404.html"
+            ],
+            "templateVariables": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "redirectToHome",
+                    "coverageIgnore": false,
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
+                }
+            ],
+            "coverageIgnore": false,
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'adyd-error-404',\n  styleUrl: './adyd-error-404.css',\n  templateUrl: './adyd-error-404.html',\n  standalone: true,\n})\nexport class AdydError404 {\n  redirectToHome() {\n    window.location.href = '/';\n  }\n}\n",
+            "styleUrl": "./adyd-error-404.css",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".error-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  min-height: 100vh;\n  text-align: center;\n  padding: 2rem;\n}\n\n.error-code {\n  font-size: 8rem;\n  font-weight: 900;\n  color: #dc3545;\n  line-height: 1;\n  margin-bottom: 0;\n}\n\n.error-title {\n  font-size: 2.5rem;\n  color: #333;\n  margin-bottom: 1rem;\n}\n\n.error-message {\n  font-size: 1.1rem;\n  color: #666;\n  margin-bottom: 2rem;\n  max-width: 400px;\n}\n\n.error-button {\n  padding: 0.75rem 2rem;\n  font-size: 1rem;\n  font-weight: 600;\n  color: #fff;\n  background-color: #dc3545;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: background-color 0.2s;\n}\n\n.error-button:hover {\n  background-color: #c82333;\n}\n",
+                    "styleUrl": "./adyd-error-404.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "Components",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": []
+            },
+            "templateData": "<div class=\"error-container\">\n  <h1 class=\"error-code\">404</h1>\n  <h2 class=\"error-title\">Página no encontrada</h2>\n  <p class=\"error-message\">Lo sentimos, la página que buscas no existe.</p>\n  <button class=\"error-button\" (click)=\"redirectToHome()\">Volver al inicio</button>\n</div>\n"
         },
         {
             "name": "AdydMenu",
@@ -2791,7 +2159,7 @@
         },
         {
             "name": "Components",
-            "id": "component-Components-92ded1db0ffccd68125f3f644833ba364f46acf3cc3d55337c7e2210eb3705943199fc8ff9d1c0992fde5b8aede11f6a394d1421065625831b1f3be2fd1dd901",
+            "id": "component-Components-876e0514a1e45162cc01ed107cbfc51afbfae635a94b665d261d749f6d7ecc00edc6ee4c1c117ca749db9c8cac7010f1608fe4b400314a345bb3c0835537677c",
             "file": "projects/components/src/lib/components.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2804,7 +2172,7 @@
             "styles": [
                 ""
             ],
-            "template": "<p>components works!</p>",
+            "template": "<adyd-error-404></adyd-error-404>",
             "templateUrl": [],
             "templateVariables": [],
             "viewProviders": [],
@@ -2819,18 +2187,27 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "AdydError404"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  imports: [],\n  selector: 'lib-components',\n  styles: ``,\n  template: ` <p>components works!</p> `,\n})\nexport class Components {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { AdydError404 } from './adyd-error-404/adyd-error-404';\n\n@Component({\n  imports: [AdydError404],\n  selector: 'lib-components',\n  styles: ``,\n  template: ` <adyd-error-404></adyd-error-404> `,\n})\nexport class Components {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n",
             "extends": [],
             "relationships": {
                 "incoming": [],
-                "outgoing": []
+                "outgoing": [
+                    {
+                        "name": "AdydError404",
+                        "type": "component"
+                    }
+                ]
             }
         },
         {
@@ -3072,17 +2449,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "Admin",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Campaña básica',\n    description: 'Descripción de la campaña de prueba',\n    id: 1,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_ROUTER,\n          useValue: {\n            routeLinkService: (route: string, id: string) => console.log('Route to:', route, id),\n          },\n        },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>, action: string) => {\n              console.log('API call:', api, data, action);\n              return { subscribe: () => ({}) };\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-            },
-            {
                 "name": "AdminUser",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3138,39 +2504,6 @@
                 "defaultValue": "new InjectionToken<AuthService>('AUTH_SERVICE')"
             },
             {
-                "name": "BasicAdydCard",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: false,\n  },\n}"
-            },
-            {
-                "name": "BasicAdydCardAdmin",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "BasicAdydCardPlayer",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-            },
-            {
                 "name": "BasicSelect",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3207,7 +2540,7 @@
                 "name": "createMockAuth",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3219,17 +2552,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
-            },
-            {
-                "name": "createMockAuth",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-menu/adyd-menu.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3267,7 +2589,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Default",
@@ -3279,6 +2601,17 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: () => ({\n    template: `<adyd-navbar></adyd-navbar>`,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Default",
@@ -3301,17 +2634,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"p-4\">\n        <span tooltipText=\"Este es un tooltip con placement por defecto (top)\">\n          Pasa el mouse por aquí\n        </span>\n      </div>\n    `,\n  }),\n}"
-            },
-            {
-                "name": "ItemAncho",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  name: 'Items mas anchos',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 320,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "Large",
@@ -3416,23 +2738,12 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "file": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AdydCardContentCampaign>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCardContentCampaign,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar o no los botones segun este o no maximada la card',\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard, AdydCardContentCampaign],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AdydCardContentCampaign2>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydCardContentCampaign2',\n  component: AdydCardContentCampaign2,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar u ocultar botones',\n    },\n  },\n}"
+                "type": "Meta<AdydError404>",
+                "defaultValue": "{\n  component: AdydError404,\n  title: 'Error/404',\n  render: (args) => ({\n    components: { AdydError404 },\n    template: `<adyd-error-404></adyd-error-404>`,\n  }),\n}"
             },
             {
                 "name": "meta",
@@ -3442,19 +2753,8 @@
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AdydCarousel>",
-                "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n  argTypes: {\n    itemWidth: { control: 'number', description: 'Ancho de cada item' },\n    controlsThreshold: { control: 'number', description: 'Umbral para mostrar controles' },\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AdydNavbar>",
-                "defaultValue": "{\n  title: 'Organismos/AdydNavbar',\n  component: AdydNavbar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Moléculas/AdydCarousel',\n  component: 'AdydCarousel',\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "meta",
@@ -3471,23 +2771,34 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydNavbar>",
+                "defaultValue": "{\n  title: 'Organismos/AdydNavbar',\n  component: AdydNavbar,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta",
+                "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: 'AdydCard',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AdydSelect>",
                 "defaultValue": "{\n  title: 'Moléculas/adyd-select',\n  component: AdydSelect,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n        FormlyModule.forRoot({\n          types: [\n            {\n              name: 'adyd-select',\n              component: AdydSelect,\n            },\n          ],\n        }),\n        FormlyBootstrapModule,\n      ],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<AdydSpinner>",
-                "defaultValue": "{\n  title: 'Moléculas/AdydSpinner',\n  component: AdydSpinner,\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "meta",
@@ -3532,6 +2843,17 @@
                 "deprecationMessage": "",
                 "type": "Meta",
                 "defaultValue": "{\n  title: 'Directivas/SpinnerDirective',\n  tags: ['autodocs'],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdydSpinner>",
+                "defaultValue": "{\n  title: 'Moléculas/AdydSpinner',\n  component: AdydSpinner,\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "Mostrar",
@@ -3611,17 +2933,6 @@
                 "defaultValue": "{\n  args: {\n    label: 'Button',\n  },\n}"
             },
             {
-                "name": "SinControles",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n      controlsThreshold: 15,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
-            },
-            {
                 "name": "SinLogout",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3688,17 +2999,6 @@
                 "defaultValue": "{\n  args: {\n    menuName: 'Nav',\n    menuElements: [{ link: '/', text: 'Home' }],\n    logout: false,\n  },\n}"
             },
             {
-                "name": "User",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Sin botones',\n    description: 'Versión sin botones',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_ROUTER,\n          useValue: {\n            routeLinkService: (route: string, id: string) => console.log('Route to:', route, id),\n          },\n        },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>, action: string) => {\n              console.log('API call:', api, data, action);\n              return { subscribe: () => ({}) };\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-            },
-            {
                 "name": "VariosItems",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3710,130 +3010,7 @@
                 "defaultValue": "{\n  args: {\n    menuName: 'Admin',\n    menuElements: [\n      { link: '/users', text: 'Users' },\n      { link: '/roles', text: 'Roles' },\n      { link: '/permissions', text: 'Permissions' },\n      { link: '/reports', text: 'Reports' },\n      { link: '/analytics', text: 'Analytics' },\n    ],\n    logout: true,\n  },\n}"
             }
         ],
-        "functions": [
-            {
-                "name": "createMockAuth",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "displayName": "createMockAuth",
-                "args": [
-                    {
-                        "name": "role",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "returnType": "AuthService",
-                "jsdoctags": [
-                    {
-                        "name": "role",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "createMockAuth",
-                "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "displayName": "createMockAuth",
-                "args": [
-                    {
-                        "name": "role",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "returnType": "AuthService",
-                "jsdoctags": [
-                    {
-                        "name": "role",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "renderStory",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "displayName": "renderStory",
-                "args": [
-                    {
-                        "name": "args",
-                        "type": "Record",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "args",
-                        "type": "Record",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "renderStory",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "displayName": "renderStory",
-                "args": [
-                    {
-                        "name": "args",
-                        "type": "Record",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "args",
-                        "type": "Record",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            }
-        ],
+        "functions": [],
         "typealiases": [
             {
                 "name": "Story",
@@ -3879,8 +3056,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydCardContentCampaign>",
-                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "rawtype": "StoryObj<AdydError404>",
+                "file": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -3892,34 +3069,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydCardContentCampaign2>",
-                "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydCarousel>",
+                "rawtype": "StoryObj",
                 "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "rawdescription": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydNavbar>",
-                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -3944,8 +3095,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydSelect>",
-                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
+                "rawtype": "StoryObj<AdydNavbar>",
+                "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -3957,8 +3108,21 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<AdydSpinner>",
-                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "rawtype": "StoryObj",
+                "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydSelect>",
+                "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -4016,6 +3180,19 @@
                 "rawdescription": "",
                 "description": "",
                 "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "StoryObj<AdydSpinner>",
+                "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "",
+                "description": "",
+                "kind": 184
             }
         ],
         "enumerations": [
@@ -4039,41 +3216,6 @@
             }
         ],
         "groupedVariables": {
-            "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts": [
-                {
-                    "name": "Admin",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Campaña básica',\n    description: 'Descripción de la campaña de prueba',\n    id: 1,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_ROUTER,\n          useValue: {\n            routeLinkService: (route: string, id: string) => console.log('Route to:', route, id),\n          },\n        },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>, action: string) => {\n              console.log('API call:', api, data, action);\n              return { subscribe: () => ({}) };\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AdydCardContentCampaign2>",
-                    "defaultValue": "{\n  title: 'Moléculas/AdydCardContentCampaign2',\n  component: AdydCardContentCampaign2,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar u ocultar botones',\n    },\n  },\n}"
-                },
-                {
-                    "name": "User",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Sin botones',\n    description: 'Versión sin botones',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_ROUTER,\n          useValue: {\n            routeLinkService: (route: string, id: string) => console.log('Route to:', route, id),\n          },\n        },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>, action: string) => {\n              console.log('API call:', api, data, action);\n              return { subscribe: () => ({}) };\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-                }
-            ],
             "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts": [
                 {
                     "name": "AdminUser",
@@ -4214,63 +3356,6 @@
                     "deprecationMessage": "",
                     "type": "unknown",
                     "defaultValue": "new InjectionToken<AuthService>('AUTH_SERVICE')"
-                }
-            ],
-            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
-                {
-                    "name": "BasicAdydCard",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=1',\n    title: 'Poster de prueba',\n    description: 'descripcion de lo que sea',\n    id: 1,\n    showButtons: false,\n  },\n}"
-                },
-                {
-                    "name": "BasicAdydCardAdmin",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=2',\n    title: 'Poster de prueba Admin',\n    description: 'descripcion de lo que sea',\n    id: 2,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('admin') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "BasicAdydCardPlayer",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: renderStory,\n  args: {\n    imageUrl: 'https://picsum.photos/600/337?random=3',\n    title: 'Poster de prueba Player',\n    description: 'descripcion de lo que sea',\n    id: 3,\n    showButtons: true,\n  },\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "createMockAuth",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "(role: string): AuthService => ({\n  hasPermission: (permissions: string[]) => permissions.includes(role),\n  logout: () => console.log('logout called'),\n  getUser: () => 'Test User',\n})"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AdydCardContentCampaign>",
-                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: AdydCardContentCampaign,\n  tags: ['autodocs'],\n  argTypes: {\n    imageUrl: { control: 'text', description: 'URL de la imagen (ngSrc)' },\n    title: { control: 'text', description: 'Título / texto alternativo' },\n    description: { control: 'text', description: 'Descripción de la tarjeta' },\n    id: { control: 'number', description: 'ID del card' },\n    showButtons: {\n      control: 'boolean',\n      description: 'mostrar o no los botones segun este o no maximada la card',\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [AdydCard, AdydCardContentCampaign],\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n        {\n          provide: API_APPLICATIONS,\n          useValue: {\n            executeService: (api: any, data: Record<string, unknown>) => {\n              console.log('API call:', api, data);\n            },\n          },\n        },\n      ],\n    }),\n  ],\n}"
                 }
             ],
             "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
@@ -4478,18 +3563,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "ItemAncho",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  name: 'Items mas anchos',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 320,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  args: {},\n}"
                 },
                 {
                     "name": "meta",
@@ -4499,19 +3573,32 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<AdydCarousel>",
-                    "defaultValue": "{\n  title: 'Organismos/AdydCarousel',\n  component: AdydCarousel,\n  tags: ['autodocs'],\n  argTypes: {\n    itemWidth: { control: 'number', description: 'Ancho de cada item' },\n    controlsThreshold: { control: 'number', description: 'Umbral para mostrar controles' },\n  },\n}"
-                },
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Moléculas/AdydCarousel',\n  component: 'AdydCarousel',\n  tags: ['autodocs'],\n}"
+                }
+            ],
+            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
                 {
-                    "name": "SinControles",
+                    "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
+                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  name: 'Sin controles (10 o menos)',\n  render: () => ({\n    component: AdydCarousel,\n    componentProperties: {\n      itemWidth: 220,\n      controlsThreshold: 15,\n    },\n    template: `\n      <adyd-carousel>\n        @for (item of cards; track item.id) {\n          <adyd-card [id]=\"item.id\" tooltipText=\"Card {{ item.id }}\">\n            <img [attr.aria-label]=\"item.title\" [alt]=\"item.title\" style=\"width: 100%; height: 200px; background: #ccc;\" />\n          </adyd-card>\n        }\n      </adyd-carousel>\n    `,\n  }),\n  decorators: [\n    moduleMetadata({\n      providers: [\n        { provide: AUTH_SERVICE, useValue: createMockAuth('player') },\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Moléculas/AdydCard',\n  component: 'AdydCard',\n  tags: ['autodocs'],\n}"
                 }
             ],
             "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts": [
@@ -4665,6 +3752,19 @@
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
+            "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AdydError404>",
+                    "defaultValue": "{\n  component: AdydError404,\n  title: 'Error/404',\n  render: (args) => ({\n    components: { AdydError404 },\n    template: `<adyd-error-404></adyd-error-404>`,\n  }),\n}"
+                }
+            ],
             "projects/components/src/lib/directives/spinner-directive.stories.ts": [
                 {
                     "name": "meta",
@@ -4714,136 +3814,7 @@
                 }
             ]
         },
-        "groupedFunctions": {
-            "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts": [
-                {
-                    "name": "createMockAuth",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "displayName": "createMockAuth",
-                    "args": [
-                        {
-                            "name": "role",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "returnType": "AuthService",
-                    "jsdoctags": [
-                        {
-                            "name": "role",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "renderStory",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "displayName": "renderStory",
-                    "args": [
-                        {
-                            "name": "args",
-                            "type": "Record",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "args",
-                            "type": "Record",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts": [
-                {
-                    "name": "createMockAuth",
-                    "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "displayName": "createMockAuth",
-                    "args": [
-                        {
-                            "name": "role",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "returnType": "AuthService",
-                    "jsdoctags": [
-                        {
-                            "name": "role",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
-                {
-                    "name": "renderStory",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "displayName": "renderStory",
-                    "args": [
-                        {
-                            "name": "args",
-                            "type": "Record",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "args",
-                            "type": "Record",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
+        "groupedFunctions": {},
         "groupedEnumerations": {
             "projects/components/src/lib/services/enum/enum-api-aplications.ts": [
                 {
@@ -4912,29 +3883,14 @@
                     "kind": 184
                 }
             ],
-            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
+            "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydCardContentCampaign>",
-                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydCardContentCampaign2>",
-                    "file": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
+                    "rawtype": "StoryObj<AdydError404>",
+                    "file": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -4948,23 +3904,8 @@
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydCarousel>",
+                    "rawtype": "StoryObj",
                     "file": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydNavbar>",
-                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -4987,6 +3928,36 @@
                     "kind": 184
                 }
             ],
+            "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydNavbar>",
+                    "file": "projects/components/src/lib/adyd-navbar/adyd-navbar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/components/src/lib/adyd-card/adyd-card.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj",
+                    "file": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/components/src/lib/adyd-select/adyd-select.stories.ts": [
                 {
                     "name": "Story",
@@ -4995,21 +3966,6 @@
                     "coverageIgnore": false,
                     "rawtype": "StoryObj<AdydSelect>",
                     "file": "projects/components/src/lib/adyd-select/adyd-select.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<AdydSpinner>",
-                    "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",
@@ -5076,6 +4032,21 @@
                     "description": "",
                     "kind": 184
                 }
+            ],
+            "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<AdydSpinner>",
+                    "file": "projects/components/src/lib/adyd-spinner/adyd-spinner.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
             ]
         }
     },
@@ -5099,129 +4070,11 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "createMockAuth",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "renderStory",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Admin",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign-2/adyd-card-content-campaign-2.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "AdydCardContentCampaign2",
-                "coveragePercent": 0,
-                "coverageCount": "0/12",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card-content-campaign/adyd-card-content-campaign.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "AdydCardContentCampaign",
-                "coveragePercent": 0,
-                "coverageCount": "0/17",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "renderStory",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "BasicAdydCard",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "BasicAdydCardAdmin",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "BasicAdydCardPlayer",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-card/adyd-card.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "createMockAuth",
+                "name": "Default",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -5257,16 +4110,6 @@
             },
             {
                 "filePath": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "createMockAuth",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -5280,27 +4123,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "ItemAncho",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
                 "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/components/src/lib/adyd-carousel/adyd-carousel.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "SinControles",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -5322,6 +4145,35 @@
                 "name": "AdydCarousel",
                 "coveragePercent": 0,
                 "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-error-404/adyd-error-404.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/components/src/lib/adyd-error-404/adyd-error-404.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdydError404",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

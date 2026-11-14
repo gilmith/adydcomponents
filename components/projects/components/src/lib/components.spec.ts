@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Components } from './components';
+import { AdydError404 } from './adyd-error-404';
 
 describe('Components', () => {
   let component: Components;

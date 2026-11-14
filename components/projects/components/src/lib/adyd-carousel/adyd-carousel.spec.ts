@@ -66,7 +66,7 @@ describe('AdydCarousel', () => {
   beforeEach(async () => {
     dialogPolyfill();
     await TestBed.configureTestingModule({
-      imports: [AdydCarousel],
+      imports: [],
     }).compileComponents();
   });
 
