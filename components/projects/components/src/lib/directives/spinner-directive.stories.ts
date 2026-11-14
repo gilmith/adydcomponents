@@ -1,9 +1,14 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { SpinnerDirective } from './spinner-directive';
 
 const meta: Meta = {
   title: 'Directivas/SpinnerDirective',
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [SpinnerDirective],
+    }),
+  ],
 };
 
 export default meta;

@@ -13,7 +13,7 @@ const meta: Meta = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [],
+      imports: [PlayerDirective],
       providers: [
         { provide: AUTH_SERVICE, useValue: createMockAuth('player') },
       ],

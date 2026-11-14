@@ -4,6 +4,11 @@ import { AdydTooltipDirective } from './adyd-tooltip-directive';
 const meta: Meta = {
   title: 'Directivas/AdydTooltipDirective',
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [AdydTooltipDirective],
+    }),
+  ],
 };
 
 export default meta;

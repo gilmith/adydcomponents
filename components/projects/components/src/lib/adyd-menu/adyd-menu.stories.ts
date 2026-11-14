@@ -26,7 +26,7 @@ const meta: Meta<AdydMenu> = {
   },
   decorators: [
     moduleMetadata({
-      imports: [],
+      imports: [AdydMenu],
       providers: [
         { provide: AUTH_SERVICE, useValue: createMockAuth('player') },
       ],

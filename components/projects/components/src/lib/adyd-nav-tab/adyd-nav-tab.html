@@ -1,0 +1,22 @@
+<div class="container">
+<ul class="nav nav-tabs" role="tablist">
+    @for(tab of tabs(); track $index; let idx = $index){
+    <li class="nav-item" role="presentation">
+        <button type="button"
+                class="nav-link"
+                role="tab"
+                [class.active]="activeTab() === idx"
+                [attr.aria-selected]="activeTab() === idx"
+                (click)="selectTab(idx)">{{ tab.title() }}</button>
+    </li>
+    }
+</ul>
+
+<div class="tab-content">
+    @if (tabs()[activeTab()]; as tab) {
+    <div class="tab-pane active" role="tabpanel">
+        <ng-container [ngTemplateOutlet]="tab.template" />
+    </div>
+    }
+</div>
+</div>
