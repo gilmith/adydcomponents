@@ -1,4 +1,5 @@
 import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
+import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
   FormlyFieldConfig,
@@ -15,6 +16,7 @@ const meta: Meta<AdydSelect> = {
   decorators: [
     moduleMetadata({
       imports: [
+        CommonModule,
         ReactiveFormsModule,
         FormlyModule.forRoot({
           types: [
