@@ -1,16 +1,27 @@
 {
-  "name": "components",
-  "version": "0.0.4",
+  "name": "@gilmith/components",
+  "version": "0.0.78",
+  "description": "Librería de componentes Angular de AD&D",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilmith/adydcomponents.git",
+    "directory": "components/projects/components"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^22.2.0",
-    "@angular/core": "^22.2.0"
+    "@angular/core": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/router": "^22.2.0",
+    "@ngx-formly/core": "^11.2.0",
+    "bootstrap": ">=5.0.0",
+    "bootstrap-icons": ">=1.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false,
-  "exports": {
-    ".": "./public-api.js",
-    "./package.json": "./package.json"
-  }
+  "sideEffects": false
 }

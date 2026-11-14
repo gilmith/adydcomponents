@@ -10,5 +10,7 @@ export * from './lib/adyd-spinner/adyd-spinner';
 export * from './lib/adyd-error-404/adyd-error-404';
 export * from './lib/adyd-nav-tab/adyd-nav-tab';
 export * from './lib/adyd-nav-tab/adyd-tab';
+export * from './lib/adyd-img-editable/adyd-img-editable';
+export * from './lib/adyd-form/adyd-form';
 export * from './lib/directives/spinner-directive';
 export * from './lib/directives/adyd-tooltip-directive';

@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build-and-publish:
@@ -23,14 +28,17 @@ jobs:
         working-directory: ./components
         run: npm ci --force
 
+      - name: Set library version from tag
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: ./components
+        run: npm pkg set version="${GITHUB_REF_NAME#v}" --prefix projects/components
+
       - name: Build library
         working-directory: ./components
         run: npm run build
 
-      - name: Publish to GitHub npm
+      - name: Publish to GitHub Packages
         working-directory: ./components
-        run: |
-          cd dist/components
-          npm publish --access public
+        run: npm publish ./dist/components --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

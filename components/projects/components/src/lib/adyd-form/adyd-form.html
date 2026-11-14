@@ -1,0 +1,18 @@
+<div class="container">
+    <form [formGroup]=this.form()>
+        <ng-content></ng-content>
+        <formly-form
+                [form]="this.form()"
+                [fields]="formlyFields()"
+                [model]="this.editableModel()">
+        </formly-form>
+        <div class="d-flex justify-content-between align-items-center gap-2">
+            <button type="button" class="btn btn-primary" [disabled]="this.editable()" (click)="this.setEditable()">
+                <i class="bi bi-pencil-fill">edit</i>
+            </button>
+            <button type="button" class="btn btn-primary" [disabled]="!this.editable()">
+                <i class="bi bi-floppy-fill">save</i>
+            </button>
+        </div>
+    </form>
+</div>
