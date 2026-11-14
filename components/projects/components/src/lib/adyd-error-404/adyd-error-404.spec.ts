@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AdydCardContentCampaign } from './adyd-card-content-campaign';
+import { AdydError404 } from './adyd-error-404';
 
-describe('AdydCardContentCampaign', () => {
-  let component: AdydCardContentCampaign;
-  let fixture: ComponentFixture<AdydCardContentCampaign>;
+describe('AdydError404', () => {
+  let component: AdydError404;
+  let fixture: ComponentFixture<AdydError404>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdydCardContentCampaign],
+      imports: [AdydError404],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AdydCardContentCampaign);
+    fixture = TestBed.createComponent(AdydError404);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
