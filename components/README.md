@@ -36,6 +36,39 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Estilos y assets compartidos
+
+Los estilos globales de la librería viven en `projects/components/src/styles/` y los
+assets (por ejemplo iconos SVG) en `projects/components/src/assets/`. Ambos se copian
+al paquete publicado según `ng-package.json`.
+
+En la SPA consumidora, añade el tema de la librería una sola vez en `angular.json`:
+
+```json
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+  "node_modules/@gilmith/components/styles/adyd-theme.css",
+  "src/styles.css"
+]
+```
+
+Y los assets, para poder referenciarlos desde plantillas:
+
+```json
+"assets": [
+  {
+    "glob": "**/*",
+    "input": "node_modules/@gilmith/components/assets",
+    "output": "assets/gilmith"
+  }
+]
+```
+
+Con esa configuración un icono se referencia como
+`assets/gilmith/icons/mi-icono.svg`. Para desarrollo local, los nuevos SVG se añaden
+en `projects/components/src/assets/icons/`.
+
 ## Running unit tests
 
 To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:

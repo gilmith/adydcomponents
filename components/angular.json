@@ -37,7 +37,15 @@
             "browserTarget": "components:build",
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "projects/components/src/styles/adyd-theme.css"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/components/src/assets",
+                "output": "assets"
+              }
             ],
             "compodoc": true,
             "compodocArgs": [
@@ -56,7 +64,15 @@
             "browserTarget": "components:build",
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "projects/components/src/styles/adyd-theme.css"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/components/src/assets",
+                "output": "assets"
+              }
             ],
             "compodoc": true,
             "compodocArgs": [

@@ -1,24 +1,10 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { of } from 'rxjs';
+import { Meta, StoryObj } from '@storybook/angular';
 import { AdydImgEditable } from './adyd-img-editable';
-import { API_APPLICATIONS } from '../services/api-applications';
 
 const meta: Meta<AdydImgEditable> = {
   title: 'Átomos/AdydImgEditable',
   component: AdydImgEditable,
   tags: ['autodocs'],
-  decorators: [
-    moduleMetadata({
-      providers: [
-        {
-          provide: API_APPLICATIONS,
-          useValue: {
-            executeService: () => of({}),
-          },
-        },
-      ],
-    }),
-  ],
   args: {
     imageUrl: 'https://placehold.co/600x400',
     title: 'Imagen de ejemplo',
@@ -35,6 +21,10 @@ const meta: Meta<AdydImgEditable> = {
     title: {
       control: 'text',
       description: 'Texto alternativo de la imagen',
+    },
+    fieldName: {
+      control: 'text',
+      description: 'Nombre del campo con el que se enviará el fichero',
     },
   },
 };

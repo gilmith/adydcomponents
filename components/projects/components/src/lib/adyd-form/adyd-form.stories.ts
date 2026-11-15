@@ -2,8 +2,12 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
+import { of } from 'rxjs';
 import { AdydForm } from './adyd-form';
+import { AdydImgEditable } from '../adyd-img-editable/adyd-img-editable';
+import { API_APPLICATIONS } from '../services/api-applications';
+import { ApiApplicationsEnum } from '../services/enum/enum-api-aplications';
 
 const formData: FormlyFieldConfig[] = [
   {
@@ -54,6 +58,13 @@ const formData: FormlyFieldConfig[] = [
   },
 ];
 
+const executeService = fn(() => of({ ok: true }));
+
+const saveConfig = {
+  api: ApiApplicationsEnum.CAMPAIGN,
+  operationId: 'saveCampaign',
+};
+
 const initialModel = {
   id: 1,
   nombre: 'Aragorn',
@@ -73,11 +84,18 @@ const meta: Meta<AdydForm> = {
         FormlyModule.forRoot(),
         FormlyBootstrapModule,
       ],
+      providers: [
+        {
+          provide: API_APPLICATIONS,
+          useValue: { executeService },
+        },
+      ],
     }),
   ],
   args: {
     initialModel,
     formData,
+    saveConfig,
   },
 };
 
@@ -104,7 +122,18 @@ export const Editable: Story = {
     await expect(id).toBeDisabled();
     await expect(nombre).toBeEnabled();
     await expect(activo).toBeDisabled();
-    await expect(canvas.getByRole('button', { name: /save/i })).toBeEnabled();
+
+    const saveButton = canvas.getByRole('button', { name: /save/i });
+    await expect(saveButton).toBeEnabled();
+
+    await userEvent.click(saveButton);
+
+    await expect(executeService).toHaveBeenCalledWith(
+      ApiApplicationsEnum.CAMPAIGN,
+      expect.objectContaining({ nombre: 'Aragorn' }),
+      'saveCampaign',
+    );
+    await expect(editButton).toBeEnabled();
   },
 };
 
@@ -117,5 +146,48 @@ export const ModeloVacio: Story = {
       descripcion: '',
       activo: false,
     },
+  },
+};
+
+export const ConImagen: Story = {
+  decorators: [
+    moduleMetadata({
+      imports: [AdydImgEditable],
+    }),
+  ],
+  render: args => ({
+    props: args,
+    template: `
+      <adyd-form
+        #adydForm
+        [initialModel]="initialModel"
+        [formData]="formData"
+        [saveConfig]="saveConfig"
+      >
+        <adyd-img-editable
+          fieldName="imagen"
+          imageUrl="https://placehold.co/600x400"
+          [showButtons]="adydForm.editable()"
+          title="Imagen del formulario"
+        />
+      </adyd-form>
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const file = new File(['fake'], 'foto.png', { type: 'image/png' });
+    const fileInput = canvasElement.querySelector<HTMLInputElement>(
+      'input[type="file"]',
+    );
+
+    await userEvent.click(canvas.getByRole('button', { name: /edit/i }));
+    await userEvent.upload(fileInput!, file);
+    await userEvent.click(canvas.getByRole('button', { name: /save/i }));
+
+    await expect(executeService).toHaveBeenCalledWith(
+      ApiApplicationsEnum.CAMPAIGN,
+      expect.objectContaining({ imagen: file }),
+      'saveCampaign',
+    );
   },
 };
