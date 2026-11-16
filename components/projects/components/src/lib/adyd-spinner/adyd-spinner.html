@@ -1,3 +1,30 @@
-<div class="spinner-border" role="status">
-    <span class="visually-hidden">Loading…</span>
+<div class="adnd-spinner"
+     [class.adnd-spinner-sm]="size() === 'sm'"
+     [class.adnd-spinner-lg]="size() === 'lg'"
+     role="status">
+
+    @if (variant() === 'd20') {
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <use class="d20-runes"
+                 href="assets/gilmith/icons/icon.svg#adnd-d20-runes"
+                 width="64" height="64"/>
+            <use class="d20-frame"
+                 href="assets/gilmith/icons/icon.svg#adnd-d20-frame"
+                 width="64" height="64"/>
+        </svg>
+    } @else {
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <use class="astrolabe-outer"
+                 href="assets/gilmith/icons/icon.svg#adnd-astrolabe-outer"
+                 width="64" height="64"/>
+            <use class="astrolabe-inner"
+                 href="assets/gilmith/icons/icon.svg#adnd-astrolabe-inner"
+                 width="64" height="64"/>
+            <use class="astrolabe-core"
+                 href="assets/gilmith/icons/icon.svg#adnd-astrolabe-core"
+                 width="64" height="64"/>
+        </svg>
+    }
+
+    <span class="visually-hidden">Cargando…</span>
 </div>

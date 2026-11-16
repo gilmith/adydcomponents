@@ -1,5 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { AdydNavbar } from './adyd-navbar';
+import { AUTH_SERVICE, AuthService } from '../services/auth-service';
+
+const authService: AuthService = {
+  hasPermission: () => true,
+  logout: () => {},
+  getUser: () => 'Test User',
+};
 
 describe('AdydNavbar', () => {
   let component: AdydNavbar;
@@ -8,6 +16,10 @@ describe('AdydNavbar', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AdydNavbar],
+      providers: [
+        provideRouter([]),
+        { provide: AUTH_SERVICE, useValue: authService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdydNavbar);

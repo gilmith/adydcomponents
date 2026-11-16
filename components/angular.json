@@ -44,7 +44,7 @@
               {
                 "glob": "**/*",
                 "input": "projects/components/src/assets",
-                "output": "assets"
+                "output": "assets/gilmith"
               }
             ],
             "compodoc": true,
@@ -71,7 +71,7 @@
               {
                 "glob": "**/*",
                 "input": "projects/components/src/assets",
-                "output": "assets"
+                "output": "assets/gilmith"
               }
             ],
             "compodoc": true,

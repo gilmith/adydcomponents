@@ -67,7 +67,11 @@ Y los assets, para poder referenciarlos desde plantillas:
 
 Con esa configuración un icono se referencia como
 `assets/gilmith/icons/mi-icono.svg`. Para desarrollo local, los nuevos SVG se añaden
-en `projects/components/src/assets/icons/`.
+en `projects/components/src/assets/icons/`; Storybook los sirve en la misma ruta
+(`assets/gilmith/icons/`).
+
+`AdydCard` y `AdydSpinner` referencian el sprite `assets/gilmith/icons/icon.svg`
+mediante `<use>`; sin la copia de assets anterior, sus adornos no se renderizan.
 
 ## Running unit tests
 

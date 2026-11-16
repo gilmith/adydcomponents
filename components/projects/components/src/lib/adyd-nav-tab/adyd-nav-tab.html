@@ -1,18 +1,19 @@
 <div class="container">
-<ul class="nav nav-tabs" role="tablist">
+<div class="adnd-navbar" role="tablist">
     @for(tab of tabs(); track $index; let idx = $index){
-    <li class="nav-item" role="presentation">
-        <button type="button"
-                class="nav-link"
-                role="tab"
-                [class.active]="activeTab() === idx"
-                [attr.aria-selected]="activeTab() === idx"
-                (click)="selectTab(idx)">{{ tab.title() }}</button>
-    </li>
+    <button type="button"
+            class="nav-link adnd-nav-tab"
+            role="tab"
+            [class.active]="activeTab() === idx"
+            [attr.aria-selected]="activeTab() === idx"
+            (click)="selectTab(idx)">
+        <span class="adnd-tab-seal" aria-hidden="true"></span>
+        {{ tab.title() }}
+    </button>
     }
-</ul>
+</div>
 
-<div class="tab-content">
+<div class="tab-content adnd-tab-panel">
     @if (tabs()[activeTab()]; as tab) {
     <div class="tab-pane active" role="tabpanel">
         <ng-container [ngTemplateOutlet]="tab.template" />

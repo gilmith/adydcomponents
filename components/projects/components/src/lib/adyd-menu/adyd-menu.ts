@@ -15,6 +15,8 @@ export class AdydMenu {
     public menuName = input.required<string>();
     public menuElements = input.required<MenuItem[]>();
     public logout = input.required<boolean>();
+    /** Alineación del desplegable respecto al botón que lo abre. */
+    public align = input<'start' | 'end'>('start');
 
     // Control local del estado abierto/cerrado con Signals
     protected isOpen = signal<boolean>(false);

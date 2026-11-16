@@ -1,5 +1,31 @@
 /* Importar fuente clásica en tu index.html o styles.scss */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Crimson+Text:wght@400;600&display=swap');
+
+/* ==========================================================================
+   Tipografía global
+   Todos los componentes heredan la misma fuente del tema.
+   ========================================================================== */
+
+:root {
+    --adnd-font: 'Cinzel', Georgia, serif;
+}
+
+/* Bootstrap 6 consume esta variable en body, formularios, botones, etc.
+   La doble especificidad garantiza que gane aunque el CSS de Bootstrap
+   se cargue después del tema. */
+:root:root {
+    --bs-body-font-family: var(--adnd-font);
+}
+
+html,
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: var(--adnd-font, 'Cinzel', Georgia, serif);
+}
 
 .adnd-btn {
     position: relative;
@@ -8,7 +34,7 @@
     justify-content: center;
     gap: 0.65rem;
     padding: 0.75rem 1.75rem;
-    font-family: 'Cinzel', Georgia, serif;
+    font-family: var(--adnd-font);
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.08em;
@@ -342,4 +368,572 @@
     .adyd-carousel__lightbox::backdrop {
         transition: none;
     }
+}
+
+/* ==========================================================================
+   Botones Bootstrap → tema AD&D 2e
+   Bootstrap 6 usa .btn / .btn-solid / .btn-outline junto a .theme-*.
+   Se mantienen .btn-primary, .btn-secondary, etc. por compatibilidad.
+   ========================================================================== */
+
+:root {
+    --adnd-corner-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='matrix(1 0 0 1 0 0)'%3E%3Cpath d='M2,2 L14,2 L11,5 L5,5 L5,11 L2,14 Z' fill='black'/%3E%3Ccircle cx='8.5' cy='8.5' r='2' fill='black'/%3E%3Cpath d='M2,18 C6,18 6,12 12,12 C12,6 18,6 18,2' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    --adnd-corner-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='matrix(-1 0 0 1 24 0)'%3E%3Cpath d='M2,2 L14,2 L11,5 L5,5 L5,11 L2,14 Z' fill='black'/%3E%3Ccircle cx='8.5' cy='8.5' r='2' fill='black'/%3E%3Cpath d='M2,18 C6,18 6,12 12,12 C12,6 18,6 18,2' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    --adnd-corner-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='matrix(1 0 0 -1 0 24)'%3E%3Cpath d='M2,2 L14,2 L11,5 L5,5 L5,11 L2,14 Z' fill='black'/%3E%3Ccircle cx='8.5' cy='8.5' r='2' fill='black'/%3E%3Cpath d='M2,18 C6,18 6,12 12,12 C12,6 18,6 18,2' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    --adnd-corner-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='matrix(-1 0 0 -1 24 24)'%3E%3Cpath d='M2,2 L14,2 L11,5 L5,5 L5,11 L2,14 Z' fill='black'/%3E%3Ccircle cx='8.5' cy='8.5' r='2' fill='black'/%3E%3Cpath d='M2,18 C6,18 6,12 12,12 C12,6 18,6 18,2' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Base compartida */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text) {
+    --adnd-btn-bg: linear-gradient(180deg, #f5ebd6 0%, #dfd0b2 100%);
+    --adnd-btn-fg: #3b2818;
+    --adnd-btn-border: #7a5c3c;
+    --adnd-btn-shadow: 0 3px 5px rgba(45, 30, 15, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --adnd-btn-text-shadow: none;
+    --adnd-btn-corner-color: #63472b;
+    --adnd-btn-hover-bg: linear-gradient(180deg, #fff5e1 0%, #e9dcc0 100%);
+    --adnd-btn-hover-fg: #241606;
+    --adnd-btn-hover-border: #f3ce65;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 0;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--adnd-font);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid var(--adnd-btn-border);
+    background: var(--adnd-btn-bg);
+    color: var(--adnd-btn-fg);
+    box-shadow: var(--adnd-btn-shadow);
+    text-shadow: var(--adnd-btn-text-shadow);
+    transition: all 0.18s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Marco doble interior grabado */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text)::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid currentColor;
+    opacity: 0.35;
+    pointer-events: none;
+    transition: opacity 0.2s ease, inset 0.2s ease;
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):hover:not(:disabled)::before {
+    opacity: 0.65;
+    inset: 2px;
+}
+
+/* Esquinas ornamentales (los .adnd-btn ya llevan sus SVG en el markup) */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text)::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+    background-color: var(--adnd-btn-corner-color);
+    -webkit-mask-image: var(--adnd-corner-tl), var(--adnd-corner-tr), var(--adnd-corner-bl), var(--adnd-corner-br);
+    mask-image: var(--adnd-corner-tl), var(--adnd-corner-tr), var(--adnd-corner-bl), var(--adnd-corner-br);
+    -webkit-mask-size: 14px 14px;
+    mask-size: 14px 14px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: left top, right top, left bottom, right bottom;
+    mask-position: left top, right top, left bottom, right bottom;
+}
+
+/* Tamaños de Bootstrap */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text).btn-sm {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text).btn-sm::after {
+    inset: -3px;
+    -webkit-mask-size: 11px 11px;
+    mask-size: 11px 11px;
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text).btn-lg {
+    padding: 1rem 2.25rem;
+    font-size: 1.05rem;
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text).btn-lg::after {
+    inset: -5px;
+    -webkit-mask-size: 16px 16px;
+    mask-size: 16px 16px;
+}
+
+/* Hover / active / focus / disabled */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):hover:not(:disabled) {
+    background: var(--adnd-btn-hover-bg);
+    color: var(--adnd-btn-hover-fg);
+    border-color: var(--adnd-btn-hover-border);
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):active:not(:disabled) {
+    transform: translateY(2px);
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):focus-visible {
+    outline: 2px solid var(--adnd-btn-border);
+    outline-offset: 2px;
+}
+
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):disabled,
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text).disabled,
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text)[aria-disabled='true'] {
+    --adnd-btn-corner-color: #cbc7bf;
+    background: linear-gradient(180deg, #8c8881 0%, #69655f 100%);
+    color: #cbc7bf;
+    border-color: #524f4a;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.78;
+    transform: none;
+}
+
+/* Variantes --------------------------------------------------------------- */
+
+/* Carmesí TSR: primary / danger */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):is(.theme-primary, .theme-danger),
+.btn-primary,
+.btn-danger {
+    --adnd-btn-bg: linear-gradient(180deg, #9e2323 0%, #6e1212 100%);
+    --adnd-btn-fg: #f9e6b3;
+    --adnd-btn-border: #d4af37;
+    --adnd-btn-shadow: 0 4px 6px rgba(25, 10, 5, 0.4), inset 0 1px 0 rgba(255, 220, 150, 0.35);
+    --adnd-btn-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    --adnd-btn-corner-color: #f3ce65;
+    --adnd-btn-hover-bg: linear-gradient(180deg, #b52929 0%, #821616 100%);
+    --adnd-btn-hover-fg: #ffffff;
+    --adnd-btn-hover-border: #f3ce65;
+}
+
+/* Oro / Bronce: success / warning */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):is(.theme-success, .theme-warning),
+.btn-success,
+.btn-warning {
+    --adnd-btn-bg: linear-gradient(180deg, #e5c158 0%, #b38728 50%, #8c6514 100%);
+    --adnd-btn-fg: #241606;
+    --adnd-btn-border: #4a3308;
+    --adnd-btn-shadow: 0 4px 6px rgba(30, 20, 5, 0.35), inset 0 1px 0 rgba(255, 250, 220, 0.75);
+    --adnd-btn-corner-color: #3d2804;
+    --adnd-btn-hover-bg: linear-gradient(180deg, #f0d47a 0%, #c79a35 50%, #9a7018 100%);
+    --adnd-btn-hover-fg: #241606;
+    --adnd-btn-hover-border: #f3ce65;
+}
+
+/* Grimorio arcano: info / dark */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):is(.theme-info, .theme-dark),
+.btn-info,
+.btn-dark {
+    --adnd-btn-bg: linear-gradient(180deg, #24476e 0%, #132740 100%);
+    --adnd-btn-fg: #d6ebff;
+    --adnd-btn-border: #7ea8be;
+    --adnd-btn-shadow: 0 4px 6px rgba(10, 20, 35, 0.45), inset 0 1px 0 rgba(160, 215, 255, 0.35);
+    --adnd-btn-corner-color: #a8d5eb;
+    --adnd-btn-hover-bg: linear-gradient(180deg, #2f5b8a 0%, #193454 100%);
+    --adnd-btn-hover-fg: #eaf6ff;
+    --adnd-btn-hover-border: #a8d5eb;
+}
+
+/* Pergamino: secondary / light */
+:is(.btn, .btn-solid, .btn-outline, .btn-icon, .btn-subtle, .btn-text):is(.theme-secondary, .theme-light),
+.btn-secondary,
+.btn-light {
+    --adnd-btn-bg: linear-gradient(180deg, #f5ebd6 0%, #dfd0b2 100%);
+    --adnd-btn-fg: #3b2818;
+    --adnd-btn-border: #7a5c3c;
+    --adnd-btn-shadow: 0 3px 5px rgba(45, 30, 15, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --adnd-btn-corner-color: #63472b;
+    --adnd-btn-hover-bg: linear-gradient(180deg, #fff5e1 0%, #e9dcc0 100%);
+    --adnd-btn-hover-fg: #241606;
+    --adnd-btn-hover-border: #f3ce65;
+}
+
+/* Outline / subtle / text: sin relleno, conservan color y borde de la variante */
+:is(.btn-outline, .btn-subtle, .btn-text) {
+    background: transparent;
+    color: var(--adnd-btn-border);
+    box-shadow: none;
+    text-shadow: none;
+}
+
+:is(.btn-outline, .btn-subtle, .btn-text):hover:not(:disabled) {
+    background: color-mix(in srgb, var(--adnd-btn-border) 14%, transparent);
+    color: var(--adnd-btn-hover-border);
+}
+
+:is(.btn-subtle, .btn-text) {
+    border-color: transparent;
+}
+
+:is(.btn-subtle, .btn-text)::before,
+:is(.btn-subtle, .btn-text)::after {
+    display: none;
+}
+
+/* Botón tipo enlace: sin marco ni esquinas */
+.btn-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    font-family: var(--adnd-font);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #f3ce65;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.btn-link:hover:not(:disabled) {
+    color: #ffffff;
+}
+
+/* Variables de tema Pergamino / Mazmorra */
+:root {
+    --bg-surface: #fbf5e6;
+    --bg-surface-alt: #e8dcc4;
+    --bg-tab-inactive: #e3d4b7;
+    --text-main: #23170d;
+    --text-muted: #5c4632;
+    --border-ink: #7a5c3c;
+    --accent-crimson: #8b1e1e;
+    --accent-gold: #c59b27;
+    --shadow-color: rgba(35, 20, 10, 0.25);
+    --dropdown-bg: linear-gradient(180deg, #fcf6e8 0%, #ede0c4 100%);
+    --dropdown-hover: rgba(139, 30, 30, 0.09);
+}
+
+/* --- NAVBAR TABS --- */
+.adnd-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.35rem;
+    padding: 0.75rem 1rem 0 1rem;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+.adnd-nav-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.35rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--bg-tab-inactive);
+    border: 1px solid var(--border-ink);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+}
+
+.adnd-nav-tab.active {
+    color: var(--accent-crimson);
+    background: var(--bg-surface);
+    border: 2px solid var(--accent-gold);
+    border-bottom: 2px solid var(--bg-surface);
+    padding-top: 0.85rem;
+    z-index: 5;
+}
+
+.adnd-tab-seal {
+    display: none;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 6px;
+    background: var(--accent-crimson);
+    border: 1px solid var(--accent-gold);
+}
+.adnd-nav-tab.active .adnd-tab-seal { display: block; }
+
+.adnd-tab-panel {
+    background: var(--bg-surface);
+    border: 2px solid var(--accent-gold);
+    border-top: none;
+    padding: 1.5rem;
+}
+
+/* --- DROPDOWNS --- */
+.adnd-dropdown { position: relative; display: inline-block; }
+
+.adnd-dropdown-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+    background: var(--bg-surface);
+    border: 2px solid var(--border-ink);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.adnd-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 260px;
+    padding: 0.6rem 0.4rem;
+    background: var(--dropdown-bg);
+    border: 2px solid var(--accent-gold);
+    border-radius: 4px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+}
+
+.adnd-dropdown.open .adnd-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.adnd-dropdown-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.55rem 1rem 0.55rem 1.65rem;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.adnd-dropdown-item::before {
+    content: '◆';
+    position: absolute;
+    left: 0.65rem;
+    font-size: 0.65rem;
+    color: var(--accent-crimson);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.adnd-dropdown-item:hover:not(:disabled) {
+    background: var(--dropdown-hover);
+    padding-left: 1.85rem;
+}
+.adnd-dropdown-item:hover:not(:disabled)::before { opacity: 1; }
+
+/* Alineación a la derecha del desplegable */
+.adnd-dropdown-menu-end {
+    left: auto;
+    right: 0;
+}
+
+/* Acción destructiva dentro del desplegable */
+.adnd-dropdown-item--danger {
+    color: var(--accent-crimson);
+}
+
+/* --- ANIMACIONES DE SPINNERS --- */
+@keyframes adndSpinClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes adndSpinCounter {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes adndCorePulse {
+    0%, 100% { transform: scale(0.88); opacity: 0.75; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+.adnd-spinner {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+}
+.adnd-spinner-sm { width: 22px; height: 22px; }
+.adnd-spinner-lg { width: 76px; height: 76px; }
+.adnd-spinner svg { width: 100%; height: 100%; overflow: visible; }
+
+/* El spinner usa <use>: el origen se calcula sobre el viewBox 0 0 64 64. */
+.astrolabe-outer,
+.astrolabe-inner,
+.astrolabe-core,
+.d20-frame,
+.d20-runes {
+    transform-box: view-box;
+    transform-origin: 32px 32px;
+}
+
+.astrolabe-outer {
+    animation: adndSpinClockwise 7s linear infinite;
+    color: #8c6d31;
+}
+.astrolabe-inner {
+    animation: adndSpinCounter 3.5s linear infinite;
+    color: #8b1e1e;
+}
+.astrolabe-core {
+    animation: adndCorePulse 1.8s ease-in-out infinite;
+    color: #8b1e1e;
+}
+
+.d20-frame {
+    animation: adndSpinClockwise 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    color: #8c6d31;
+}
+.d20-runes {
+    animation: adndSpinCounter 9s linear infinite;
+    color: #8b1e1e;
+}
+
+/* --- TARJETA ORNAMENTADA (.adnd-card) --- */
+.adnd-card {
+    --adnd-card-bg: #fbf5e6;
+    --adnd-card-border: #8c6d31;
+    --adnd-card-ink: #7a5c3c;
+    --adnd-card-accent: #8b1e1e;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--adnd-card-bg);
+    border: 2px solid var(--adnd-card-border);
+    border-radius: 4px;
+    padding: 1.75rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 8px 22px rgba(35, 22, 10, 0.22), inset 0 0 24px rgba(122, 92, 60, 0.12);
+}
+
+/* Variantes de tarjeta */
+.adnd-card--crimson {
+    --adnd-card-bg: #f7e6dc;
+    --adnd-card-border: #8b1e1e;
+    --adnd-card-ink: #5b1414;
+    --adnd-card-accent: #c59b27;
+}
+
+.adnd-card--gold {
+    --adnd-card-bg: #fdf3d8;
+    --adnd-card-border: #c59b27;
+    --adnd-card-ink: #7a5c1f;
+    --adnd-card-accent: #8b1e1e;
+}
+
+.adnd-card--arcane {
+    --adnd-card-bg: #e7eef6;
+    --adnd-card-border: #24476e;
+    --adnd-card-ink: #132740;
+    --adnd-card-accent: #7ea8be;
+}
+
+/* Doble marco interior grabado */
+.adnd-card::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid var(--adnd-card-ink);
+    opacity: 0.55;
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+.adnd-card-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    color: var(--adnd-card-border);
+    pointer-events: none;
+    z-index: 2;
+}
+.adnd-card-corner.tl { top: 2px; left: 2px; }
+.adnd-card-corner.tr { top: 2px; right: 2px; transform: scaleX(-1); }
+.adnd-card-corner.bl { bottom: 2px; left: 2px; transform: scaleY(-1); }
+.adnd-card-corner.br { bottom: 2px; right: 2px; transform: scale(-1, -1); }
+
+.adnd-card-crest {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 24px;
+    color: var(--adnd-card-border);
+    background: var(--adnd-card-bg);
+    padding: 0 6px;
+    z-index: 3;
+}
+
+.adnd-wax-seal {
+    position: absolute;
+    top: -12px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.45));
+    z-index: 4;
+}
+
+.adnd-card-header {
+    position: relative;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--adnd-card-ink);
+}
+.adnd-card-header::after {
+    content: '◆';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    color: var(--adnd-card-accent);
+    background: var(--adnd-card-bg);
+    padding: 0 6px;
+}
+
+/* La cresta y el sello sobresalen del borde superior: deja aire en el carrusel */
+.adyd-carousel__track > adyd-card {
+    margin-top: 14px;
 }
