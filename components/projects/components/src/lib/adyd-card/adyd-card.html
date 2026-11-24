@@ -1,6 +1,26 @@
-<div class="card" [id]="id()">
-    <div class="card-body" [tooltipText] = "tooltipText()">
-    <div class="image-wrapper">
-      <ng-content></ng-content>
-  </div>
+<div class="card adnd-card"
+     [id]="id()"
+     [class.adnd-card--crimson]="theme() === 'crimson'"
+     [class.adnd-card--gold]="theme() === 'gold'"
+     [class.adnd-card--arcane]="theme() === 'arcane'">
+
+    @for (corner of corners; track corner) {
+        <svg class="adnd-card-corner {{ corner }}" viewBox="0 0 32 32" aria-hidden="true">
+            <use href="assets/gilmith/icons/icon.svg#adnd-card-corner" width="32" height="32"/>
+        </svg>
+    }
+
+    <svg class="adnd-card-crest" viewBox="0 0 120 26" aria-hidden="true">
+        <use href="assets/gilmith/icons/icon.svg#adnd-card-crest" width="120" height="26"/>
+    </svg>
+
+    <svg class="adnd-wax-seal" viewBox="0 0 48 48" aria-hidden="true">
+        <use href="assets/gilmith/icons/icon.svg#adnd-wax-seal-svg" width="48" height="48"/>
+    </svg>
+
+    <div class="card-body" [tooltipText]="tooltipText()">
+        <div class="image-wrapper">
+            <ng-content></ng-content>
+        </div>
+    </div>
 </div>

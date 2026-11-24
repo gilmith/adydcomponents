@@ -35,7 +35,18 @@
           "options": {
             "configDir": "projects/components/.storybook",
             "browserTarget": "components:build",
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css"],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "projects/components/src/styles/adyd-theme.css"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/components/src/assets",
+                "output": "assets/gilmith"
+              }
+            ],
             "compodoc": true,
             "compodocArgs": [
               "-e",
@@ -51,7 +62,18 @@
           "options": {
             "configDir": "projects/components/.storybook",
             "browserTarget": "components:build",
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css"],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "projects/components/src/styles/adyd-theme.css"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/components/src/assets",
+                "output": "assets/gilmith"
+              }
+            ],
             "compodoc": true,
             "compodocArgs": [
               "-e",

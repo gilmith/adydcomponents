@@ -2,7 +2,7 @@ import {InjectionToken} from '@angular/core';
 import {ApiApplicationsEnum} from "./enum/enum-api-aplications";
 import {Observable} from "rxjs";
 
-interface ApiApplications {
+export interface ApiApplications {
 
     executeService(api: ApiApplicationsEnum, data: Record<string, string|number|File>, operationId: string) : Observable<any>
 }

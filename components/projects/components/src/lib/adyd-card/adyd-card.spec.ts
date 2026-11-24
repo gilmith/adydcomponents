@@ -12,11 +12,8 @@ describe('AdydCard', () => {
 
     fixture = TestBed.createComponent(AdydCard);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('imageUrl', 'https://picsum.photos/600/337');
-    fixture.componentRef.setInput('title', 'Dragonlance');
-    fixture.componentRef.setInput('description', 'Una descripción');
     fixture.componentRef.setInput('id', 1);
-    fixture.componentRef.setInput('action', () => undefined);
+    fixture.componentRef.setInput('tooltipText', 'Información de la carta');
     await fixture.whenStable();
   });
 
@@ -24,9 +21,29 @@ describe('AdydCard', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders the image with the title as alt text', () => {
-    const img = fixture.nativeElement.querySelector('img') as HTMLImageElement;
-    expect(img.src).toBe('https://picsum.photos/600/337');
-    expect(img.alt).toBe('Dragonlance');
+  it('renders the ornamented card with the provided id', () => {
+    const card = fixture.nativeElement.querySelector('.adnd-card') as HTMLElement;
+    expect(card).toBeTruthy();
+    expect(card.id).toBe('1');
+    expect(card.querySelectorAll('.adnd-card-corner').length).toBe(4);
+  });
+
+  it('references the shared icon sprite instead of inlining the decorations', () => {
+    const card = fixture.nativeElement.querySelector('.adnd-card') as HTMLElement;
+    const cornerUse = card.querySelector('.adnd-card-corner use');
+    const crestUse = card.querySelector('.adnd-card-crest use');
+    const sealUse = card.querySelector('.adnd-wax-seal use');
+
+    expect(cornerUse?.getAttribute('href')).toBe('assets/gilmith/icons/icon.svg#adnd-card-corner');
+    expect(crestUse?.getAttribute('href')).toBe('assets/gilmith/icons/icon.svg#adnd-card-crest');
+    expect(sealUse?.getAttribute('href')).toBe('assets/gilmith/icons/icon.svg#adnd-wax-seal-svg');
+  });
+
+  it('applies the selected theme', async () => {
+    fixture.componentRef.setInput('theme', 'crimson');
+    await fixture.whenStable();
+
+    const card = fixture.nativeElement.querySelector('.adnd-card') as HTMLElement;
+    expect(card.classList).toContain('adnd-card--crimson');
   });
 });

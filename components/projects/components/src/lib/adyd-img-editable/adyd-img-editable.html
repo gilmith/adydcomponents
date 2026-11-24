@@ -1,0 +1,17 @@
+<div class="image-wrapper">
+    <img class="card-img-top" [src]="previewUrl()" [alt]="title()" />
+    <div>
+        @if(showButtons()) {
+            <button type="button" class="edit-overlay-btn" (click)="fileInput.click()">
+                <span class="icon">📷</span> Editar Imagen
+            </button>
+        }
+        <input
+            #fileInput
+            type="file"
+            accept="image/*"
+            style="display: none"
+            (change)="onFileSelected($event)"
+        />
+    </div>
+</div>

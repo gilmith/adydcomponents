@@ -3,5 +3,17 @@
   "dest": "../../dist/components",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    {
+      "glob": "**/*.css",
+      "input": "src/styles",
+      "output": "styles"
+    },
+    {
+      "glob": "**/*",
+      "input": "src/assets",
+      "output": "assets"
+    }
+  ]
 }

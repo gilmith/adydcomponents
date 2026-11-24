@@ -5,6 +5,10 @@
   max-height: var(--adyd-card-max-height, 600px);
 }
 
+.card-body {
+  padding: 0;
+}
+
 .image-wrapper {
   position: relative;
   display: inline-block;
